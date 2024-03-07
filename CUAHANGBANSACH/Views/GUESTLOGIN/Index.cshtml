@@ -4,5 +4,28 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>GUEST LOGIN PAGE</h2>
+
+<section id="content">
+    <!--
+           <lable for="tendangnhap">Tên đăng nhập</lable>
+    <input type="text" name="tendangnhap" />
+    <lable for="matkhau">Mật Khẩu</lable>
+    <input type="text" name="matkhau" />
+    <input type="submit" name="check" value="Đăng Nhập" />
+
+
+
+            -->
+
+
+    @using (Html.BeginForm("Redirect", "GUESTLOGIN", FormMethod.Post))
+    {
+        @Html.TextBoxFor(m => m.tendangnhap);
+        @Html.TextBoxFor(m => m.matkhau);
+        <input type="submit" value="Đăng Nhập" />
+        @ViewBag.Status
+    }
+</section>
+
 

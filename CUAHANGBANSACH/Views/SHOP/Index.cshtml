@@ -1,0 +1,92 @@
+﻿@model CUAHANGBANSACH.Models.SACH
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>SHOP PAGE</h2>
+<section id="content">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-4">
+                <aside class="left-sidebar">
+                    <div class="widget">
+                        <form role="form">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="s" placeholder="Search..">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="widget">
+                        <h5 class="widgetheading">Thể loại</h5>
+                        <ul class="cat">
+                            @{
+                                List<THELOAISACH> list_CD = THELOAI_DAO.Read();
+                                foreach (THELOAISACH cd in list_CD)
+                                {
+                                    <li>
+                                        <i class="fa fa-angle-right"></i>
+                                        @Html.ActionLink(cd.tentheloai, "Index02", "SHOP", routeValues: new { @Ma_TheLoai = cd.matheloai }, htmlAttributes: null)<span> (@cd.Count)</span>
+                                    </li>
+                                }
+                            }
+                        </ul>
+
+                        
+                    </div>
+                    <div class="widget">
+                        <h5 class="widgetheading">Latest posts</h5>
+                        <ul class="recent">
+                            @{
+                                List<NXB> list_NXB = NXB_DAO.Read();
+                                foreach (NXB cd in list_NXB)
+                                {
+                                    <li>
+                                        <i class="fa fa-angle-right"></i>
+                                        @Html.ActionLink(cd.tennxb, "DanhMuc", "SanPham", routeValues: new { @Ma_MANXB = cd.manxb }, htmlAttributes: null)<span> (@cd.Count)</span>
+                                    </li>
+                                }
+                            }
+                        </ul>
+                    </div>
+                    <div class="widget">
+                        <h5 class="widgetheading">Popular tags</h5>
+                        <ul class="tags">
+                            <li><a href="#">Web design</a></li>
+                            <li><a href="#">Trends</a></li>
+                            <li><a href="#">Technology</a></li>
+                            <li><a href="#">Internet</a></li>
+                            <li><a href="#">Tutorial</a></li>
+                            <li><a href="#">Development</a></li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+
+            <div class="col-lg-8">
+               <h2 class="title">Book</h2>
+                <div class="row2">
+                    @{
+                        List<SACH> list_all = SACH_DAO.All_List();
+                        foreach (SACH sach in list_all)
+                        {
+                                        <div class="col-4">
+                                            <img src="@sach.anhsanpham" />
+                                            <p>Mã sách: @sach.masach</p>
+                                            <h4>@sach.tensach</h4>
+                                            <h5>Đơn Giá: @sach.dongia</h5>
+                                            <h6>Số lượng hiện có: @sach.soluonghienco</h6>
+                                            <button class="read" type="submit">Xem thêm</button>
+                                            <button class="read" type="submit">Mua</button>
+                                        </div>
+                        }
+                    }
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</section>
+

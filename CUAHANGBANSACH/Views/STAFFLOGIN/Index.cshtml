@@ -2,7 +2,19 @@
 
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout_Staff.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Staff Login Page</h2>
+<section id="content">
+    
+
+    @using (Html.BeginForm("Redirect", "STAFFLOGIN", FormMethod.Post))
+    {
+        @Html.TextBoxFor(m => m.tendangnhap);
+        @Html.TextBoxFor(m => m.matkhau);
+        <input type="submit" value="Đăng Nhập" />
+        @ViewBag.Status
+    }
+</section>
 

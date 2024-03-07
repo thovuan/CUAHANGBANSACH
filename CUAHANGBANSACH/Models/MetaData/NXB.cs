@@ -9,6 +9,7 @@ namespace CUAHANGBANSACH.Models
     [MetadataType(typeof(NXB.MetaData))]
     public  partial class NXB
     {
+        public int Count;
         sealed class  MetaData
         {
             [Required(AllowEmptyStrings = false, ErrorMessage = "Trường thông tin mã nhà xuất bản không được để trống")]

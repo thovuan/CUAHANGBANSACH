@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DOANWEB_INITIALModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DOANWEB_INITIALModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CHITIETCHUCVU">
           <Key>
             <PropertyRef Name="manhanvien" />
@@ -41,17 +41,17 @@
           <Property Name="diachi" Type="nvarchar" MaxLength="150" Nullable="false" />
           <Property Name="sdt" Type="char" MaxLength="11" Nullable="false" />
           <Property Name="avatar" Type="nvarchar" MaxLength="255" />
-          <Property Name="tendangnhap" Type="nchar" MaxLength="50" />
-          <Property Name="matkhau" Type="nchar" MaxLength="20" />
+          <Property Name="tendangnhap" Type="varchar" MaxLength="50" />
+          <Property Name="matkhau" Type="varchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="NHANVIEN">
           <Key>
             <PropertyRef Name="manhanvien" />
           </Key>
           <Property Name="manhanvien" Type="char" MaxLength="10" Nullable="false" />
-          <Property Name="tendangnhap" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="tendangnhap" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="tennhanvien" Type="nvarchar" MaxLength="50" />
-          <Property Name="matkhau" Type="char" MaxLength="20" Nullable="false" />
+          <Property Name="matkhau" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="NXB">
           <Key>
@@ -315,8 +315,7 @@
             <End Role="THE" EntitySet="THE" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DOANWEB_INITIALModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -362,8 +361,8 @@
           <Property Name="diachi" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="sdt" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="avatar" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="tendangnhap" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
-          <Property Name="matkhau" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="tendangnhap" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="matkhau" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="PHIEUMUAHANGs" Relationship="Self.FK_PHIEUMUAHANG_KHACH" FromRole="KHACH" ToRole="PHIEUMUAHANG" />
           <NavigationProperty Name="THEs" Relationship="Self.FK_THE_KHACH" FromRole="KHACH" ToRole="THE" />
         </EntityType>
@@ -372,9 +371,9 @@
             <PropertyRef Name="manhanvien" />
           </Key>
           <Property Name="manhanvien" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="tendangnhap" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="tendangnhap" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="tennhanvien" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="matkhau" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="matkhau" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="CHITIETCHUCVUs" Relationship="Self.FK_CHITIETCHUCVU_NHANVIEN" FromRole="NHANVIEN" ToRole="CHITIETCHUCVU" />
           <NavigationProperty Name="PHIEUGIAOs" Relationship="Self.FK_PHIEUGIAO_NHANVIEN" FromRole="NHANVIEN" ToRole="PHIEUGIAO" />
           <NavigationProperty Name="SACHes" Relationship="Self.FK_SACH_NHANVIEN" FromRole="NHANVIEN" ToRole="SACH" />

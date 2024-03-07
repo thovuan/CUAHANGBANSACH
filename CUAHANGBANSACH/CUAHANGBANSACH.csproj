@@ -128,10 +128,17 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ABOUTController.cs" />
     <Compile Include="Controllers\GUESTLOGINController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\SACHController.cs" />
+    <Compile Include="Controllers\NeoHomeController.cs" />
+    <Compile Include="Controllers\PMHController.cs" />
+    <Compile Include="Controllers\QLDHController.cs" />
+    <Compile Include="Controllers\QLSACHController.cs" />
+    <Compile Include="Controllers\SHOPController.cs" />
     <Compile Include="Controllers\STAFFLOGINController.cs" />
+    <Compile Include="Controllers\TrackingController.cs" />
+    <Compile Include="Controllers\TTKHController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -144,7 +151,11 @@
     <Compile Include="Models\CHUCVU.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DAO\Class1.cs" />
+    <Compile Include="Models\DAO\KHACH_DAO.cs" />
+    <Compile Include="Models\DAO\NHANVIEN_DAO.cs" />
+    <Compile Include="Models\DAO\NXB_DAO.cs" />
+    <Compile Include="Models\DAO\SACH_DAO.cs" />
+    <Compile Include="Models\DAO\THELOAI_DAO.cs" />
     <Compile Include="Models\KHACH.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -268,12 +279,24 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\SACH\Index.cshtml" />
     <Content Include="Views\STAFFLOGIN\Index.cshtml" />
     <Content Include="Views\GUESTLOGIN\Index.cshtml" />
+    <Content Include="Views\SHOP\Index.cshtml" />
+    <Content Include="Views\TTKH\Index.cshtml" />
+    <Content Include="Views\PMH\Index.cshtml" />
+    <Content Include="Views\ABOUT\Our_Story.cshtml" />
+    <Content Include="Views\ABOUT\Blog.cshtml" />
+    <Content Include="Views\ABOUT\Contact.cshtml" />
+    <Content Include="Views\Tracking\Index.cshtml" />
+    <Content Include="Views\SHOP\Index02.cshtml" />
+    <Content Include="Views\Shared\_Layout_Staff.cshtml" />
+    <Content Include="Views\NeoHome\Index.cshtml" />
+    <Content Include="Views\QLDH\Index.cshtml" />
+    <Content Include="Views\QLSACH\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\THELOAI_DAO\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
