@@ -2,86 +2,93 @@
 
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout_Staff.cshtml";
+}
 }
 
 <h2>Quan Ly Sach</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.masach)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tensach)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.soluonghienco)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.dacdiem)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.anhsanpham)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DVT)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.dongia)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.matheloai)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.manhanvien)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.manxb)
-        </th>
-        <th></th>
-    </tr>
+<section id="content">
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.masach)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tensach)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.soluonghienco)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.dacdiem)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.anhsanpham)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DVT)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.dongia)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.matheloai)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.manhanvien)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.manxb)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
-}
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.masach)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tensach)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.soluonghienco)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dacdiem)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.anhsanpham)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DVT)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dongia)
+            </th>
+            <th>
+                Tên Thể Loại
+            </th>
+            <th>
+                Tên Nhân Viên
+            </th>
+            <th>
+                Nhà Xuất Bản
+            </th>
+            <th></th>
+        </tr>
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.masach)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tensach)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.soluonghienco)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dacdiem)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.anhsanpham)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DVT)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dongia)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.matheloai)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.manhanvien)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.manxb)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit",  null, new { @Ma_Sach = item.masach }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</section>

@@ -45,7 +45,7 @@
                                 {
                                     <li>
                                         <i class="fa fa-angle-right"></i>
-                                        @Html.ActionLink(cd.tennxb, "DanhMuc", "SanPham", routeValues: new { @Ma_MANXB = cd.manxb }, htmlAttributes: null)<span> (@cd.Count)</span>
+                                        @Html.ActionLink(cd.tennxb, "Index03", "SHOP", routeValues: new { @Ma_NXB = cd.manxb }, htmlAttributes: null)<span> (@cd.Count)</span>
                                     </li>
                                 }
                             }
@@ -69,20 +69,17 @@
                 <h2 class="title">Book</h2>
                 <div class="row2">
 
-                    @{
-                            List<SACH> list = SACH_DAO.ChuDe_List(Ma_Theloai);
-                            foreach (SACH sach in list)
-                            {
-                            <div class="col-4">
-                                <img src="@sach.anhsanpham" />
-                                <p>Mã sách: @sach.masach</p>
-                                <h4>@sach.tensach</h4>
-                                <h5>Đơn Giá: @sach.dongia</h5>
-                                <h6>Số lượng hiện có: @sach.soluonghienco</h6>
-                                <button class="read" type="submit">Xem thêm</button>
-                                <button class="read" type="submit">Mua</button>
-                            </div>
-                        }
+                    @foreach (SACH sach in Model)
+                    {
+                        <div class="col-4">
+                            <img src="@sach.anhsanpham" />
+                            <p>Mã sách: @sach.masach</p>
+                            <h4>@sach.tensach</h4>
+                            <h5>Đơn Giá: @sach.dongia</h5>
+                            <h6>Số lượng hiện có: @sach.soluonghienco</h6>
+                            <button class="read" type="submit">Xem thêm</button>
+                            <button class="read" type="submit">Mua</button>
+                        </div>
                     }
 
 

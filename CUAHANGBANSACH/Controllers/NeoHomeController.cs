@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace CUAHANGBANSACH.Controllers
 {
+    
     public class NeoHomeController : Controller
     {
         // GET: NeoHome

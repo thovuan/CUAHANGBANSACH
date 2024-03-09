@@ -11,9 +11,14 @@
 
     @using (Html.BeginForm("Redirect", "STAFFLOGIN", FormMethod.Post))
     {
+        <p>Tên đăng Nhập Nhân Viên</p>
         @Html.TextBoxFor(m => m.tendangnhap);
+        <br />
+        <p>Mật Khẩu</p>
         @Html.TextBoxFor(m => m.matkhau);
         <input type="submit" value="Đăng Nhập" />
+        <br />
+        @Html.ValidationSummary(false, "");
         @ViewBag.Status
     }
 </section>

@@ -24,5 +24,25 @@ namespace CUAHANGBANSACH.Models.DAO
                 return sach;
             }
         }
+
+        public static List<SACH> NXB_List(string id)
+        {
+            using (DOANWEB_INITIALEntities db = new DOANWEB_INITIALEntities())
+            {
+                List<SACH> nXBs = db.SACHes.Where(n => n.manxb == id).ToList();
+                if (nXBs.Count > 0) return nXBs;
+                return null;
+            }
+        }
+
+        public static SACH GetById(string id)
+        {
+            using (DOANWEB_INITIALEntities db = new DOANWEB_INITIALEntities())
+            {
+                var sach = db.SACHes.Where(n => n.masach == id).FirstOrDefault();
+                if (sach == null) return null;
+                return sach;
+            }
+        }
     }
 }

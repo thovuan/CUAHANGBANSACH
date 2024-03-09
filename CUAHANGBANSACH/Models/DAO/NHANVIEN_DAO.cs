@@ -24,5 +24,15 @@ namespace CUAHANGBANSACH.Models.DAO
                 return null;
             }
         }
+
+        public static NHANVIEN GetById (string id)
+        {
+            using (DOANWEB_INITIALEntities db = new DOANWEB_INITIALEntities())
+            {
+                var manv = db.NHANVIENs.Where(n => n.manhanvien == id).FirstOrDefault();
+                if (manv != null) { return  manv; }
+                return null;
+            }
+        }
     }
 }

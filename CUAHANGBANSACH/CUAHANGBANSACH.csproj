@@ -154,6 +154,7 @@
     <Compile Include="Models\DAO\KHACH_DAO.cs" />
     <Compile Include="Models\DAO\NHANVIEN_DAO.cs" />
     <Compile Include="Models\DAO\NXB_DAO.cs" />
+    <Compile Include="Models\DAO\PHIEUMUAHANG_DAO.cs" />
     <Compile Include="Models\DAO\SACH_DAO.cs" />
     <Compile Include="Models\DAO\THELOAI_DAO.cs" />
     <Compile Include="Models\KHACH.cs">
@@ -293,9 +294,13 @@
     <Content Include="Views\NeoHome\Index.cshtml" />
     <Content Include="Views\QLDH\Index.cshtml" />
     <Content Include="Views\QLSACH\Index.cshtml" />
+    <Content Include="Views\QLSACH\Delete.cshtml" />
+    <Content Include="Views\QLSACH\Edit.cshtml" />
+    <Content Include="Views\SHOP\Index03.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\PIC_INTRO\" />
     <Folder Include="Views\THELOAI_DAO\" />
   </ItemGroup>
   <ItemGroup>

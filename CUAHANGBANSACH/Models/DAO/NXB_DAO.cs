@@ -19,5 +19,17 @@ namespace CUAHANGBANSACH.Models.DAO
                 return ketqua;
             }
         }
+
+        
+
+        public static NXB GetById(string id)
+        {
+            using (DOANWEB_INITIALEntities db = new DOANWEB_INITIALEntities())
+            {
+                var manxb = db.NXBs.Where(n => n.manxb == id).FirstOrDefault();
+                if (manxb != null) return manxb;
+                return null;
+            }
+        }
     }
 }

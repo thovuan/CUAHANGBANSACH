@@ -1,10 +1,10 @@
-﻿@model IEnumerable<CUAHANGBANSACH.Models.SACH>
+﻿@model List<CUAHANGBANSACH.Models.SACH>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Index03";
 }
 
-<h2>SHOP PAGE</h2>
+<h2>Index03</h2>
 <section id="content">
     <div class="container">
         <div class="row">
@@ -15,7 +15,6 @@
                         <form role="form">
                             <div class="form-group">
                                 <input type="text" class="form-control" id="s" placeholder="Search..">
-                                
                             </div>
                         </form>
                     </div>
@@ -28,24 +27,24 @@
                                 {
                                     <li>
                                         <i class="fa fa-angle-right"></i>
-                                        @Html.ActionLink(cd.tentheloai, "Index", "SHOP", routeValues: new { @Ma_TheLoai = cd.matheloai }, htmlAttributes: null)<span> (@cd.Count)</span>
+                                        @Html.ActionLink(cd.tentheloai, "Index02", "SHOP", routeValues: new { @Ma_TheLoai = cd.matheloai }, htmlAttributes: null)<span> (@cd.Count)</span>
                                     </li>
                                 }
                             }
                         </ul>
 
-                        
+
                     </div>
                     <div class="widget">
-                        <h5 class="widgetheading">NXB</h5>
-                        <ul class="cat">
+                        <h5 class="widgetheading">Latest posts</h5>
+                        <ul class="recent">
                             @{
                                 List<NXB> list_NXB = NXB_DAO.Read();
                                 foreach (NXB cd in list_NXB)
                                 {
                                     <li>
                                         <i class="fa fa-angle-right"></i>
-                                        @Html.ActionLink(cd.tennxb, "Index", "SHOP", routeValues: new { @Ma_NXB = cd.manxb }, htmlAttributes: null)<span> (@cd.Count)</span>
+                                        @Html.ActionLink(cd.tennxb, "Index03", "SHOP", routeValues: new { @Ma_NXB = cd.manxb }, htmlAttributes: null)<span> (@cd.Count)</span>
                                     </li>
                                 }
                             }
@@ -66,25 +65,28 @@
             </div>
 
             <div class="col-lg-8">
-               <h2 class="title">Book</h2>
-               <div class="row2">
-                   @foreach (SACH sach in Model)
-                   {
-                       <div class="col-4">
-                           <img src="@sach.anhsanpham" />
-                           <p>Mã sách: @sach.masach</p>
-                           <h4>@sach.tensach</h4>
-                           <h5>Đơn Giá: @sach.dongia</h5>
-                           <h6>Số lượng hiện có: @sach.soluonghienco</h6>
-                           <button class="read" type="submit">Xem thêm</button>
-                           <button class="read" type="submit">Mua</button>
-                       </div>
-                   }
-               </div>
+                <h2 class="title">Book</h2>
+                <div class="row2">
+
+                    @foreach (SACH sach in Model)
+                    {
+                        <div class="col-4">
+                            <img src="@sach.anhsanpham" />
+                            <p>Mã sách: @sach.masach</p>
+                            <h4>@sach.tensach</h4>
+                            <h5>Đơn Giá: @sach.dongia</h5>
+                            <h6>Số lượng hiện có: @sach.soluonghienco</h6>
+                            <button class="read" type="submit">Xem thêm</button>
+                            <button class="read" type="submit">Mua</button>
+                        </div>
+                    }
+
+
+
+                </div>
             </div>
 
 
         </div>
     </div>
 </section>
-

@@ -18,5 +18,31 @@ namespace CUAHANGBANSACH.Models.DAO
             }
  
         }
+
+        public static THELOAISACH getNamebyId(string id)
+        {
+            using (DOANWEB_INITIALEntities db = new DOANWEB_INITIALEntities())
+            {
+                var takeid = db.THELOAISACHes.Where(n=> n.matheloai.Equals(id)).FirstOrDefault();
+                if (takeid!=null)
+                {
+                    return takeid;
+                }
+                return null;
+            }
+        }
+
+        public static THELOAISACH GetbyId (string id)
+        {
+            using (DOANWEB_INITIALEntities db = new DOANWEB_INITIALEntities())
+            {
+                var takeid = db.THELOAISACHes.Where(n => n.matheloai.Equals(id)).FirstOrDefault();
+                if (takeid != null)
+                {
+                    return takeid;
+                }
+                return null;
+            }
+        }
     }
 }

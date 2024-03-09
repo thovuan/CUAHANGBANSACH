@@ -22,6 +22,16 @@ namespace CUAHANGBANSACH.Models.DAO
                 return null;
             }
         }
+
+        public static KHACH GetById (string id)
+        {
+            using (DOANWEB_INITIALEntities db = new DOANWEB_INITIALEntities())
+            {
+                var makh = db.KHACHes.Where(n => n.makhachhang == id).FirstOrDefault();
+                if (makh != null) { return makh; }
+                return null;
+            }
+        }
         
     }
 }

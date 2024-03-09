@@ -21,9 +21,12 @@
 
     @using (Html.BeginForm("Redirect", "GUESTLOGIN", FormMethod.Post))
     {
+        <p>Tên đăng nhập khách hàng</p> <br />
         @Html.TextBoxFor(m => m.tendangnhap);
+        <p>Mật khẩu</p> <br />
         @Html.TextBoxFor(m => m.matkhau);
         <input type="submit" value="Đăng Nhập" />
+        <br />
         @ViewBag.Status
     }
 </section>
