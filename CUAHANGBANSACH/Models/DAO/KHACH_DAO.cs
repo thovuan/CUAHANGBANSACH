@@ -7,19 +7,22 @@ namespace CUAHANGBANSACH.Models.DAO
 {
     public class KHACH_DAO
     {
-        public static KHACH GetByTDN(string tendangnhap, string matkhau)
+        public static List<KHACH> GetAllList ()
+        {
+            using (DOANWEB_INITIALEntities db = new DOANWEB_INITIALEntities())
+            {
+                List<KHACH> tttk = db.KHACHes.ToList();
+
+                return tttk;
+            }
+        }
+        public static KHACH GetByTDN(string tendangnhap)
         {
             using (DOANWEB_INITIALEntities db = new DOANWEB_INITIALEntities())
             {
                 var tttk = db.KHACHes.Where(n => n.tendangnhap == tendangnhap).FirstOrDefault();
-                if (tttk != null)
-                {
-                    if (matkhau.Equals(tttk.matkhau))
-                    {
-                        return tttk;
-                    } return null;
-                }
-                return null;
+                
+                return tttk;
             }
         }
 

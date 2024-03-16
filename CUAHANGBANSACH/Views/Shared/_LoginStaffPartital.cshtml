@@ -1,0 +1,9 @@
+﻿@if (Session["NhanVien"] == null)
+            {
+                @Html.ActionLink("Login", "Index", "STAFFLOGIN", new { area = "" }, new { @class = "nav-link" });
+}
+else
+{
+    NHANVIEN nv = (NHANVIEN)Session["NhanVien"];
+                <p>Chào Mừng, @nv.tendangnhap</p>
+            }

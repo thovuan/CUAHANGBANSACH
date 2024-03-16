@@ -2,23 +2,28 @@
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout_Staff.cshtml";
+    //Layout = "~/Views/Shared/_Layout_Staff.cshtml";
+    Layout = null;
 }
 
 <h2>Staff Login Page</h2>
 <section id="content">
-    
 
-    @using (Html.BeginForm("Redirect", "STAFFLOGIN", FormMethod.Post))
+
+    @using (Html.BeginForm("Index", "STAFFLOGIN", FormMethod.Post))
     {
+        @Html.AntiForgeryToken();
         <p>Tên đăng Nhập Nhân Viên</p>
-        @Html.TextBoxFor(m => m.tendangnhap);
+        @Html.TextBoxFor(m => m.tendangnhap);<br />
+        @Html.ValidationMessageFor(m => m.tendangnhap);
         <br />
         <p>Mật Khẩu</p>
-        @Html.TextBoxFor(m => m.matkhau);
+        @Html.TextBoxFor(m => m.matkhau); <br />
+        @Html.ValidationMessageFor(m => m.matkhau);
+        <br />
         <input type="submit" value="Đăng Nhập" />
         <br />
-        @Html.ValidationSummary(false, "");
+        //@Html.ValidationSummary(false, "");
         @ViewBag.Status
     }
 </section>

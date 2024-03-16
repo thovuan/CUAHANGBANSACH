@@ -9,6 +9,7 @@ namespace CUAHANGBANSACH.Models
     [MetadataType(typeof(CHUCVU.MetaData))]
     public partial class CHUCVU
     {
+        public List<NHANVIEN> nv;
         sealed class MetaData
         {
             [Required(AllowEmptyStrings = false, ErrorMessage = "Trường thông tin mã chức vụ không được để trống")]

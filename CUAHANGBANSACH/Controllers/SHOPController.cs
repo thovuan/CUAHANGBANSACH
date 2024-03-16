@@ -36,5 +36,13 @@ namespace CUAHANGBANSACH.Controllers
             ViewData.Model = SACH_DAO.NXB_List(Ma_NXB);
             return View();
         }
+
+        
+
+        //[HttpPost]
+        public ActionResult Detail(string MaSach) {
+            ViewData.Model = SACH_DAO.GetById(MaSach);
+            return View();
+        }
     }
 }

@@ -10,8 +10,8 @@
             <PropertyRef Name="manhanvien" />
             <PropertyRef Name="machucvu" />
           </Key>
-          <Property Name="manhanvien" Type="char" MaxLength="10" Nullable="false" />
-          <Property Name="machucvu" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="manhanvien" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="machucvu" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="thoihanhopdong" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="CHITIETDATHANG">
@@ -19,8 +19,8 @@
             <PropertyRef Name="maphieumuahang" />
             <PropertyRef Name="masach" />
           </Key>
-          <Property Name="maphieumuahang" Type="char" MaxLength="10" Nullable="false" />
-          <Property Name="masach" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="maphieumuahang" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="masach" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="soluongmua" Type="int" Nullable="false" />
           <Property Name="tinhtranggiao" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
@@ -28,7 +28,7 @@
           <Key>
             <PropertyRef Name="machucvu" />
           </Key>
-          <Property Name="machucvu" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="machucvu" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="tenchucvu" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="tinhtrang" Type="nvarchar" MaxLength="50" />
         </EntityType>
@@ -36,7 +36,7 @@
           <Key>
             <PropertyRef Name="makhachhang" />
           </Key>
-          <Property Name="makhachhang" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="makhachhang" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="tenkhachhang" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="diachi" Type="nvarchar" MaxLength="150" Nullable="false" />
           <Property Name="sdt" Type="char" MaxLength="11" Nullable="false" />
@@ -48,7 +48,7 @@
           <Key>
             <PropertyRef Name="manhanvien" />
           </Key>
-          <Property Name="manhanvien" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="manhanvien" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="tendangnhap" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="tennhanvien" Type="nvarchar" MaxLength="50" />
           <Property Name="matkhau" Type="varchar" MaxLength="50" Nullable="false" />
@@ -57,46 +57,46 @@
           <Key>
             <PropertyRef Name="manxb" />
           </Key>
-          <Property Name="manxb" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="manxb" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="tennxb" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="PHIEUGIAO">
           <Key>
             <PropertyRef Name="maphieugiao" />
           </Key>
-          <Property Name="maphieugiao" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="maphieugiao" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="ngaylap" Type="datetime" Nullable="false" />
           <Property Name="soluonggiao" Type="int" Nullable="false" />
           <Property Name="ngaygiaodukien" Type="datetime" Nullable="false" />
           <Property Name="tinhtranggiao" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="maphieumuahang" Type="char" MaxLength="10" Nullable="false" />
-          <Property Name="masach" Type="char" MaxLength="10" Nullable="false" />
-          <Property Name="manhanvien" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="maphieumuahang" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="masach" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="manhanvien" Type="varchar" MaxLength="10" Nullable="false" />
         </EntityType>
         <EntityType Name="PHIEUMUAHANG">
           <Key>
             <PropertyRef Name="maphieumuahang" />
           </Key>
-          <Property Name="maphieumuahang" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="maphieumuahang" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="ngaylap" Type="datetime" Nullable="false" />
           <Property Name="tinhtrangthanhtoan" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="tinhtrang" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="makhachhang" Type="char" MaxLength="10" />
+          <Property Name="makhachhang" Type="varchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="SACH">
           <Key>
             <PropertyRef Name="masach" />
           </Key>
-          <Property Name="masach" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="masach" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="tensach" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="soluonghienco" Type="int" Nullable="false" />
           <Property Name="dacdiem" Type="nvarchar" MaxLength="100" />
           <Property Name="anhsanpham" Type="nvarchar" MaxLength="255" />
           <Property Name="DVT" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="dongia" Type="money" Nullable="false" />
-          <Property Name="matheloai" Type="char" MaxLength="10" Nullable="false" />
-          <Property Name="manhanvien" Type="char" MaxLength="10" Nullable="false" />
-          <Property Name="manxb" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="matheloai" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="manhanvien" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="manxb" Type="varchar" MaxLength="10" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -112,15 +112,15 @@
           <Key>
             <PropertyRef Name="mathe" />
           </Key>
-          <Property Name="mathe" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="mathe" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="diemthe" Type="int" Nullable="false" />
-          <Property Name="makhachhang" Type="char" MaxLength="10" />
+          <Property Name="makhachhang" Type="varchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="THELOAISACH">
           <Key>
             <PropertyRef Name="matheloai" />
           </Key>
-          <Property Name="matheloai" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="matheloai" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="tentheloai" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <Association Name="FK_CHITIETCHUCVU_CHUCVU">
@@ -324,8 +324,8 @@
             <PropertyRef Name="manhanvien" />
             <PropertyRef Name="machucvu" />
           </Key>
-          <Property Name="manhanvien" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="machucvu" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="manhanvien" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="machucvu" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="thoihanhopdong" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="CHUCVU" Relationship="Self.FK_CHITIETCHUCVU_CHUCVU" FromRole="CHITIETCHUCVU" ToRole="CHUCVU" />
           <NavigationProperty Name="NHANVIEN" Relationship="Self.FK_CHITIETCHUCVU_NHANVIEN" FromRole="CHITIETCHUCVU" ToRole="NHANVIEN" />
@@ -335,8 +335,8 @@
             <PropertyRef Name="maphieumuahang" />
             <PropertyRef Name="masach" />
           </Key>
-          <Property Name="maphieumuahang" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="masach" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="maphieumuahang" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="masach" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="soluongmua" Type="Int32" Nullable="false" />
           <Property Name="tinhtranggiao" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="PHIEUMUAHANG" Relationship="Self.FK_CHITIETDATHANG_PHIEUMUAHANG" FromRole="CHITIETDATHANG" ToRole="PHIEUMUAHANG" />
@@ -347,7 +347,7 @@
           <Key>
             <PropertyRef Name="machucvu" />
           </Key>
-          <Property Name="machucvu" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="machucvu" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="tenchucvu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="tinhtrang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="CHITIETCHUCVUs" Relationship="Self.FK_CHITIETCHUCVU_CHUCVU" FromRole="CHUCVU" ToRole="CHITIETCHUCVU" />
@@ -356,7 +356,7 @@
           <Key>
             <PropertyRef Name="makhachhang" />
           </Key>
-          <Property Name="makhachhang" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="makhachhang" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="tenkhachhang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="diachi" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="sdt" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
@@ -370,7 +370,7 @@
           <Key>
             <PropertyRef Name="manhanvien" />
           </Key>
-          <Property Name="manhanvien" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="manhanvien" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="tendangnhap" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="tennhanvien" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="matkhau" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
@@ -382,7 +382,7 @@
           <Key>
             <PropertyRef Name="manxb" />
           </Key>
-          <Property Name="manxb" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="manxb" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="tennxb" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="SACHes" Relationship="Self.FK_SACH_NXB" FromRole="NXB" ToRole="SACH" />
         </EntityType>
@@ -390,14 +390,14 @@
           <Key>
             <PropertyRef Name="maphieugiao" />
           </Key>
-          <Property Name="maphieugiao" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="maphieugiao" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ngaylap" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="soluonggiao" Type="Int32" Nullable="false" />
           <Property Name="ngaygiaodukien" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="tinhtranggiao" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="maphieumuahang" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="masach" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="manhanvien" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="maphieumuahang" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="masach" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="manhanvien" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="CHITIETDATHANG" Relationship="Self.FK_PHIEUGIAO_PHIEUGIAO" FromRole="PHIEUGIAO" ToRole="CHITIETDATHANG" />
           <NavigationProperty Name="NHANVIEN" Relationship="Self.FK_PHIEUGIAO_NHANVIEN" FromRole="PHIEUGIAO" ToRole="NHANVIEN" />
         </EntityType>
@@ -405,11 +405,11 @@
           <Key>
             <PropertyRef Name="maphieumuahang" />
           </Key>
-          <Property Name="maphieumuahang" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="maphieumuahang" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ngaylap" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="tinhtrangthanhtoan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="tinhtrang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="makhachhang" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="makhachhang" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="CHITIETDATHANGs" Relationship="Self.FK_CHITIETDATHANG_PHIEUMUAHANG" FromRole="PHIEUMUAHANG" ToRole="CHITIETDATHANG" />
           <NavigationProperty Name="KHACH" Relationship="Self.FK_PHIEUMUAHANG_KHACH" FromRole="PHIEUMUAHANG" ToRole="KHACH" />
         </EntityType>
@@ -417,16 +417,16 @@
           <Key>
             <PropertyRef Name="masach" />
           </Key>
-          <Property Name="masach" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="masach" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="tensach" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="soluonghienco" Type="Int32" Nullable="false" />
           <Property Name="dacdiem" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="anhsanpham" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="DVT" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="dongia" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="matheloai" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="manhanvien" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="manxb" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="matheloai" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="manhanvien" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="manxb" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="CHITIETDATHANGs" Relationship="Self.FK_CHITIETDATHANG_SACH" FromRole="SACH" ToRole="CHITIETDATHANG" />
           <NavigationProperty Name="NHANVIEN" Relationship="Self.FK_SACH_NHANVIEN" FromRole="SACH" ToRole="NHANVIEN" />
           <NavigationProperty Name="NXB" Relationship="Self.FK_SACH_NXB" FromRole="SACH" ToRole="NXB" />
@@ -446,16 +446,16 @@
           <Key>
             <PropertyRef Name="mathe" />
           </Key>
-          <Property Name="mathe" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="mathe" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="diemthe" Type="Int32" Nullable="false" />
-          <Property Name="makhachhang" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="makhachhang" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="KHACH" Relationship="Self.FK_THE_KHACH" FromRole="THE" ToRole="KHACH" />
         </EntityType>
         <EntityType Name="THELOAISACH">
           <Key>
             <PropertyRef Name="matheloai" />
           </Key>
-          <Property Name="matheloai" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="matheloai" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="tentheloai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="SACHes" Relationship="Self.FK_SACH_THELOAISACH" FromRole="THELOAISACH" ToRole="SACH" />
         </EntityType>

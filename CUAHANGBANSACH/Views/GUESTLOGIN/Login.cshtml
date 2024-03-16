@@ -1,0 +1,31 @@
+﻿@model CUAHANGBANSACH.Models.KHACH
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+<section id="content">
+
+    @using (Html.BeginForm("Login", "GUESTLOGIN", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <p>Tên đăng nhập khách hàng</p> <br />
+        @Html.TextBoxFor(m => m.tendangnhap, new { htmlAttributes = new { @class = "form-control"} });
+        <br />
+        @Html.ValidationMessageFor(m => m.tendangnhap, "", new {@class = "text-danger"})
+        <p>Mật khẩu</p> <br />
+        @Html.TextBoxFor(m => m.matkhau, new { htmlAttributes = new { @class = "form-control" } });
+        <br />
+        @Html.ValidationMessageFor(m => m.matkhau, "", new { @class = "text-danger" })
+        <br />
+        <input type="submit" value="Đăng Nhập" />
+        <br />
+        <p>@Html.ActionLink("Quên Mật Khẩu", "ForgotPass", "GUESTLOGIN")</p>
+        <p>@Html.ActionLink("Đăng ký tài khoản", "NewUser", "GUESTLOGIN")</p>
+        //@Html.ValidationSummary()
+
+        @ViewBag.Status
+    }
+</section>
+

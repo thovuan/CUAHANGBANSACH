@@ -1,0 +1,54 @@
+﻿
+
+@{
+    ViewBag.Title = "TTKH";
+    
+    KHACH khach = (KHACH)Session["KHACH"];
+    
+}
+
+<h2>TTKH</h2>
+<section id="content">
+    <div>
+        <h4>KHACH</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => khach.tenkhachhang)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => khach.tenkhachhang)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => khach.diachi)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => khach.diachi)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => khach.sdt)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => khach.sdt)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => khach.avatar)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => khach.avatar)
+            </dd>
+
+
+
+        </dl>
+    </div>
+</section>
+
+

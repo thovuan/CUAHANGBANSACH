@@ -1,0 +1,12 @@
+﻿
+<p>Hello! I'm peguin</p>
+
+@if (Session["KHACH"]==null)
+            {
+                @Html.ActionLink("Login", "Login", "GUESTLOGIN", new { area = "" }, new { @class = "nav-link" });
+}
+else
+{
+    KHACH khach = (KHACH)Session["KHACH"];
+    <p>Xin chao, @khach.tendangnhap</p>
+}

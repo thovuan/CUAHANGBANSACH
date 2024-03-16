@@ -27,7 +27,9 @@
                     <div class="row">
                         <div class="col-md-6">
                             <ul class="topleft-info">
-                                <li><i class="fa fa-phone"></i> +62 088 999 123</li>
+                                <!--<li><i class="fa fa-phone"></i> +62 088 999 123</li>-->
+                                <li>@Html.Partial("_LoginPartial")</li>
+
                             </ul>
                         </div>
                         <div class="col-md-6">
@@ -92,9 +94,18 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">ACCOUNT <i class="fa fa-angle-down"></i></a>
                                 <ul class="dropdown-menu">
-                                    <li>@Html.ActionLink("Thông tin khách hàng", "Index", "TTKH", new { area = "" }, new { @class = "nav-link" })</li>
-                                    <li>@Html.ActionLink("Đăng Nhập", "Index", "GUESTLOGIN", new { area = "" }, new { @class = "nav-link" })</li>
-                                    
+                                    @if (Session["KHACH"] != null)
+                                    {
+                                        <li>@Html.ActionLink("Thông tin khách hàng", "TTKH", "GUESTLOGIN", new { area = "" }, new { @class = "nav-link" })</li>
+                                        <li>@Html.ActionLink("Đăng Xuất", "Logout", "GUESTLOGIN", new { area = "" }, new { @class = "nav-link" })</li>
+                                    } else
+                                    {
+                                        <li>@Html.ActionLink("Đăng Nhập", "Login", "GUESTLOGIN", new { area = "" }, new { @class = "nav-link" })</li>
+                                        <li>Quên Mật Khẩu</li>
+                                        <li>Đăng ký tài khoản</li>
+                                    }
+
+
 
                                 </ul>
                             </li>

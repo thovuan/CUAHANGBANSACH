@@ -39,11 +39,12 @@
             <th>
                 Tên Thể Loại
             </th>
-            <th>
-                Tên Nhân Viên
-            </th>
+
             <th>
                 Nhà Xuất Bản
+            </th>
+            <th>
+                Tên Nhân Viên
             </th>
             <th></th>
         </tr>
@@ -73,18 +74,18 @@
                     @Html.DisplayFor(modelItem => item.dongia)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.matheloai)
+                    @Html.DisplayFor(modelItem => item.tentheloai)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.manhanvien)
+                    @Html.DisplayFor(modelItem => item.tennxb)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.manxb)
+                    @Html.DisplayFor(modelItem => item.tennhanvien)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit",  null, new { @Ma_Sach = item.masach }) |
-                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    @Html.ActionLink("Edit", "Edit", routeValues: new { @Ma_Sach = item.masach }) |
+                    @Html.ActionLink("Details", "Details", routeValues: new { @Ma_Sach = item.masach }) |
+                    @Html.ActionLink("Delete", "Delete", routeValues: new { @Ma_Sach = item.masach })
                 </td>
             </tr>
         }

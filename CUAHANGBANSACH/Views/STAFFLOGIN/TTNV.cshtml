@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "TTNV";
+    NHANVIEN nv = (NHANVIEN)Session["NhanVien"];
+    Layout = "~/Views/Shared/_Layout_Staff.cshtml";
+}
+}
+
+<h2>TTNV</h2>
+<section id="content">
+    <div>
+        <h4>NHANVIEN</h4>
+        <hr />
+        <dl class="dl-horizontal">
+
+
+            <dt>
+                @Html.DisplayNameFor(model => nv.tennhanvien)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => nv.tennhanvien)
+            </dd>
+
+
+
+        </dl>
+    </div>
+</section>
+
+

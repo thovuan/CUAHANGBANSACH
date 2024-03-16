@@ -12,6 +12,12 @@ namespace CUAHANGBANSACH.Models.DAO
             using (DOANWEB_INITIALEntities db  = new DOANWEB_INITIALEntities())
             {
                 List<SACH> sACHes = db.SACHes.ToList();
+                foreach(SACH sach in sACHes)
+                {
+                    sach.tentheloai = db.THELOAISACHes.Where(n => n.matheloai == sach.matheloai).Select(n => n.tentheloai).FirstOrDefault();
+                    sach.tennxb = db.NXBs.Where(n => n.manxb == sach.manxb).Select(n => n.tennxb).FirstOrDefault();
+                    sach.tennhanvien = db.NHANVIENs.Where(n => n.manhanvien == sach.manhanvien).Select(n => n.tennhanvien).FirstOrDefault();
+                }
                 return sACHes;
             }
         }
@@ -41,7 +47,41 @@ namespace CUAHANGBANSACH.Models.DAO
             {
                 var sach = db.SACHes.Where(n => n.masach == id).FirstOrDefault();
                 if (sach == null) return null;
+                sach.tentheloai = db.THELOAISACHes.Where(n => n.matheloai == sach.matheloai).Select(n => n.tentheloai).FirstOrDefault();
+                sach.tennxb = db.NXBs.Where(n => n.manxb == sach.manxb).Select(n=> n.tennxb).FirstOrDefault();
+                sach.tennhanvien = db.NHANVIENs.Where(n=> n.manhanvien == sach.manhanvien).Select(n=>n.tennhanvien).FirstOrDefault();
                 return sach;
+            }
+        }
+
+        public static SACH Update (SACH model)
+        {
+            using (DOANWEB_INITIALEntities db = new DOANWEB_INITIALEntities())
+            {
+                db.Entry(model).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+                return model;
+            }
+        }
+
+        public static SACH Add(SACH model)
+        {
+            using (DOANWEB_INITIALEntities db = new DOANWEB_INITIALEntities())
+            {
+                db.SACHes.Add(model);
+                db.SaveChanges();
+                return model;
+            }
+        }
+
+        public static SACH Delete(SACH model)
+        {
+            using (DOANWEB_INITIALEntities db = new DOANWEB_INITIALEntities())
+            {
+                //db.SACHes.Remove(model);
+                db.Entry(model).State = System.Data.Entity.EntityState.Deleted;
+                db.SaveChanges();
+                return model;
             }
         }
     }

@@ -1,0 +1,57 @@
+﻿@model IEnumerable<CUAHANGBANSACH.Models.KHACH>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout_Staff.cshtml";
+}
+
+<h2>Index</h2>
+<section id="content">
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.tenkhachhang)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.diachi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sdt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.avatar)
+            </th>
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tenkhachhang)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.diachi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.sdt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.avatar)
+                </td>
+
+                <td>
+                    @Html.ActionLink("Edit", "Edit", routeValues: new { @id = item.makhachhang }) |
+                    @Html.ActionLink("Details", "Details", routeValues: new { @Ma_KH = item.makhachhang }) |
+                    @Html.ActionLink("Delete", "Delete", routeValues: new { @id = item.makhachhang })
+                </td>
+            </tr>
+        }
+
+    </table>
+</section>
+

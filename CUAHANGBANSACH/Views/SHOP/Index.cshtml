@@ -5,8 +5,11 @@
 }
 
 <h2>SHOP PAGE</h2>
+<marquee style="color: blue;">本店へようこそ</marquee>
 <section id="content">
+
     <div class="container">
+
         <div class="row">
 
             <div class="col-lg-4">
@@ -15,7 +18,7 @@
                         <form role="form">
                             <div class="form-group">
                                 <input type="text" class="form-control" id="s" placeholder="Search..">
-                                
+
                             </div>
                         </form>
                     </div>
@@ -34,7 +37,7 @@
                             }
                         </ul>
 
-                        
+
                     </div>
                     <div class="widget">
                         <h5 class="widgetheading">NXB</h5>
@@ -66,21 +69,21 @@
             </div>
 
             <div class="col-lg-8">
-               <h2 class="title">Book</h2>
-               <div class="row2">
-                   @foreach (SACH sach in Model)
-                   {
-                       <div class="col-4">
-                           <img src="@sach.anhsanpham" />
-                           <p>Mã sách: @sach.masach</p>
-                           <h4>@sach.tensach</h4>
-                           <h5>Đơn Giá: @sach.dongia</h5>
-                           <h6>Số lượng hiện có: @sach.soluonghienco</h6>
-                           <button class="read" type="submit">Xem thêm</button>
-                           <button class="read" type="submit">Mua</button>
-                       </div>
-                   }
-               </div>
+                <h2 class="title">Book</h2>
+                <div class="row2">
+                    @foreach (SACH sach in Model)
+                    {
+                        <div class="col-4">
+                            <img src="@sach.anhsanpham" />
+                            <p>Mã sách: @sach.masach</p>
+                            <h4>@sach.tensach</h4>
+                            <h5>Đơn Giá: @sach.dongia</h5>
+                            <h6>Số lượng hiện có: @sach.soluonghienco</h6>
+                            <p>@Html.ActionLink("Xem thêm", "Detail", "SHOP", routeValues: new { @MaSach = sach.masach}, htmlAttributes: null)</p>
+                            <button class="read" type="submit">Mua</button>
+                        </div>
+                    }
+                </div>
             </div>
 
 

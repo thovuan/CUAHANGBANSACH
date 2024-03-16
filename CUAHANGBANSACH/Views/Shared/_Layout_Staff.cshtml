@@ -27,7 +27,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <ul class="topleft-info">
-                                <li><i class="fa fa-phone"></i> +62 088 999 123</li>
+                                <li>@Html.Partial("_LoginStaffPartital")</li>
                             </ul>
                         </div>
                         <div class="col-md-6">
@@ -80,13 +80,30 @@
                                 </ul>
                             </li>
 
-                           
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">Quản Lý Tài Khoản <i class="fa fa-angle-down"></i></a>
+                                <ul class="dropdown-menu">
+                                    <li>@Html.ActionLink("Quản Lý Tài Khoản khách hàng", "Index", "QLKHACH", new { area = "" }, new { @class = "nav-link" })</li>
+                                    
+                                    <li class="dropdown-submenu">
+                                        <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown">Quản Lý Tài Khoản Nhân Viên</a>
+                                        <ul class="dropdown-menu">
+                                            <li>@Html.ActionLink("Quản Lý Tài Khoản Nhân Viên", "Index", "QLNV", new { area = "" }, new { @class = "nav-link" })</li>
+                                            <li>Quản Lý Chức Vụ</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
 
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">ACCOUNT <i class="fa fa-angle-down"></i></a>
                                 <ul class="dropdown-menu">
-                                    <li>@Html.ActionLink("Thông tin khách hàng", "Index", "TTKH", new { area = "" }, new { @class = "nav-link" })</li>
-                                    <li>@Html.ActionLink("Đăng Nhập", "Index", "STAFFLOGIN", new { area = "" }, new { @class = "nav-link" })</li>
+                                    @if (Session["NhanVien"] != null)
+                                    {
+                                        <li>@Html.ActionLink("Thông tin nhân viên", "TTNV", "STAFFLOGIN", new { area = "" }, new { @class = "nav-link" })</li>
+                                        <li>@Html.ActionLink("Đăng Xuất", "Logout", "STAFFLOGIN", new { area = "" }, new { @class = "nav-link" })</li>
+                                    }
+
                                     <li>
                                         Web Mode
                                     </li>
