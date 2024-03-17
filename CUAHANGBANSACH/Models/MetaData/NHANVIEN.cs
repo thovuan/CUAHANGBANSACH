@@ -9,7 +9,7 @@ namespace CUAHANGBANSACH.Models
     [MetadataType(typeof(NHANVIEN.MetaData))]
     public partial class NHANVIEN
     {
-        
+        public List<CHUCVU> chucvu;
         sealed class MetaData
         {
             [Required(AllowEmptyStrings = false, ErrorMessage = "Trường thông tin nhân viên không được để trống")]

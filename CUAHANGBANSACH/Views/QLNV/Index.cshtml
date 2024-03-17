@@ -43,9 +43,9 @@
                     @Html.DisplayFor(modelItem => item.matkhau)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    @Html.ActionLink("Edit", "Edit", routeValues: new { @MaNV = item.manhanvien }) |
+                    @Html.ActionLink("Details", "Details", routeValues: new { @MaNV = item.manhanvien }) |
+                    @Html.ActionLink("Delete", "Delete", routeValues: new { @MaNV = item.manhanvien })
                 </td>
             </tr>
         }

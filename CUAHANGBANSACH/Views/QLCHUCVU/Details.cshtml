@@ -1,0 +1,62 @@
+﻿@model CUAHANGBANSACH.Models.CHUCVU
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+<section id="content">
+    <div>
+        <h4>CHUCVU</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.tenchucvu)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.tenchucvu)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.tinhtrang)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.tinhtrang)
+            </dd>
+
+        </dl>
+    </div>
+    <h4>Danh sách nhân viên thuộc chức vụ </h4>
+
+    <table class="table">
+        <tr>
+            <th>Mã Nhân Viên</th>
+            <th>Tên Nhân Viên</th>
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.nv)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.manhanvien)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.tennhanvien)
+                </td>
+
+                <td>
+                </td>
+            </tr>
+        }
+    </table>
+    <p>
+
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</section>
+

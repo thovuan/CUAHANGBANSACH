@@ -77,6 +77,8 @@
                                 <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">Quản Lý Sách<i class="fa fa-angle-down"></i></a>
                                 <ul class="dropdown-menu">
                                     <li>@Html.ActionLink("Quản Lý Sách", "Index", "QLSACH", new { area = "" }, new { @class = "nav-link" })</li>
+                                    <li>Quản Lý thể loại</li>
+                                    <li>Quản Lý Nhà Xuất Bản</li>
                                 </ul>
                             </li>
 
@@ -89,7 +91,7 @@
                                         <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown">Quản Lý Tài Khoản Nhân Viên</a>
                                         <ul class="dropdown-menu">
                                             <li>@Html.ActionLink("Quản Lý Tài Khoản Nhân Viên", "Index", "QLNV", new { area = "" }, new { @class = "nav-link" })</li>
-                                            <li>Quản Lý Chức Vụ</li>
+                                            <li>@Html.ActionLink("Quản Lý Chức Vụ", "Index", "QLCHUCVU", new {area= ""}, new {@class = "nav-link"})</li>
                                         </ul>
                                     </li>
                                 </ul>
@@ -104,10 +106,7 @@
                                         <li>@Html.ActionLink("Đăng Xuất", "Logout", "STAFFLOGIN", new { area = "" }, new { @class = "nav-link" })</li>
                                     }
 
-                                    <li>
-                                        Web Mode
-                                    </li>
-                                    <li>Staff Mode</li>
+                                   
 
                                 </ul>
                             </li>

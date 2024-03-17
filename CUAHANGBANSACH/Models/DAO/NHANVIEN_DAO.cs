@@ -23,7 +23,17 @@ namespace CUAHANGBANSACH.Models.DAO
             using (DOANWEB_INITIALEntities db = new DOANWEB_INITIALEntities())
             {
                 var manv = db.NHANVIENs.Where(n => n.manhanvien == id).FirstOrDefault();
-                if (manv != null) { return  manv; }
+                manv.chucvu = new List<CHUCVU>();
+                if (manv != null) {
+                    List<CHITIETCHUCVU> ctchucvu = db.CHITIETCHUCVUs.Where(n => n.manhanvien == manv.manhanvien).ToList();
+                    
+                    foreach(CHITIETCHUCVU cv in ctchucvu)
+                    {
+                        CHUCVU CV = db.CHUCVUs.Where(n => n.machucvu == cv.machucvu).FirstOrDefault();
+                        if (CV != null)
+                            manv.chucvu.Add(CV);
+                    }
+                    return  manv; }
                 return null;
             }
         }

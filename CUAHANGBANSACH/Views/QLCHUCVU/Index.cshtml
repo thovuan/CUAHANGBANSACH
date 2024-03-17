@@ -26,14 +26,14 @@
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.tenchucvu)
-                </td>
+                </td> 
                 <td>
                     @Html.DisplayFor(modelItem => item.tinhtrang)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.machucvu }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.machucvu }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.machucvu })
+                    @Html.ActionLink("Edit", "Edit", routeValues: new { @MaCV = item.machucvu }) |
+                    @Html.ActionLink("Details", "Details", routeValues: new { @MaCV = item.machucvu }) |
+                    @Html.ActionLink("Delete", "Delete", routeValues: new { @MaCV = item.machucvu })
                 </td>
             </tr>
         }

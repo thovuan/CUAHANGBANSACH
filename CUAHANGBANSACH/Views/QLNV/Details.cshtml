@@ -1,0 +1,52 @@
+﻿@model CUAHANGBANSACH.Models.NHANVIEN
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout_Staff.cshtml";
+}
+
+<h2>Details</h2>
+<section id="content">
+    <div>
+        <h4>NHANVIEN</h4>
+        <hr />
+        <dl class="dl-horizontal">
+
+
+            <dt>
+                @Html.DisplayNameFor(model => model.tennhanvien)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.tennhanvien)
+            </dd>
+
+        </dl>
+    </div>
+    <h4>Danh sách chức vụ mà nhân viện hiện đang làm </h4>
+
+    <table class="table">
+        <tr>
+            <th>Tên Chức Vụ</th>
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.chucvu)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tenchucvu)
+                </td>
+
+                <td>
+                </td>
+            </tr>
+        }
+    </table>
+    <p>
+
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</section>
+

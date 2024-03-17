@@ -313,6 +313,12 @@
     <Content Include="Views\QLKHACH\Index.cshtml" />
     <Content Include="Views\QLKHACH\Details.cshtml" />
     <Content Include="Views\QLCHUCVU\Index.cshtml" />
+    <Content Include="Views\QLNV\Details.cshtml" />
+    <Content Include="Views\QLCHUCVU\Details.cshtml" />
+    <Content Include="Views\QLCHUCVU\Create.cshtml" />
+    <Content Include="Views\QLCHUCVU\Edit.cshtml" />
+    <Content Include="Views\QLCHUCVU\Delete.cshtml" />
+    <Content Include="Views\QLNV\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

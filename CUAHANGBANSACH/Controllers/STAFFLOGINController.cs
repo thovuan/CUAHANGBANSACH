@@ -17,6 +17,7 @@ namespace CUAHANGBANSACH.Controllers
         public ActionResult Index()
         {
             //if (Session["NhanVien"]==null) return RedirectToAction("Index");
+            Session["KHACH"] = null;
             return View();
         }
         [HttpPost]
