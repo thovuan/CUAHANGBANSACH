@@ -21,8 +21,8 @@
         <br />
         <input type="submit" value="Đăng Nhập" />
         <br />
-        <p>@Html.ActionLink("Quên Mật Khẩu", "ForgotPass", "GUESTLOGIN")</p>
-        <p>@Html.ActionLink("Đăng ký tài khoản", "NewUser", "GUESTLOGIN")</p>
+        <p>@Html.ActionLink("Đổi Mật Khẩu", "UpdateMK", "GUESTLOGIN", new { area = "" }, new { @class = "nav-link" })</p>
+        <p>@Html.ActionLink("Đăng Ký Tài Khoản", "Create", "GUESTLOGIN", new { area = "" }, new { @class = "nav-link" })</p>
         //@Html.ValidationSummary()
 
         @ViewBag.Status

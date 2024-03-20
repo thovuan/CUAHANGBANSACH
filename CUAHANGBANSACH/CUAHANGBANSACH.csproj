@@ -319,6 +319,8 @@
     <Content Include="Views\QLCHUCVU\Edit.cshtml" />
     <Content Include="Views\QLCHUCVU\Delete.cshtml" />
     <Content Include="Views\QLNV\Create.cshtml" />
+    <Content Include="Views\GUESTLOGIN\UpdateMK.cshtml" />
+    <Content Include="Views\GUESTLOGIN\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

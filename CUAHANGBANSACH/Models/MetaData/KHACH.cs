@@ -25,6 +25,7 @@ namespace CUAHANGBANSACH.Models
             public string avatar { get; set; }
             public string tendangnhap { get; set; }
             public string matkhau { get; set; }
+            public string confirmPassword { get; set; }
         }
     }
 }

@@ -35,6 +35,27 @@ namespace CUAHANGBANSACH.Models.DAO
                 return null;
             }
         }
-        
+
+        public static KHACH UpdateMK(KHACH model)
+        {
+            using (DOANWEB_INITIALEntities db = new DOANWEB_INITIALEntities())
+            {
+                db.Entry(model).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+                return model;
+            }
+        }
+
+        public static KHACH Create(KHACH model)
+        {
+            using (DOANWEB_INITIALEntities db = new DOANWEB_INITIALEntities())
+            {
+                //db.Entry(model).State = System.Data.Entity.EntityState.Added;
+                db.KHACHes.Add(model);
+                db.SaveChanges();
+                return model;
+            }
+        }
+
     }
 }

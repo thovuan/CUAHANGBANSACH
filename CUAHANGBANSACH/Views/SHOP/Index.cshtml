@@ -80,7 +80,7 @@
                             <h5>Đơn Giá: @sach.dongia</h5>
                             <h6>Số lượng hiện có: @sach.soluonghienco</h6>
                             <p>@Html.ActionLink("Xem thêm", "Detail", "SHOP", routeValues: new { @MaSach = sach.masach}, htmlAttributes: null)</p>
-                            <button class="read" type="submit">Mua</button>
+                            <p>@Html.ActionLink("Thêm vào giỏ hàng", "Buy", "SHOP", routeValues: new { @MaSach = sach.masach }, htmlAttributes: null)</p>
                         </div>
                     }
                 </div>

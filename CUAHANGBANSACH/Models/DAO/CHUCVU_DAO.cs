@@ -80,8 +80,7 @@ namespace CUAHANGBANSACH.Models.DAO
                 }
                 else
                 {
-                        db.CHUCVUs.Remove(model);
-                        db.SaveChanges();
+                    db.Entry(model).State = System.Data.Entity.EntityState.Deleted; db.SaveChanges();
                         return model;
                 }
             }

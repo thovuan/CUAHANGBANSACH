@@ -101,8 +101,8 @@
                                     } else
                                     {
                                         <li>@Html.ActionLink("Đăng Nhập", "Login", "GUESTLOGIN", new { area = "" }, new { @class = "nav-link" })</li>
-                                        <li>Quên Mật Khẩu</li>
-                                        <li>Đăng ký tài khoản</li>
+                                        <li>@Html.ActionLink("Đổi Mật Khẩu", "UpdateMK", "GUESTLOGIN", new { area = "" }, new { @class = "nav-link" })</li>
+                                        <li>@Html.ActionLink("Đăng Ký Tài Khoản", "Create", "GUESTLOGIN", new { area = "" }, new { @class = "nav-link" })</li>
                                     }
 
 

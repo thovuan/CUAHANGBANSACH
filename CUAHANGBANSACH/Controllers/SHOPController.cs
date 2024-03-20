@@ -44,5 +44,22 @@ namespace CUAHANGBANSACH.Controllers
             ViewData.Model = SACH_DAO.GetById(MaSach);
             return View();
         }
+
+        /*public ActionResult Buy (string MaSach)
+        {
+            return View(SACH_DAO.GetById(MaSach));
+
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Buy (SACH model)
+        {
+            var ttsach = SACH_DAO.GetById(model.masach);
+            if (ttsach != null)
+            {
+
+            }
+        }*/
     }
 }
