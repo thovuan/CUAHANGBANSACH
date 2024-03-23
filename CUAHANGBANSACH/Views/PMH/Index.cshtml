@@ -4,16 +4,13 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Phieu Mua Hang page</h2>
+<h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.maphieumuahang)
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.ngaylap)
         </th>
@@ -29,29 +26,26 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.maphieumuahang)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ngaylap)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tinhtrangthanhtoan)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tinhtrang)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.makhachhang)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ngaylap)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tinhtrangthanhtoan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tinhtrang)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.makhachhang)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.maphieumuahang }) |
+                @Html.ActionLink("Details", "Details", new { id=item.maphieumuahang }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.maphieumuahang })
+            </td>
+        </tr>
+    }
 
 </table>

@@ -1,4 +1,5 @@
 ﻿using CUAHANGBANSACH.Models;
+using CUAHANGBANSACH.Models.DAO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,9 +13,10 @@ namespace CUAHANGBANSACH.Controllers
         // GET: PMH
         public ActionResult Index()
         {
-            DOANWEB_INITIALEntities db = new DOANWEB_INITIALEntities();
-            List<PHIEUMUAHANG> pmh = db.PHIEUMUAHANGs.ToList();
-            return View(pmh);
+            
+            return View(PHIEUMUAHANG_DAO.GetAll());
         }
+
+        
     }
 }

@@ -45,7 +45,7 @@ namespace CUAHANGBANSACH.Controllers
             return View();
         }
 
-        /*public ActionResult Buy (string MaSach)
+        public ActionResult Buy (string MaSach)
         {
             return View(SACH_DAO.GetById(MaSach));
 
@@ -56,10 +56,57 @@ namespace CUAHANGBANSACH.Controllers
         public ActionResult Buy (SACH model)
         {
             var ttsach = SACH_DAO.GetById(model.masach);
+            PHIEUMUAHANG pmh = (PHIEUMUAHANG)Session["Đơn Hàng"];
             if (ttsach != null)
             {
+                //kiem tra don hang hien tai
+                //neu chua co don hang ma chua xac nhan mua thi them vao do
+                //chú ý, kiểm tra xem trong giỏ hàng da co san pham tuong tu chua
+                //neu có, thì cộng dồn (hoặc xóa sản phẩm hiện co trong gio hang va thay doi)
+                //neu khong thi them vao (chu y so luong mua phai be hon hoac bang so luong hien co)
+                if (pmh != null)
+                {
+                    //tim kiem sach trong gio hang
+                    var ttsachtronggiohang = CHITIETDATHANG_DAO.GetBySACHID(model.masach, pmh.maphieumuahang);
+                    //neu tim thay thi xoa
+                    if (ttsachtronggiohang != null)
+                    {
+                        
+                        try
+                        {
+                            CHITIETDATHANG_DAO.Delete(ttsachtronggiohang);
 
-            }
-        }*/
+                        } catch (Exception ex)
+                        {
+                            ViewBag.Error = "Có lỗi xảy ra khi xóa";
+                            return View("Có lỗi xảy ra trong khi thực thi");
+                        }
+                    }
+                    //tien thanh them san pham vao gio hang
+                    CHITIETDATHANG ctdh = new CHITIETDATHANG()
+                    {
+                        maphieumuahang = pmh.maphieumuahang,
+                        masach = model.masach,
+                        soluongmua = model.soluongmua,
+                        tinhtranggiao = "Chưa giao"
+                    };
+
+                    try
+                    {
+                        CHITIETDATHANG_DAO.Add(ctdh);
+                        return RedirectToAction("Index");
+                    } catch (Exception ex)
+                    {
+                        return View("Có lỗi xảy ra trong khi thực thi chương trình");
+                    }
+
+                }
+                TempData["ThemDonHang"] = "Buy";
+                return RedirectToAction("Create", "GioHang");
+                //return View(model);
+            } return View(model);
+        }
+
+        
     }
 }

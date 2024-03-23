@@ -3,12 +3,17 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Xml.Schema;
 
 namespace CUAHANGBANSACH.Models
 {
     [MetadataType(typeof(PHIEUMUAHANG.MetaData))]
     public partial class PHIEUMUAHANG
     {
+        public List<SACH> dsSach;
+        public int Total;
+        public int DHTotal;
+
         sealed class MetaData
         {
             [Required(AllowEmptyStrings = false, ErrorMessage = "Trường thông tin mã phiếu mua hàng không được để trống")]

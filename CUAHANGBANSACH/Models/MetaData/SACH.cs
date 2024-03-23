@@ -22,6 +22,10 @@ namespace CUAHANGBANSACH.Models
 
             [Required(AllowEmptyStrings = false, ErrorMessage = "Trường thông tin số lượng hiện có không được để trống")]
             public int soluonghienco { get; set; }
+
+            [Required(AllowEmptyStrings = false, ErrorMessage = "Trường thông tin SLmua không được để trống")]
+
+            public int soluongmua { get; set; }
             public string dacdiem { get; set; }
             public string anhsanpham { get; set; }
 

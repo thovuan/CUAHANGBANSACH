@@ -1,4 +1,5 @@
 ﻿using CUAHANGBANSACH.Models;
+using CUAHANGBANSACH.Models.DAO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,24 @@ namespace CUAHANGBANSACH.Controllers
     {
         public ActionResult Index()
         {
+            KHACH khach = (KHACH)Session["KHACH"];
+            if (khach == null)
+            {
+                Session["Đơn Hàng"] = null;
+            }
+            else
+            {
+                var ttdonhang = PHIEUMUAHANG_DAO.GetDHById(khach.makhachhang);
+                if (ttdonhang == null)
+                {
+                    Session["Đơn Hàng"] = null;
+                }
+                else
+                {
+                    Session["Đơn Hàng"] = ttdonhang;
+                }
+               
+            }
             return View();
         }
 

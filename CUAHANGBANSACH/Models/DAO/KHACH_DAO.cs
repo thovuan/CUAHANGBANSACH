@@ -36,7 +36,7 @@ namespace CUAHANGBANSACH.Models.DAO
             }
         }
 
-        public static KHACH UpdateMK(KHACH model)
+        public static KHACH Update(KHACH model)
         {
             using (DOANWEB_INITIALEntities db = new DOANWEB_INITIALEntities())
             {

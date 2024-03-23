@@ -1,0 +1,101 @@
+﻿@model CUAHANGBANSACH.Models.PHIEUMUAHANG
+
+@{
+    ViewBag.Title = "Details";
+}
+<section id="content">
+    <h2>Details</h2>
+
+    <div>
+        <h4>PHIEUMUAHANG</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.ngaylap)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ngaylap)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.tinhtrangthanhtoan)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.tinhtrangthanhtoan)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.tinhtrang)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.tinhtrang)
+            </dd>
+
+            
+
+        </dl>
+    </div>
+    <h2>DANH SÁCH CÁC CUỐN SÁCH TRONG ĐƠN HÀNG</h2>
+    <table class="table">
+        <tr>
+            <th>
+                Mã Sách
+            </th>
+            <th>
+                Tên Sách
+            </th>
+            
+            <th>
+                Đặc Điểm
+            </th>
+            <th>
+                Ảnh Sản Phẩm
+            </th>
+            <th>Số Lượng Mua</th>
+            <th>
+                Đơn Giá
+            </th>
+            <th>Thành Tiền</th>
+            
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.dsSach)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.masach)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tensach)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.dacdiem)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.anhsanpham)
+                </td>
+                <td>@Html.DisplayFor(modelItem => item.soluongmua)</td>
+                <td>
+                    Đơn Giá
+                </td>
+                <td>Thành Tiền</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", routeValues: new { @Ma_Sach = item.masach }) |
+                    @Html.ActionLink("Details", "Details", routeValues: new { @Ma_Sach = item.masach }) |
+                    @Html.ActionLink("Xóa sản phẩm ra khỏi giỏ hàng", "DeleteSACH", routeValues: new { @Ma_Sach = item.masach })
+                </td>
+            </tr>
+        }
+
+    </table>
+    <p>
+        @Html.ActionLink("Thêm Sách vào giỏ hàng", "Edit", routeValues: new { @Ma_DH = Model.maphieumuahang }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</section>
+

@@ -36,6 +36,16 @@ namespace CUAHANGBANSACH.Controllers
                 }
                 Session["KHACH"] = kHACH;
                 Session.Timeout = 240;
+                //var ttdonhang = PHIEUMUAHANG_DAO.GetDHById(model.tendangnhap);
+            /*if (ttdonhang == null)
+            {
+                Session["Đơn Hàng"] = null;
+            } else
+            {
+                if (ttdonhang.tinhtrang == "Chưa Xác Nhận") Session["Đơn Hàng"] = ttdonhang;
+                else Session["Đơn Hàng"] = null;
+            }*/
+                //Session["Đơn Hàng"] = "DH20240323180959";
                 return RedirectToAction("Index", "Home");
         }
             //else return View(model);
@@ -43,6 +53,7 @@ namespace CUAHANGBANSACH.Controllers
         public ActionResult Logout()
         {
             Session.Remove("KHACH");
+            Session.Remove("Đơn Hàng");
             return RedirectToAction("Index", "Home");
         }
 
@@ -66,7 +77,7 @@ namespace CUAHANGBANSACH.Controllers
                 Update.matkhau = model.matkhau;
                 try
                 {
-                    KHACH_DAO.UpdateMK(Update);
+                    KHACH_DAO.Update(Update);
                     return RedirectToAction("Index", "Home");
                 }
                 catch (Exception ex)
@@ -128,7 +139,27 @@ namespace CUAHANGBANSACH.Controllers
             return View();
         }
 
-        
+        public ActionResult UpdateTT(String Ma_KH)
+        {
+            return View(KHACH_DAO.GetById(Ma_KH));
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult UpdateTT(KHACH model)
+        {
+            return View();
+        }
+
+        public ActionResult Delete(String Ma_KH) {
+            return View(KHACH_DAO.GetById(Ma_KH));
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirm(KHACH model) {
+            return View();
+        }
     }
 
 }
