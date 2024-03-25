@@ -52,8 +52,7 @@
                         @Html.DisplayFor(modelItem => item.makhachhang)
                     </td>
                     <td>
-                        @Html.ActionLink("Xác Nhận Mua", "Edit", routeValues: new { @Ma_DH = item.maphieumuahang }) |
-                        @Html.ActionLink("Edit", "Edit", routeValues: new { @Ma_DH = item.maphieumuahang }) |
+                        @Html.ActionLink("Xác Nhận Mua", "Confirm", routeValues: new { @Ma_DH = item.maphieumuahang }) |
                         @Html.ActionLink("Details", "Details", routeValues: new { @Ma_DH = item.maphieumuahang }) |
                         @Html.ActionLink("Delete", "Delete", routeValues: new { @Ma_DH = item.maphieumuahang })
                     </td>

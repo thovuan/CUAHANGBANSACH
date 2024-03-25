@@ -68,6 +68,16 @@ namespace CUAHANGBANSACH.Models.DAO
             }
         }
 
+        public static PHIEUMUAHANG Update (PHIEUMUAHANG model)
+        {
+            using (DOANWEB_INITIALEntities db = new DOANWEB_INITIALEntities())
+            {
+                db.Entry(model).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+                return model;
+            }
+        }
+
         
     }
 }

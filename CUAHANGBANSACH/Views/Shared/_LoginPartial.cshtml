@@ -1,5 +1,5 @@
 ﻿
-<p>Hello! I'm peguin</p>
+<p>ようこそ</p>
 
 @if (Session["KHACH"]==null)
             {
@@ -8,5 +8,5 @@
 else
 {
     KHACH khach = (KHACH)Session["KHACH"];
-    <p>Xin chao, @khach.tendangnhap</p>
+    <p>Xin chao, @khach.tenkhachhang</p>
 }

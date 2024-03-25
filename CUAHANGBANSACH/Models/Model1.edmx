@@ -40,6 +40,7 @@
           <Property Name="tenkhachhang" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="diachi" Type="nvarchar" MaxLength="150" Nullable="false" />
           <Property Name="sdt" Type="char" MaxLength="11" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="100" />
           <Property Name="avatar" Type="nvarchar" MaxLength="255" />
           <Property Name="tendangnhap" Type="varchar" MaxLength="50" />
           <Property Name="matkhau" Type="varchar" MaxLength="20" />
@@ -365,6 +366,7 @@
           <Property Name="matkhau" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="PHIEUMUAHANGs" Relationship="Self.FK_PHIEUMUAHANG_KHACH" FromRole="KHACH" ToRole="PHIEUMUAHANG" />
           <NavigationProperty Name="THEs" Relationship="Self.FK_THE_KHACH" FromRole="KHACH" ToRole="THE" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="NHANVIEN">
           <Key>
@@ -688,6 +690,7 @@
           <EntitySetMapping Name="KHACHes">
             <EntityTypeMapping TypeName="DOANWEB_INITIALModel.KHACH">
               <MappingFragment StoreEntitySet="KHACH">
+                <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="makhachhang" ColumnName="makhachhang" />
                 <ScalarProperty Name="tenkhachhang" ColumnName="tenkhachhang" />
                 <ScalarProperty Name="diachi" ColumnName="diachi" />

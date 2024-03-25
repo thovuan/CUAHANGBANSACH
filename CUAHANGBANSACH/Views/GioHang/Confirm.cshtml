@@ -1,0 +1,157 @@
+﻿@model CUAHANGBANSACH.Models.PHIEUMUAHANG_KHACH.PHIEUMUAHANG_KHACH_MODEL
+
+@{
+    ViewBag.Title = "Confirm";
+}
+
+<section id="content">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal">
+            <h2>Xác nhận thanh toán</h2>
+            <h2>Đơn Hàng: @Html.DisplayFor(model => model.PHIEUMUAHANG.maphieumuahang)</h2>
+            @Html.HiddenFor(model => model.PHIEUMUAHANG.maphieumuahang)
+     
+            <hr class="colorgraph" />
+            <dl class="dl-horizontal">
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.PHIEUMUAHANG.ngaylap)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.PHIEUMUAHANG.ngaylap)
+                </dd>
+
+            </dl>
+        </div>
+        <hr class="colorgraph" />
+
+        <div class="form-horizontal">
+            <h2>Thông tin khách</h2>
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.KHACH.makhachhang)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.KHACH.tenkhachhang, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.KHACH.tenkhachhang, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.KHACH.tenkhachhang, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.KHACH.diachi, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.KHACH.diachi, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.KHACH.diachi, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.KHACH.sdt, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.KHACH.sdt, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.KHACH.sdt, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.KHACH.email, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.KHACH.email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.KHACH.email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+        </div>
+
+        <hr class="colorgraph" />
+        <div class="form-horizontal">
+
+            <h2>DANH SÁCH CÁC CUỐN SÁCH TRONG ĐƠN HÀNG</h2>
+            <table class="table">
+                <tr>
+                    <th>
+                        Mã Sách
+                    </th>
+                    <th>
+                        Tên Sách
+                    </th>
+
+                    <th>
+                        Đặc Điểm
+                    </th>
+                    <th>
+                        Ảnh Sản Phẩm
+                    </th>
+                    <th>Số Lượng Mua</th>
+                    <th>
+                        Đơn Giá
+                    </th>
+                    <th>Thành Tiền</th>
+
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model.PHIEUMUAHANG.dsSach)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.masach)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.tensach)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.dacdiem)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.anhsanpham)
+                        </td>
+                        <td>@Html.DisplayFor(modelItem => item.soluongmua)</td>
+                        <td>
+                            Đơn Giá
+                        </td>
+                        <td>Thành Tiền</td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", routeValues: new { @Ma_Sach = item.masach }) |
+                            @Html.ActionLink("Thông tin sách", "Detail", "SHOP", routeValues: new { @MaSach = item.masach }, htmlAttributes: null) |
+                            @Html.ActionLink("Xóa sản phẩm ra khỏi giỏ hàng", "DeleteSACH", routeValues: new { @Ma_Sach = item.masach })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+
+        <hr class="colorgraph" />
+        <div class="form-horizontal">
+            <h2>Chọn phương thức thanh toán</h2>
+        </div>
+
+        <hr class="colorgraph"/>
+        <div class="form-horizontal">
+            <h2>Tổng giá trị đơn hàng</h2>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Xác Nhận" class="btn btn-default" />
+            </div>
+        </div>
+
+    }
+
+
+    <p>
+
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</section>
+

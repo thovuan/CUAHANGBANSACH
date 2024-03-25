@@ -136,6 +136,12 @@ namespace CUAHANGBANSACH.Controllers
 
         public ActionResult TTKH()
         {
+            /*KHACH khach = (KHACH)Session["KHACH"];
+            var tttk = KHACH_DAO.GetById(khach.makhachhang);
+            if ( tttk != null)
+            {
+                khach = tttk;
+            }*/
             return View();
         }
 
@@ -148,7 +154,31 @@ namespace CUAHANGBANSACH.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult UpdateTT(KHACH model)
         {
-            return View();
+            //KHACH khach = (KHACH)Session["KHACH"];
+            var update = KHACH_DAO.GetById(model.makhachhang);
+            if (update == null)
+            {
+                return HttpNotFound();
+            }
+
+            update.tenkhachhang = model.tenkhachhang;
+            update.sdt = model.sdt;
+            update.diachi = model.diachi;
+            update.avatar = model.avatar;
+            update.email = model.email;
+
+
+            try
+            {
+                KHACH_DAO.Update(update);
+                //khach = update;
+                return RedirectToAction("TTKH");
+            }
+            catch (Exception ex)
+            {
+                return View("Có lỗi xảy ra", "Index");
+            }
+
         }
 
         public ActionResult Delete(String Ma_KH) {

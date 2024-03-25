@@ -23,7 +23,6 @@ namespace CUAHANGBANSACH.Models
         public string masach { get; set; }
         public string tensach { get; set; }
         public int soluonghienco { get; set; }
-        public int soluongmua { get; set; }
         public string dacdiem { get; set; }
         public string anhsanpham { get; set; }
         public string DVT { get; set; }
@@ -31,6 +30,7 @@ namespace CUAHANGBANSACH.Models
         public string matheloai { get; set; }
         public string manhanvien { get; set; }
         public string manxb { get; set; }
+        public int soluongmua { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CHITIETDATHANG> CHITIETDATHANGs { get; set; }

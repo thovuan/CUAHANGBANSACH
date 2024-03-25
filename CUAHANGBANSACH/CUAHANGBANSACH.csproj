@@ -205,6 +205,7 @@
     <Compile Include="Models\PHIEUMUAHANG.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PHIEUMUAHANG_KHACH\PHIEUMUAHANG_KHACH_MODEL.cs" />
     <Compile Include="Models\SACH.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -293,7 +294,6 @@
     <Content Include="Views\ABOUT\Our_Story.cshtml" />
     <Content Include="Views\ABOUT\Blog.cshtml" />
     <Content Include="Views\ABOUT\Contact.cshtml" />
-    <Content Include="Views\Tracking\Index.cshtml" />
     <Content Include="Views\SHOP\Index02.cshtml" />
     <Content Include="Views\Shared\_Layout_Staff.cshtml" />
     <Content Include="Views\NeoHome\Index.cshtml" />
@@ -328,10 +328,13 @@
     <Content Include="Views\GioHang\Details.cshtml" />
     <Content Include="Views\PMH\Index.cshtml" />
     <Content Include="Views\SHOP\Buy.cshtml" />
+    <Content Include="Views\Tracking\Index.cshtml" />
+    <Content Include="Views\GioHang\Confirm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\PIC_INTRO\" />
+    <Folder Include="Models\NewFolder1\" />
     <Folder Include="Views\THELOAI_DAO\" />
   </ItemGroup>
   <ItemGroup>

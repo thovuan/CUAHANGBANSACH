@@ -86,7 +86,7 @@
                 <td>Thành Tiền</td>
                 <td>
                     @Html.ActionLink("Edit", "Edit", routeValues: new { @Ma_Sach = item.masach }) |
-                    @Html.ActionLink("Details", "Details", routeValues: new { @Ma_Sach = item.masach }) |
+                    @Html.ActionLink("Thông tin sách", "Detail", "SHOP", routeValues: new { @MaSach = item.masach }, htmlAttributes: null) |
                     @Html.ActionLink("Xóa sản phẩm ra khỏi giỏ hàng", "DeleteSACH", routeValues: new { @Ma_Sach = item.masach })
                 </td>
             </tr>
