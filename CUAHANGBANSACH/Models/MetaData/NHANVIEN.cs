@@ -25,7 +25,8 @@ namespace CUAHANGBANSACH.Models
             public string tennhanvien { get; set; }
 
             [Required(AllowEmptyStrings = false, ErrorMessage = "Trường thông tin mật khẩu không được để trống")]
-
+            [RegularExpression(@"^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,20}$",
+            ErrorMessage = "Mật khẩu phải chứa từ 8 đến 20 ký tự, ít nhất một chữ hoa, một chữ thường, một ký tự đặc biệt và một chữ số.")]
             public string matkhau { get; set; }
         }
     }

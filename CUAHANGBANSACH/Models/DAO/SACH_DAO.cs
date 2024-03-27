@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Web;
 
 namespace CUAHANGBANSACH.Models.DAO
@@ -12,8 +13,10 @@ namespace CUAHANGBANSACH.Models.DAO
             using (DOANWEB_INITIALEntities db  = new DOANWEB_INITIALEntities())
             {
                 List<SACH> sACHes = db.SACHes.ToList();
+                
                 foreach(SACH sach in sACHes)
                 {
+                    
                     sach.tentheloai = db.THELOAISACHes.Where(n => n.matheloai == sach.matheloai).Select(n => n.tentheloai).FirstOrDefault();
                     sach.tennxb = db.NXBs.Where(n => n.manxb == sach.manxb).Select(n => n.tennxb).FirstOrDefault();
                     sach.tennhanvien = db.NHANVIENs.Where(n => n.manhanvien == sach.manhanvien).Select(n => n.tennhanvien).FirstOrDefault();

@@ -36,6 +36,7 @@ namespace CUAHANGBANSACH.Controllers
         public ActionResult Create (SACH model)
         {
             var idsach = SACH_DAO.GetById(model.masach);
+            NHANVIEN nv = (NHANVIEN)Session["NhanVien"];
             if (idsach!= null)
             {
                 ModelState.AddModelError("error", "Mã sách đã tồn tại trong danh sách");
@@ -51,7 +52,7 @@ namespace CUAHANGBANSACH.Controllers
                     DVT = model.DVT,
                     dongia = model.dongia,
                     matheloai = model.matheloai,
-                    manhanvien = model.manhanvien,
+                    manhanvien = nv.manhanvien,
                     manxb = model.manxb,
                 };
                 try
@@ -78,6 +79,7 @@ namespace CUAHANGBANSACH.Controllers
         {
             //DOANWEB_INITIALEntities db = new DOANWEB_INITIALEntities();
             var idsach = SACH_DAO.GetById(model.masach);
+
             //ViewData.Model = idsach;
             idsach.tensach = model.tensach;
             idsach.soluonghienco = model.soluonghienco;
@@ -85,7 +87,7 @@ namespace CUAHANGBANSACH.Controllers
             idsach.DVT = model.DVT;
             idsach.dongia = model.dongia;
             idsach.matheloai = model.matheloai;
-            idsach.manhanvien = model.manhanvien;
+            
             idsach.manxb = model.manxb;
             //db.Entry(idsach).State = System.Data.Entity.EntityState.Modified;
             try
@@ -94,8 +96,8 @@ namespace CUAHANGBANSACH.Controllers
                 return RedirectToAction("Index");
             } catch (Exception ex)
             {
-                ModelState.AddModelError("error", "Lỗi cập nhật thông tin");
-                return View(model);
+                //ModelState.AddModelError("error", "Lỗi cập nhật thông tin");
+                return View("Lỗi cập nhật thông tin");
             }
             //return View();
         }

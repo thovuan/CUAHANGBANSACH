@@ -134,9 +134,8 @@
     <Compile Include="Controllers\GUESTLOGINController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NeoHomeController.cs" />
-    <Compile Include="Controllers\PMHController.cs" />
+    <Compile Include="Controllers\QLGIOHANGController.cs" />
     <Compile Include="Controllers\QLCHUCVUController.cs" />
-    <Compile Include="Controllers\QLDHController.cs" />
     <Compile Include="Controllers\QLKHACHController.cs" />
     <Compile Include="Controllers\QLNVController.cs" />
     <Compile Include="Controllers\QLSACHController.cs" />
@@ -297,7 +296,6 @@
     <Content Include="Views\SHOP\Index02.cshtml" />
     <Content Include="Views\Shared\_Layout_Staff.cshtml" />
     <Content Include="Views\NeoHome\Index.cshtml" />
-    <Content Include="Views\QLDH\Index.cshtml" />
     <Content Include="Views\QLSACH\Index.cshtml" />
     <Content Include="Views\QLSACH\Delete.cshtml" />
     <Content Include="Views\QLSACH\Edit.cshtml" />
@@ -326,13 +324,14 @@
     <Content Include="Views\GUESTLOGIN\Delete.cshtml" />
     <Content Include="Views\GioHang\Index.cshtml" />
     <Content Include="Views\GioHang\Details.cshtml" />
-    <Content Include="Views\PMH\Index.cshtml" />
+    <Content Include="Views\QLGIOHANG\Index.cshtml" />
     <Content Include="Views\SHOP\Buy.cshtml" />
     <Content Include="Views\Tracking\Index.cshtml" />
     <Content Include="Views\GioHang\Confirm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\ANHSANPHAM\" />
     <Folder Include="Content\PIC_INTRO\" />
     <Folder Include="Models\NewFolder1\" />
     <Folder Include="Views\THELOAI_DAO\" />

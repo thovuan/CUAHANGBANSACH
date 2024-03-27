@@ -104,15 +104,18 @@ namespace CUAHANGBANSACH.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(KHACH model)
         {
+            DateTime dt = new DateTime();
             var create = KHACH_DAO.GetById(model.makhachhang);
             if (create == null)
             {
+                dt = DateTime.Now;
                 KHACH khach = new KHACH()
                 {
-                    makhachhang = model.makhachhang,
+                    makhachhang = "KH" + dt.ToString("yyyyMMddHHmmss"),
                     tenkhachhang = model.tenkhachhang,
                     diachi = model.diachi,
                     sdt = model.sdt,
+                    email = model.email,
                     avatar = model.avatar,
                     tendangnhap = model.tendangnhap,
                     matkhau = model.matkhau,
@@ -125,7 +128,7 @@ namespace CUAHANGBANSACH.Controllers
                 }
                 catch (Exception ex)
                 {
-                    ModelState.AddModelError("makhachhang", "Lỗi không tạo được");
+                    ModelState.AddModelError("tenkhachhang", "Lỗi không tạo được");
                     return View(model);
                 }
 

@@ -12,6 +12,7 @@ namespace CUAHANGBANSACH.Models
         public string tentheloai;
         public string tennxb;
         public string tennhanvien;
+        
         sealed class MetaData
         {
             [Required(AllowEmptyStrings = false, ErrorMessage = "Trường thông tin mã sách không được để trống")]

@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Index";
+    
 }
 
 <h2>SHOP PAGE</h2>
@@ -70,6 +71,7 @@
 
             <div class="col-lg-8">
                 <h2 class="title">Book</h2>
+                <hr class="colorgraph" />
                 <div class="row2">
                     @foreach (SACH sach in Model)
                     {
@@ -79,7 +81,7 @@
                             <h4>@sach.tensach</h4>
                             <h5>Đơn Giá: @sach.dongia</h5>
                             <h6>Số lượng hiện có: @sach.soluonghienco</h6>
-                            <p>@Html.ActionLink("Xem thêm", "Detail", "SHOP", routeValues: new { @MaSach = sach.masach}, htmlAttributes: null)</p>
+                            <p>@Html.ActionLink("Xem thêm", "Detail", "SHOP", routeValues: new { @MaSach = sach.masach }, htmlAttributes: null)</p>
                             <p>@Html.ActionLink("Thêm vào giỏ hàng", "Buy", "SHOP", routeValues: new { @MaSach = sach.masach }, htmlAttributes: null)</p>
                         </div>
                     }

@@ -13,8 +13,8 @@ namespace CUAHANGBANSACH.Controllers
         // GET: SHOP
         public ActionResult Index(string Ma_TheLoai, string Ma_NXB)
         {
-            
-                
+
+
             if (Ma_TheLoai != null && Ma_NXB == null) ViewData.Model = SACH_DAO.ChuDe_List(Ma_TheLoai);
             else if (Ma_TheLoai == null && Ma_NXB != null) ViewData.Model = SACH_DAO.NXB_List(Ma_NXB);
             else ViewData.Model = SACH_DAO.All_List();
