@@ -36,6 +36,16 @@ namespace CUAHANGBANSACH.Models.DAO
             }
         }
 
+        public static KHACH GetByEmail(string email)
+        {
+            using (DOANWEB_INITIALEntities db = new DOANWEB_INITIALEntities())
+            {
+                var cemail = db.KHACHes.Where(n => n.email == email).FirstOrDefault();
+                if (cemail != null) { return cemail; }
+                return null;
+            }
+        }
+
         public static KHACH Update(KHACH model)
         {
             using (DOANWEB_INITIALEntities db = new DOANWEB_INITIALEntities())

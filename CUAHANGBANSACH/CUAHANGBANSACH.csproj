@@ -141,6 +141,7 @@
     <Compile Include="Controllers\QLSACHController.cs" />
     <Compile Include="Controllers\SHOPController.cs" />
     <Compile Include="Controllers\STAFFLOGINController.cs" />
+    <Compile Include="Controllers\THEController.cs" />
     <Compile Include="Controllers\TrackingController.cs" />
     <Compile Include="Controllers\TTKHController.cs" />
     <Compile Include="Global.asax.cs">
@@ -328,6 +329,7 @@
     <Content Include="Views\SHOP\Buy.cshtml" />
     <Content Include="Views\Tracking\Index.cshtml" />
     <Content Include="Views\GioHang\Confirm.cshtml" />
+    <Content Include="Views\Tracking\KQTC.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -335,6 +337,7 @@
     <Folder Include="Content\PIC_INTRO\" />
     <Folder Include="Models\NewFolder1\" />
     <Folder Include="Views\THELOAI_DAO\" />
+    <Folder Include="Views\THE\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

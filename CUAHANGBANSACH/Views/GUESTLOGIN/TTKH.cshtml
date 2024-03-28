@@ -61,6 +61,10 @@
     <div>
         @Html.ActionLink("Sửa đổi thông tin", "UpdateTT", routeValues: new { @Ma_KH = khach.makhachhang })
     </div>
+
+    <div>
+        @Html.ActionLink("Đăng ký thẻ", "Create", "THE", routeValues: new { @Ma_KH = khach.makhachhang }, htmlAttributes: null)
+    </div>
 </section>
 
 
