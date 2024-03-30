@@ -133,7 +133,9 @@
     <Compile Include="Controllers\GioHangController.cs" />
     <Compile Include="Controllers\GUESTLOGINController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\NeoHomeController.cs" />
+    <Compile Include="Models\Combined_Model\NHANVIEN_DANHSACHCHUCVU_MODEL.cs" />
+    <Compile Include="Models\Combined_Model\SACH_THELOAI_NXB_MODEL.cs" />
+    <Compile Include="Views\NeoHomeController.cs" />
     <Compile Include="Controllers\QLGIOHANGController.cs" />
     <Compile Include="Controllers\QLCHUCVUController.cs" />
     <Compile Include="Controllers\QLKHACHController.cs" />
@@ -205,7 +207,7 @@
     <Compile Include="Models\PHIEUMUAHANG.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\PHIEUMUAHANG_KHACH\PHIEUMUAHANG_KHACH_MODEL.cs" />
+    <Compile Include="Models\Combined_Model\PHIEUMUAHANG_KHACH_MODEL.cs" />
     <Compile Include="Models\SACH.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -330,10 +332,14 @@
     <Content Include="Views\Tracking\Index.cshtml" />
     <Content Include="Views\GioHang\Confirm.cshtml" />
     <Content Include="Views\Tracking\KQTC.cshtml" />
+    <Content Include="Views\QLSACH\UploadImage.cshtml" />
+    <Content Include="Views\GUESTLOGIN\UploadImage.cshtml" />
+    <Content Include="Views\QLNV\Update.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\ANHSANPHAM\" />
+    <Folder Include="Content\GuestAvatar\" />
     <Folder Include="Content\PIC_INTRO\" />
     <Folder Include="Models\NewFolder1\" />
     <Folder Include="Views\THELOAI_DAO\" />

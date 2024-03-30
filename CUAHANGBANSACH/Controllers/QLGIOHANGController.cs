@@ -11,9 +11,16 @@ namespace CUAHANGBANSACH.Controllers
     public class QLGIOHANGController : Controller
     {
         // GET: PMH
+        public bool KiemTraPhanQuyen(string cv)
+        {
+            NHANVIEN nv = (NHANVIEN)Session["NhanVien"];
+            var check = NHANVIEN_DAO.KiemTraPhanQuyen(nv.manhanvien, cv);
+            if (check != null) return true;
+            return false;
+        }
         public ActionResult Index()
         {
-            
+            if (!KiemTraPhanQuyen("CV03")) return View("Bạn không có quyền");
             return View(PHIEUMUAHANG_DAO.GetAll());
         }
 

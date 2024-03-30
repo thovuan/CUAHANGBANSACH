@@ -17,6 +17,15 @@ namespace CUAHANGBANSACH.Models.DAO
                 return tttk;
             }
         }
+        public static NHANVIEN GetByTen(string ten)
+        {
+            using (DOANWEB_INITIALEntities db = new DOANWEB_INITIALEntities())
+            {
+                var tttk = db.NHANVIENs.Where(n => n.tennhanvien == ten).FirstOrDefault();
+
+                return tttk;
+            }
+        }
 
         public static NHANVIEN GetById (string id)
         {
@@ -48,6 +57,35 @@ namespace CUAHANGBANSACH.Models.DAO
             }
         }
 
-        
+        public static CHITIETCHUCVU KiemTraPhanQuyen(string id, string macv)
+        {
+            using (DOANWEB_INITIALEntities db = new DOANWEB_INITIALEntities())
+            {
+                var check = db.CHITIETCHUCVUs.Where(n => n.manhanvien == id && (n.machucvu == "CV01" || n.machucvu == macv)).FirstOrDefault();
+                if (check != null) return check;
+                return null;
+            }
+        }
+
+        public static NHANVIEN Create (NHANVIEN model)
+        {
+            using (DOANWEB_INITIALEntities db = new DOANWEB_INITIALEntities())
+            {
+                db.NHANVIENs.Add(model);
+                db.SaveChanges();
+                return model;
+            }
+        }
+
+        public static NHANVIEN Update (NHANVIEN model)
+        {
+            using (DOANWEB_INITIALEntities db = new DOANWEB_INITIALEntities())
+            {
+                db.Entry(model).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+                return model;
+            }
+        }
+
     }
 }

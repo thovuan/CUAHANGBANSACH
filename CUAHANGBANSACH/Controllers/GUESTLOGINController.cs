@@ -2,7 +2,9 @@
 using CUAHANGBANSACH.Models.DAO;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Razor.Text;
@@ -102,13 +104,25 @@ namespace CUAHANGBANSACH.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(KHACH model)
+        public ActionResult Create(KHACH model, HttpPostedFileBase image)
         {
             DateTime dt = new DateTime();
             var create = KHACH_DAO.GetById(model.makhachhang);
+            string fileName = "";
             if (create == null)
             {
                 dt = DateTime.Now;
+                if (image != null && image.ContentLength > 0)
+                {
+                    var uploadPath = Server.MapPath("~/Content/GuestAvatar/");
+                    if (!Directory.Exists(uploadPath)) Directory.CreateDirectory(uploadPath);
+
+                    fileName = Path.GetFileName(image.FileName);
+                    string filePath = Path.Combine(Server.MapPath("~/Content/GuestAvatar/"), fileName);
+                    image.SaveAs(filePath);
+
+                }
+
                 KHACH khach = new KHACH()
                 {
                     makhachhang = "KH" + dt.ToString("yyyyMMddHHmmss"),
@@ -116,9 +130,10 @@ namespace CUAHANGBANSACH.Controllers
                     diachi = model.diachi,
                     sdt = model.sdt,
                     email = model.email,
-                    avatar = model.avatar,
+                    avatar = "/Content/GuestAvatar/" + fileName,
                     tendangnhap = model.tendangnhap,
                     matkhau = model.matkhau,
+                    
                 };
                 try
                 {
@@ -182,6 +197,40 @@ namespace CUAHANGBANSACH.Controllers
                 return View("Có lỗi xảy ra", "Index");
             }
 
+        }
+
+        public ActionResult UploadImage(string Ma_KH)
+        {
+            return View(KHACH_DAO.GetById(Ma_KH));
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult UploadImage(KHACH model, HttpPostedFileBase image)
+        {
+            var idmakh = KHACH_DAO.GetById(model.makhachhang);
+            if (idmakh == null) return View("Không tìm thấy");
+
+            if (image != null && image.ContentLength > 0)
+            {
+                var uploadPath = Server.MapPath("~/Content/GuestAvatar/");
+                if (!Directory.Exists(uploadPath)) Directory.CreateDirectory(uploadPath);
+
+                string fileName = Path.GetFileName(image.FileName);
+                string filePath = Path.Combine(Server.MapPath("~/Content/GuestAvatar/"), fileName);
+                image.SaveAs(filePath);
+                idmakh.avatar = "/Content/GuestAvatar/" + fileName;
+            }
+            try
+            {
+                KHACH_DAO.Update(model);
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                //ModelState.AddModelError("error", "Lỗi cập nhật thông tin");
+                return View("Lỗi cập nhật thông tin");
+            }
         }
 
         public ActionResult Delete(String Ma_KH) {

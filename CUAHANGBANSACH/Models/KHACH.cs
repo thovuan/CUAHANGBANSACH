@@ -28,9 +28,9 @@ namespace CUAHANGBANSACH.Models
         public string avatar { get; set; }
         public string tendangnhap { get; set; }
         public string matkhau { get; set; }
-        public string email { get; set; }
         public string confirmPassword { get; set; }
-
+        public string email { get; set; }
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PHIEUMUAHANG> PHIEUMUAHANGs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

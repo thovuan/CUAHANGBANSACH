@@ -11,18 +11,28 @@ namespace CUAHANGBANSACH.Controllers
     public class QLCHUCVUController : Controller
     {
         // GET: QLCHUCVU
+        public bool KiemTraPhanQuyen(string cv)
+        {
+            NHANVIEN nv = (NHANVIEN)Session["NhanVien"];
+            var check = NHANVIEN_DAO.KiemTraPhanQuyen(nv.manhanvien, cv);
+            if (check != null) return true;
+            return false;
+        }
         public ActionResult Index()
         {
+            if (!KiemTraPhanQuyen("CV01")) return View("Bạn không có quyền vào đây");
             return View(CHUCVU_DAO.GetAllList());
         }
 
         public ActionResult Details(string MaCV)
         {
+            if (!KiemTraPhanQuyen("CV01")) return View("Bạn không có quyền vào đây");
             return View(CHUCVU_DAO.GetById(MaCV));
         }
 
         public ActionResult Create()
         {
+            if (!KiemTraPhanQuyen("CV01")) return View("Bạn không có quyền vào đây");
             return View();
         }
 
@@ -58,6 +68,7 @@ namespace CUAHANGBANSACH.Controllers
 
         public ActionResult Edit(string MaCV)
         {
+            if (!KiemTraPhanQuyen("CV01")) return View("Bạn không có quyền vào đây");
             return View(CHUCVU_DAO.GetById02(MaCV));
         }
 
@@ -84,6 +95,7 @@ namespace CUAHANGBANSACH.Controllers
 
         public ActionResult Delete(string MaCV)
         {
+            if (!KiemTraPhanQuyen("CV01")) return View("Bạn không có quyền vào đây");
             return View(CHUCVU_DAO.GetById02(MaCV));
         }
 

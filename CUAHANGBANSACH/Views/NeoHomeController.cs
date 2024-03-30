@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CUAHANGBANSACH.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,6 +13,8 @@ namespace CUAHANGBANSACH.Controllers
         // GET: NeoHome
         public ActionResult Index()
         {
+            NHANVIEN nv = (NHANVIEN)Session["NhanVien"];
+            if (nv == null ) { return RedirectToAction("Index", "STAFFLOGIN"); }
             return View();
         }
     }

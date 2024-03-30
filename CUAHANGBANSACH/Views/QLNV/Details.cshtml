@@ -24,7 +24,7 @@
         </dl>
     </div>
     <h4>Danh sách chức vụ mà nhân viện hiện đang làm </h4>
-
+    <p>@Html.ActionLink("Thêm chức vụ", "AddCV", routeValues: new {@Ma_NV = Model.manhanvien})</p>
     <table class="table">
         <tr>
             <th>Tên Chức Vụ</th>
@@ -34,12 +34,14 @@
 
         @foreach (var item in Model.chucvu)
         {
+            @Html.HiddenFor(model => item.machucvu)
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.tenchucvu)
                 </td>
 
                 <td>
+                    @Html.ActionLink("Xóa chức vụ","DeleteCV", routeValues: new {@Ma_CV = item.machucvu})
                 </td>
             </tr>
         }

@@ -18,6 +18,7 @@ namespace CUAHANGBANSACH.Controllers
         {
             //if (Session["NhanVien"]==null) return RedirectToAction("Index");
             Session["KHACH"] = null;
+            
             return View();
         }
         [HttpPost]
@@ -36,6 +37,7 @@ namespace CUAHANGBANSACH.Controllers
                     } else
                     {
                         Session["NhanVien"] = tttk;
+                        
                         return RedirectToAction("Index", "NeoHome");
                     }
                     

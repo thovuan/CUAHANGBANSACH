@@ -5,50 +5,67 @@
     Layout = "~/Views/Shared/_Layout_Staff.cshtml";
 }
 
-<h2>Details</h2>
 <section id="content">
-    <div>
-        <h4>KHACH</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.tenkhachhang)
-            </dt>
+    <div class="container">
+        <div class="row">
+            <h2>Chi tiết thông tin Khách @Model.tenkhachhang </h2>
+            <hr class="colorgraph" />
+            <div class="col-lg-4">
+                <h3>Ảnh đại diện</h3>
+                <div class="form-group">
+                    @if (!string.IsNullOrEmpty(Model.avatar))
+                    {
+                        <img src=@Model.avatar style="width: 200px; height: auto;" />
+                    }
+                    else
+                    {
+                        <span>Không có ảnh</span>
+                    }
 
-            <dd>
-                @Html.DisplayFor(model => model.tenkhachhang)
-            </dd>
+                </div>
+            
+            </div>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.diachi)
-            </dt>
+            <dl class="col-lg-8">
+                <dt>
+                    @Html.DisplayNameFor(model => Model.tenkhachhang)
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.diachi)
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => Model.tenkhachhang)
+                </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.sdt)
-            </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => Model.diachi)
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.sdt)
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => Model.diachi)
+                </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.avatar)
-            </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => Model.sdt)
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.avatar)
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => Model.sdt)
+                </dd>
 
+                <dt>
+                    @Html.DisplayNameFor(model => Model.email)
+                </dt>
 
+                <dd>
+                    @Html.DisplayFor(model => Model.email)
+                </dd>
 
-        </dl>
+            </dl>
+        </div>
+        <div class="form-group">
+            <input type="button" value="Trở lại danh sách" onclick="location.href='@Url.Action("Index", "QLKHACH")'" />
+        </div>
+
     </div>
-    <p>
-        @Html.ActionLink("Back to List", "Index")
-    </p>
+
 </section>
 

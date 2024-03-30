@@ -1,59 +1,106 @@
 ﻿using CUAHANGBANSACH.Models;
+using CUAHANGBANSACH.Models.Combined_Model;
 using CUAHANGBANSACH.Models.DAO;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
 namespace CUAHANGBANSACH.Controllers
 {
+    
     public class QLSACHController : Controller
     {
-        DOANWEB_INITIALEntities db = new DOANWEB_INITIALEntities();
+        public bool KiemTraPhanQuyen(string cv)
+        {
+            NHANVIEN nv = (NHANVIEN)Session["NhanVien"];
+            var check = NHANVIEN_DAO.KiemTraPhanQuyen(nv.manhanvien, cv);
+            if (check!=null) return true;
+            return false;
+        }
+        
         // GET: QLSACH
         public ActionResult Index()
         {
-            return View(SACH_DAO.All_List());
+            if (KiemTraPhanQuyen("CV02")) 
+                return View(SACH_DAO.All_List());
+            return View("Bạn không có quyền truy cập vào page");
         }
 
         
         public ActionResult Details(string Ma_Sach)
         {
-            return View(SACH_DAO.GetById(Ma_Sach));
+            if (KiemTraPhanQuyen("CV02"))
+                return View(SACH_DAO.GetById(Ma_Sach));
+            return View("Bạn không có quyền truy cập vào page");
         }
 
         
         
 
-        public ActionResult Create ()
+        public ActionResult Create (SACH_THELOAI_NXB_MODEL model)
         {
-            return View();
+            if (KiemTraPhanQuyen("CV02"))
+            {
+                var tl = THELOAI_DAO.Read();
+                var nxb = NXB_DAO.Read();
+                model.THELOAISACH = tl;
+                model.NXB = nxb;
+                return View(model);
+            }
+                
+            return View("Bạn không có quyền truy cập");
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create (SACH model)
+        public ActionResult Create (SACH_THELOAI_NXB_MODEL model, HttpPostedFileBase image)
         {
-            var idsach = SACH_DAO.GetById(model.masach);
+            //tim kiem thong tin sach
+            var idsach = SACH_DAO.GetById(model.SACH.masach);
+            //lay ma nhan vien
             NHANVIEN nv = (NHANVIEN)Session["NhanVien"];
+            string fileName = "";
+
+            //lay thong tin the loai
+            string selectedTL = Request.Form["TheLoai"];
+            model.SACH.matheloai = selectedTL;
+
+            //lay thong tin nha xuat ban
+            string selectedNXB = Request.Form["NXB"];
+            model.SACH.manxb = selectedNXB;
+
+
             if (idsach!= null)
             {
                 ModelState.AddModelError("error", "Mã sách đã tồn tại trong danh sách");
                 return View(model);
             } else
             {
+                if (image != null && image.ContentLength > 0)
+                {
+                    var uploadPath = Server.MapPath("~/Content/ANHSANPHAM/");
+                    if (!Directory.Exists(uploadPath)) Directory.CreateDirectory(uploadPath);
+
+                    fileName = Path.GetFileName(image.FileName);
+                    string filePath = Path.Combine(Server.MapPath("~/Content/ANHSANPHAM/"), fileName);
+                    image.SaveAs(filePath);
+                    
+                }
                 SACH sach = new SACH()
                 {
-                    masach = model.masach,
-                    tensach = model.tensach,
-                    soluonghienco = model.soluonghienco,
-                    dacdiem = model.dacdiem,
-                    DVT = model.DVT,
-                    dongia = model.dongia,
-                    matheloai = model.matheloai,
+                    masach = model.SACH.masach,
+                    tensach = model.SACH.tensach,
+                    soluonghienco = model.SACH.soluonghienco,
+                    dacdiem = model.SACH.dacdiem,
+                    DVT = model.SACH.DVT,
+                    dongia = model.SACH.dongia,
+                    matheloai = model.SACH.matheloai,
                     manhanvien = nv.manhanvien,
-                    manxb = model.manxb,
+                    manxb = model.SACH.manxb,
+                    anhsanpham = "~/Content/ANHSANPHAM/" + fileName
                 };
                 try
                 {
@@ -67,32 +114,52 @@ namespace CUAHANGBANSACH.Controllers
                 }
             }
         }
-        public ActionResult Edit(string Ma_Sach)
+        public ActionResult Edit(string Ma_Sach, SACH_THELOAI_NXB_MODEL model)
         {
-            return View(SACH_DAO.GetById(Ma_Sach));
-            //return View();
+            if (KiemTraPhanQuyen("CV02"))
+            {
+                var sach = SACH_DAO.GetById(Ma_Sach);
+                var tl = THELOAI_DAO.Read();
+                var nxb = NXB_DAO.Read();
+                model.SACH = sach;
+                model.THELOAISACH = tl;
+                model.NXB = nxb;
+                return View(model);
+            }
+                
+            return View("Bạn không có quyền truy cập");
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(SACH model)
+        public ActionResult Edit(SACH_THELOAI_NXB_MODEL model)
         {
             //DOANWEB_INITIALEntities db = new DOANWEB_INITIALEntities();
-            var idsach = SACH_DAO.GetById(model.masach);
+            var idsach = SACH_DAO.GetById(model.SACH.masach);
 
+            //lay thong tin the loai
+            string selectedTL = Request.Form["TheLoai"];
+            model.SACH.matheloai = selectedTL;
+
+            //lay thong tin nha xuat ban
+            string selectedNXB = Request.Form["NXB"];
+            model.SACH.manxb = selectedNXB;
+
+
+            if (idsach == null) return View("Lỗi");
             //ViewData.Model = idsach;
-            idsach.tensach = model.tensach;
-            idsach.soluonghienco = model.soluonghienco;
-            idsach.dacdiem = model.dacdiem;
-            idsach.DVT = model.DVT;
-            idsach.dongia = model.dongia;
-            idsach.matheloai = model.matheloai;
-            
-            idsach.manxb = model.manxb;
+            idsach.tensach = model.SACH.tensach;
+            idsach.soluonghienco = model.SACH.soluonghienco;
+            idsach.dacdiem = model.SACH.dacdiem;
+            idsach.DVT = model.SACH.DVT;
+            idsach.dongia = model.SACH.dongia;
+            idsach.matheloai = model.SACH.matheloai;
+            idsach.manxb = model.SACH.manxb;
             //db.Entry(idsach).State = System.Data.Entity.EntityState.Modified;
+            
             try
             {
-                SACH_DAO.Update(model);
+                SACH_DAO.Update(model.SACH);
                 return RedirectToAction("Index");
             } catch (Exception ex)
             {
@@ -102,8 +169,48 @@ namespace CUAHANGBANSACH.Controllers
             //return View();
         }
 
-        public ActionResult Delete(string Ma_Sach) { 
-            return View(SACH_DAO.GetById(Ma_Sach));
+        public ActionResult UploadImage(string Ma_Sach)
+        {
+            if (KiemTraPhanQuyen("CV02"))
+                return View(SACH_DAO.GetById(Ma_Sach));
+            return View("Bạn không có quyền truy cập");
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult UploadImage(SACH model, HttpPostedFileBase image)
+        {
+            var idsach = SACH_DAO.GetById(model.masach);
+            if (idsach == null) return View("Không tìm thấy");
+
+            if (image != null && image.ContentLength > 0)
+            {
+                var uploadPath = Server.MapPath("~/Content/ANHSANPHAM/");
+                if (!Directory.Exists(uploadPath)) Directory.CreateDirectory(uploadPath);
+
+                string fileName = Path.GetFileName(image.FileName);
+                string filePath = Path.Combine(Server.MapPath("~/Content/ANHSANPHAM/"), fileName);
+                image.SaveAs(filePath);
+                idsach.anhsanpham = "~/Content/ANHSANPHAM/" + fileName;
+            }
+            try
+            {
+                SACH_DAO.Update(model);
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                //ModelState.AddModelError("error", "Lỗi cập nhật thông tin");
+                return View("Lỗi cập nhật thông tin");
+            }
+
+        }
+
+        public ActionResult Delete(string Ma_Sach) {
+            if (KiemTraPhanQuyen("CV02"))
+                return View(SACH_DAO.GetById(Ma_Sach));
+            return View("Bạn không có quyền truy cập");
         }
 
         [HttpPost, ActionName("Delete")]

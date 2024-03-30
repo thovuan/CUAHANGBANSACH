@@ -1,11 +1,9 @@
 ﻿@model CUAHANGBANSACH.Models.Combined_Model.NHANVIEN_DANHSACHCHUCVU_MODEL
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Update";
     Layout = "~/Views/Shared/_Layout_Staff.cshtml";
 }
-}
-
 
 <section id="content">
     <div class="container">
@@ -16,9 +14,10 @@
                     @Html.AntiForgeryToken()
 
                     <div class="form-horizontal">
-                        <h4>Thêm Nhân Viên</h4>
+                        <h4>Cập nhật thông tin nhân viên @Model.NHANVIEN.tennhanvien</h4>
+                        @Html.HiddenFor(model => model.NHANVIEN.manhanvien)
 
-                        <h5>Tạo tài khoản</h5>
+                        <h5>Cập nhật tài khoản</h5>
                         <hr class="colorgraph" />
 
                         <div class="form-group">
@@ -38,7 +37,7 @@
                         </div>
 
                         <hr class="colorgraph" />
-                        <h5>Thông tin nhân viên cơ bản</h5>
+                        <h5>Cập nhật Thông tin nhân viên cơ bản</h5>
 
                         <div class="form-group">
 
@@ -66,8 +65,6 @@
 
     </div>
 </section>
-
-
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
