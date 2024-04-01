@@ -163,7 +163,7 @@ namespace CUAHANGBANSACH.Controllers
             return View();
         }
 
-        public ActionResult UpdateTT(String Ma_KH)
+        public ActionResult UpdateTT(string Ma_KH)
         {
             return View(KHACH_DAO.GetById(Ma_KH));
         }

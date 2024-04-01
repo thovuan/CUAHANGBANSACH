@@ -26,16 +26,16 @@ namespace CUAHANGBANSACH.Models
         }
     
         public virtual DbSet<CHITIETCHUCVU> CHITIETCHUCVUs { get; set; }
-        public virtual DbSet<CHITIETDATHANG> CHITIETDATHANGs { get; set; }
         public virtual DbSet<CHUCVU> CHUCVUs { get; set; }
-        public virtual DbSet<KHACH> KHACHes { get; set; }
-        public virtual DbSet<NHANVIEN> NHANVIENs { get; set; }
-        public virtual DbSet<NXB> NXBs { get; set; }
         public virtual DbSet<PHIEUGIAO> PHIEUGIAOs { get; set; }
         public virtual DbSet<PHIEUMUAHANG> PHIEUMUAHANGs { get; set; }
-        public virtual DbSet<SACH> SACHes { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<THE> THEs { get; set; }
+        public virtual DbSet<KHACH> KHACHes { get; set; }
+        public virtual DbSet<CHITIETDATHANG> CHITIETDATHANGs { get; set; }
+        public virtual DbSet<NXB> NXBs { get; set; }
         public virtual DbSet<THELOAISACH> THELOAISACHes { get; set; }
+        public virtual DbSet<NHANVIEN> NHANVIENs { get; set; }
+        public virtual DbSet<SACH> SACHes { get; set; }
     }
 }

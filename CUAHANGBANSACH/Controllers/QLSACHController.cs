@@ -100,7 +100,7 @@ namespace CUAHANGBANSACH.Controllers
                     matheloai = model.SACH.matheloai,
                     manhanvien = nv.manhanvien,
                     manxb = model.SACH.manxb,
-                    anhsanpham = "~/Content/ANHSANPHAM/" + fileName
+                    anhsanpham = "/Content/ANHSANPHAM/" + fileName
                 };
                 try
                 {
@@ -114,17 +114,21 @@ namespace CUAHANGBANSACH.Controllers
                 }
             }
         }
-        public ActionResult Edit(string Ma_Sach, SACH_THELOAI_NXB_MODEL model)
+        public ActionResult Edit(string Ma_Sach)
         {
             if (KiemTraPhanQuyen("CV02"))
             {
                 var sach = SACH_DAO.GetById(Ma_Sach);
                 var tl = THELOAI_DAO.Read();
                 var nxb = NXB_DAO.Read();
-                model.SACH = sach;
-                model.THELOAISACH = tl;
-                model.NXB = nxb;
-                return View(model);
+                SACH_THELOAI_NXB_MODEL stn = new SACH_THELOAI_NXB_MODEL()
+                {
+                    SACH = sach,
+                    THELOAISACH = tl,
+                    NXB = nxb
+                };
+                
+                return View(stn);
             }
                 
             return View("Bạn không có quyền truy cập");
@@ -134,8 +138,11 @@ namespace CUAHANGBANSACH.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(SACH_THELOAI_NXB_MODEL model)
         {
-            //DOANWEB_INITIALEntities db = new DOANWEB_INITIALEntities();
+            //tim kiem thong tin sach
             var idsach = SACH_DAO.GetById(model.SACH.masach);
+            //lay ma nhan vien
+            NHANVIEN nv = (NHANVIEN)Session["NhanVien"];
+            string fileName = "";
 
             //lay thong tin the loai
             string selectedTL = Request.Form["TheLoai"];
@@ -147,26 +154,59 @@ namespace CUAHANGBANSACH.Controllers
 
 
             if (idsach == null) return View("Lỗi");
-            //ViewData.Model = idsach;
-            idsach.tensach = model.SACH.tensach;
-            idsach.soluonghienco = model.SACH.soluonghienco;
-            idsach.dacdiem = model.SACH.dacdiem;
-            idsach.DVT = model.SACH.DVT;
-            idsach.dongia = model.SACH.dongia;
-            idsach.matheloai = model.SACH.matheloai;
-            idsach.manxb = model.SACH.manxb;
-            //db.Entry(idsach).State = System.Data.Entity.EntityState.Modified;
-            
-            try
-            {
-                SACH_DAO.Update(model.SACH);
-                return RedirectToAction("Index");
-            } catch (Exception ex)
-            {
-                //ModelState.AddModelError("error", "Lỗi cập nhật thông tin");
-                return View("Lỗi cập nhật thông tin");
-            }
-            //return View();
+                //idsach.masach = model.SACH.masach;
+                idsach.tensach = model.SACH.tensach;
+                idsach.soluonghienco = model.SACH.soluonghienco;
+                idsach.dacdiem = model.SACH.dacdiem;
+                idsach.DVT = model.SACH.DVT;
+                idsach.dongia = model.SACH.dongia;
+                idsach.matheloai = model.SACH.matheloai;
+                idsach.manhanvien = nv.manhanvien;
+                idsach.manxb = model.SACH.manxb;
+                try
+                {
+                SACH_DAO.Update(idsach);
+                    return RedirectToAction("Index");
+
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("error", "Lỗi thêm sách");
+                    return View(model);
+                }
+            ////DOANWEB_INITIALEntities db = new DOANWEB_INITIALEntities();
+            //var idsach = SACH_DAO.GetById(model.SACH.masach);
+
+            ////lay thong tin the loai
+            //string selectedTL = Request.Form["TheLoai"];
+            //model.SACH.matheloai = selectedTL;
+
+            ////lay thong tin nha xuat ban
+            //string selectedNXB = Request.Form["NXB"];
+            //model.SACH.manxb = selectedNXB;
+
+
+            //if (idsach == null) return View("Lỗi");
+            ////ViewData.Model = idsach;
+            ////idsach.tensach = model.SACH.tensach;
+            ////idsach.soluonghienco = model.SACH.soluonghienco;
+            ////idsach.dacdiem = model.SACH.dacdiem;
+            ////idsach.DVT = model.SACH.DVT;
+            ////idsach.dongia = model.SACH.dongia;
+            ////idsach.matheloai = model.SACH.matheloai;
+            ////idsach.manxb = model.SACH.manxb;
+            ////db.Entry(idsach).State = System.Data.Entity.EntityState.Modified;
+
+            //try
+            //{
+            //    SACH_DAO.Update(model.SACH);
+            //    return RedirectToAction("Index");
+            //} catch (Exception ex)
+            //{
+            //    //ModelState.AddModelError("error", "Lỗi cập nhật thông tin");
+            //    return View("Lỗi cập nhật thông tin" + ex.ToString());
+            //}
+            ////return View();
         }
 
         public ActionResult UploadImage(string Ma_Sach)
@@ -192,7 +232,7 @@ namespace CUAHANGBANSACH.Controllers
                 string fileName = Path.GetFileName(image.FileName);
                 string filePath = Path.Combine(Server.MapPath("~/Content/ANHSANPHAM/"), fileName);
                 image.SaveAs(filePath);
-                idsach.anhsanpham = "~/Content/ANHSANPHAM/" + fileName;
+                idsach.anhsanpham = "/Content/ANHSANPHAM/" + fileName;
             }
             try
             {

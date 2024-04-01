@@ -109,6 +109,47 @@ namespace CUAHANGBANSACH.Controllers
             return View(model);
         }
 
+        public ActionResult EditSLSach (string Ma_Sach)
+        {
+            PHIEUMUAHANG pmh = (PHIEUMUAHANG)Session["Đơn Hàng"];
+            return View(CHITIETDATHANG_DAO.GetBySACHID(Ma_Sach, pmh.maphieumuahang));
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditSLSach (CHITIETDATHANG model)
+        {
+            var ttsach = SACH_DAO.GetById(model.masach);
+            PHIEUMUAHANG pmh = (PHIEUMUAHANG)Session["Đơn Hàng"];
+            if (ttsach != null)
+            {
+                if (pmh != null)
+                {
+                    //tim kiem sach trong gio hang
+                    var ttsachtronggiohang = CHITIETDATHANG_DAO.GetBySACHID(model.masach, pmh.maphieumuahang);
+                    //neu tim thay thi xoa
+                    
+                    if (model.soluongmua > ttsach.soluonghienco) { ModelState.AddModelError("soluongmua", "Số lượng mua vượt quá số lượng hiện có"); return View(model); }
+                    //tien thanh them san pham vao gio hang
+                    ttsachtronggiohang.soluongmua = model.soluongmua;
+                    try
+                    {
+                        CHITIETDATHANG_DAO.Update(ttsachtronggiohang);
+                        return RedirectToAction("Index");
+                    }
+                    catch (Exception ex)
+                    {
+                        return View("Có lỗi xảy ra trong khi thực thi chương trình");
+                    }
+
+                }
+                TempData["ThemDonHang"] = "Buy";
+                return RedirectToAction("Create", "GioHang");
+                //return View(model);
+            }
+            return View(model);
+        }
+
         public ActionResult DeleteSACH(string Ma_Sach) {
             PHIEUMUAHANG pmh = (PHIEUMUAHANG)Session["Đơn Hàng"];
             var ttsachtronggiohang = CHITIETDATHANG_DAO.GetBySACHID(Ma_Sach, pmh.maphieumuahang);
@@ -179,6 +220,18 @@ namespace CUAHANGBANSACH.Controllers
             ttdonhang.tinhtrang = "Xác Nhận";
             ttdonhang.tinhtrangthanhtoan = "Thanh toán bằng tiền mặt";
 
+            foreach (SACH sach in ttdonhang.dsSach)
+            {
+                if (sach == null) return View("Error");
+                sach.soluonghienco = sach.soluonghienco - sach.soluongmua;
+                try
+                {
+                    SACH_DAO.Update(sach);
+                } catch
+                {
+                    return View("Có lỗi xảy ra", "Index");
+                }
+            }
             try
             {
                 KHACH_DAO.Update(ttkh);
@@ -192,6 +245,43 @@ namespace CUAHANGBANSACH.Controllers
                 return View("Có lỗi xảy ra", "Index");
             }
         }
-        
+
+        public ActionResult Delete (string Ma_DH)
+        {
+            return View(PHIEUMUAHANG_DAO.GetById(Ma_DH));
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete (PHIEUMUAHANG model)
+        {
+            var ttdonhang = PHIEUMUAHANG_DAO.GetById(model.maphieumuahang);
+            
+            if (ttdonhang == null || ttdonhang.tinhtrang == "Xác Nhận") return View("Error");
+            if (ttdonhang.dsSach.Count >= 0)
+            {
+                foreach (SACH hon in  ttdonhang.dsSach)
+                {
+                    var ttsach = CHITIETDATHANG_DAO.GetBySACHID(hon.masach, ttdonhang.maphieumuahang);
+
+                    try
+                    {
+                        CHITIETDATHANG_DAO.Delete(ttsach);
+                    } catch
+                    {
+                        return View("Lỗi");
+                    }
+                }
+            }
+            try
+            {
+                PHIEUMUAHANG_DAO.Delete(ttdonhang);
+                return View("Index");
+
+            } catch
+            {
+                return View("Lỗi");
+            }
+        }
     }
 }

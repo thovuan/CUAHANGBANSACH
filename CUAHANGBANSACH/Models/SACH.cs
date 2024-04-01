@@ -23,7 +23,6 @@ namespace CUAHANGBANSACH.Models
         public string masach { get; set; }
         public string tensach { get; set; }
         public int soluonghienco { get; set; }
-        public int soluongmua { get; set; }
         public string dacdiem { get; set; }
         public string anhsanpham { get; set; }
         public string DVT { get; set; }

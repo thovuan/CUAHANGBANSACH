@@ -31,7 +31,11 @@ namespace CUAHANGBANSACH.Models.DAO
                     {
                         
                         SACH hon = db.SACHes.Where(n => n.masach == ctdhs.masach).FirstOrDefault();
-                        if (hon != null) {  chitietpmh.dsSach.Add(hon); }
+                        if (hon != null) {
+                            hon.soluongmua = ctdhs.soluongmua;
+                            hon.thanhtien = (int)(hon.dongia * ctdhs.soluongmua);
+                            chitietpmh.DHTotal += hon.thanhtien;
+                            chitietpmh.dsSach.Add(hon); }
                     }
                     return chitietpmh; }
                 return null;
@@ -88,6 +92,14 @@ namespace CUAHANGBANSACH.Models.DAO
             }
         }
 
-        
+        public static PHIEUMUAHANG Delete(PHIEUMUAHANG model)
+        {
+            using (DOANWEB_INITIALEntities db = new DOANWEB_INITIALEntities())
+            {
+                db.PHIEUMUAHANGs.Remove(model);
+                db.SaveChanges();
+                return model;
+            }
+        }
     }
 }

@@ -6,28 +6,28 @@
     <edmx:Diagrams>
       <Diagram DiagramId="2c94af1522434483bb4ca46226f2b926" Name="Diagram1">
         <EntityTypeShape EntityType="DOANWEB_INITIALModel.CHITIETCHUCVU" Width="1.5" PointX="3" PointY="6.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DOANWEB_INITIALModel.CHITIETDATHANG" Width="1.5" PointX="5.25" PointY="2.5" IsExpanded="true" />
         <EntityTypeShape EntityType="DOANWEB_INITIALModel.CHUCVU" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DOANWEB_INITIALModel.KHACH" Width="1.5" PointX="0.75" PointY="13.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DOANWEB_INITIALModel.NHANVIEN" Width="1.5" PointX="0.75" PointY="6.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DOANWEB_INITIALModel.NXB" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
         <EntityTypeShape EntityType="DOANWEB_INITIALModel.PHIEUGIAO" Width="1.5" PointX="6" PointY="6.125" IsExpanded="true" />
         <EntityTypeShape EntityType="DOANWEB_INITIALModel.PHIEUMUAHANG" Width="1.5" PointX="3" PointY="13.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DOANWEB_INITIALModel.SACH" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DOANWEB_INITIALModel.sysdiagram" Width="1.5" PointX="7.75" PointY="2" IsExpanded="true" />
         <EntityTypeShape EntityType="DOANWEB_INITIALModel.THE" Width="1.5" PointX="3" PointY="16.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DOANWEB_INITIALModel.THELOAISACH" Width="1.5" PointX="0.75" PointY="10.375" IsExpanded="true" />
         <AssociationConnector Association="DOANWEB_INITIALModel.FK_CHITIETCHUCVU_CHUCVU" ManuallyRouted="false" />
-        <AssociationConnector Association="DOANWEB_INITIALModel.FK_CHITIETCHUCVU_NHANVIEN" ManuallyRouted="false" />
-        <AssociationConnector Association="DOANWEB_INITIALModel.FK_CHITIETDATHANG_PHIEUMUAHANG" ManuallyRouted="false" />
-        <AssociationConnector Association="DOANWEB_INITIALModel.FK_CHITIETDATHANG_SACH" ManuallyRouted="false" />
-        <AssociationConnector Association="DOANWEB_INITIALModel.FK_PHIEUGIAO_PHIEUGIAO" ManuallyRouted="false" />
-        <AssociationConnector Association="DOANWEB_INITIALModel.FK_PHIEUMUAHANG_KHACH" ManuallyRouted="false" />
-        <AssociationConnector Association="DOANWEB_INITIALModel.FK_THE_KHACH" ManuallyRouted="false" />
-        <AssociationConnector Association="DOANWEB_INITIALModel.FK_PHIEUGIAO_NHANVIEN" ManuallyRouted="false" />
-        <AssociationConnector Association="DOANWEB_INITIALModel.FK_SACH_NHANVIEN" ManuallyRouted="false" />
-        <AssociationConnector Association="DOANWEB_INITIALModel.FK_SACH_NXB" ManuallyRouted="false" />
-        <AssociationConnector Association="DOANWEB_INITIALModel.FK_SACH_THELOAISACH" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DOANWEB_INITIALModel.KHACH" Width="1.5" PointX="0.5" PointY="13.5" />
+        <AssociationConnector Association="DOANWEB_INITIALModel.FK_PHIEUMUAHANG_KHACH" />
+        <AssociationConnector Association="DOANWEB_INITIALModel.FK_THE_KHACH" />
+        <EntityTypeShape EntityType="DOANWEB_INITIALModel.CHITIETDATHANG" Width="1.5" PointX="5.25" PointY="9.875" />
+        <AssociationConnector Association="DOANWEB_INITIALModel.FK_CHITIETDATHANG_PHIEUMUAHANG" />
+        <AssociationConnector Association="DOANWEB_INITIALModel.FK_PHIEUGIAO_PHIEUGIAO" />
+        <EntityTypeShape EntityType="DOANWEB_INITIALModel.NXB" Width="1.5" PointX="8.375" PointY="4.875" />
+        <EntityTypeShape EntityType="DOANWEB_INITIALModel.THELOAISACH" Width="1.5" PointX="8.375" PointY="7.875" />
+        <EntityTypeShape EntityType="DOANWEB_INITIALModel.NHANVIEN" Width="1.5" PointX="0.75" PointY="4.375" />
+        <AssociationConnector Association="DOANWEB_INITIALModel.FK_CHITIETCHUCVU_NHANVIEN" />
+        <AssociationConnector Association="DOANWEB_INITIALModel.FK_PHIEUGIAO_NHANVIEN" />
+        <EntityTypeShape EntityType="DOANWEB_INITIALModel.SACH" Width="1.5" PointX="10.625" PointY="5.125" />
+        <AssociationConnector Association="DOANWEB_INITIALModel.FK_CHITIETDATHANG_SACH" />
+        <AssociationConnector Association="DOANWEB_INITIALModel.FK_SACH_NHANVIEN" />
+        <AssociationConnector Association="DOANWEB_INITIALModel.FK_SACH_NXB" />
+        <AssociationConnector Association="DOANWEB_INITIALModel.FK_SACH_THELOAISACH" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

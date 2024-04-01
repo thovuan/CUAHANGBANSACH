@@ -11,7 +11,7 @@ namespace CUAHANGBANSACH.Models
     public partial class PHIEUMUAHANG
     {
         public List<SACH> dsSach;
-        public int Total;
+        
         public int DHTotal;
 
         sealed class MetaData

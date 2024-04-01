@@ -9,6 +9,7 @@ namespace CUAHANGBANSACH.Models
     [MetadataType(typeof(KHACH.MetaData))]
     public partial class KHACH
     {
+        public string confirmPassword { get; set; }
         sealed class MetaData
         {
             [Required(AllowEmptyStrings = false, ErrorMessage = "Trường thông tin mã khách không được để trống")]

@@ -1,8 +1,10 @@
 ﻿using CUAHANGBANSACH.Models;
+using CUAHANGBANSACH.Models.Combined_Model;
 using CUAHANGBANSACH.Models.DAO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Web;
 using System.Web.Mvc;
 
@@ -13,7 +15,6 @@ namespace CUAHANGBANSACH.Controllers
         // GET: SHOP
         public ActionResult Index(string Ma_TheLoai, string Ma_NXB)
         {
-
 
             if (Ma_TheLoai != null && Ma_NXB == null) ViewData.Model = SACH_DAO.ChuDe_List(Ma_TheLoai);
             else if (Ma_TheLoai == null && Ma_NXB != null) ViewData.Model = SACH_DAO.NXB_List(Ma_NXB);
@@ -82,6 +83,7 @@ namespace CUAHANGBANSACH.Controllers
                             return View("Có lỗi xảy ra trong khi thực thi");
                         }
                     }
+                    if (model.soluongmua > ttsach.soluonghienco) { ModelState.AddModelError("soluongmua", "Số lượng mua vượt quá số lượng hiện có"); return View(model); }
                     //tien thanh them san pham vao gio hang
                     CHITIETDATHANG ctdh = new CHITIETDATHANG()
                     {

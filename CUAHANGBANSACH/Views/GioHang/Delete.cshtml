@@ -1,0 +1,112 @@
+﻿@model CUAHANGBANSACH.Models.PHIEUMUAHANG
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<section id="content">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <h3>Are you sure you want to delete this?</h3>
+        <div>
+            <h4>PHIEUMUAHANG</h4>
+            <hr class="colorgraph" />
+            @Html.HiddenFor(model => model.maphieumuahang)
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.ngaylap)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ngaylap)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.tinhtrangthanhtoan)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.tinhtrangthanhtoan)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.tinhtrang)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.tinhtrang)
+                </dd>
+
+
+            </dl>
+
+
+        </div>
+        <h2>DANH SÁCH CÁC CUỐN SÁCH TRONG ĐƠN HÀNG</h2>
+        <table class="table">
+            <tr>
+                <th>
+                    Mã Sách
+                </th>
+                <th>
+                    Tên Sách
+                </th>
+
+                <th>
+                    Đặc Điểm
+                </th>
+                <th>
+                    Ảnh Sản Phẩm
+                </th>
+                <th>Số Lượng Mua</th>
+                <th>
+                    Đơn Giá
+                </th>
+                <th>Thành Tiền</th>
+
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model.dsSach)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.masach)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.tensach)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.dacdiem)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.anhsanpham)
+                    </td>
+                    <td>@Html.DisplayFor(modelItem => item.soluongmua)</td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.dongia)
+                    </td>
+                    <td>@Html.DisplayFor(modelItem => item.thanhtien) </td>
+                    <td>
+                        @Html.ActionLink("Edit", "EditSLSach", routeValues: new { @Ma_Sach = item.masach }) |
+                        @Html.ActionLink("Thông tin sách", "Detail", "SHOP", routeValues: new { @MaSach = item.masach }, htmlAttributes: null) |
+                        @Html.ActionLink("Xóa sản phẩm ra khỏi giỏ hàng", "DeleteSACH", routeValues: new { @Ma_Sach = item.masach })
+                    </td>
+                </tr>
+            }
+        </table>
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+
+        </div>
+    }
+
+
+    
+</section>
+
+

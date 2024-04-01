@@ -26,8 +26,8 @@ namespace CUAHANGBANSACH.Models
         public string tinhtrang { get; set; }
         public string makhachhang { get; set; }
     
+        public virtual KHACH KHACH { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CHITIETDATHANG> CHITIETDATHANGs { get; set; }
-        public virtual KHACH KHACH { get; set; }
     }
 }

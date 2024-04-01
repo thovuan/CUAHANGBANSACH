@@ -9,6 +9,7 @@ namespace CUAHANGBANSACH.Models
     [MetadataType(typeof(CHITIETDATHANG.MetaData))]
     public partial class CHITIETDATHANG
     {
+        
         sealed class MetaData
         {
             [Required(AllowEmptyStrings = false, ErrorMessage = "Trường thông tin này không được để trống")]

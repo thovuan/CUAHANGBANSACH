@@ -26,8 +26,8 @@ namespace CUAHANGBANSACH.Models
         public string tinhtranggiao { get; set; }
     
         public virtual PHIEUMUAHANG PHIEUMUAHANG { get; set; }
-        public virtual SACH SACH { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PHIEUGIAO> PHIEUGIAOs { get; set; }
+        public virtual SACH SACH { get; set; }
     }
 }

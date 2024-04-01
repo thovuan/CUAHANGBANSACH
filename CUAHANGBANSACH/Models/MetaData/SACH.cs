@@ -12,7 +12,9 @@ namespace CUAHANGBANSACH.Models
         public string tentheloai;
         public string tennxb;
         public string tennhanvien;
-        
+        public int soluongmua { get; set; }
+        public int thanhtien;
+
         sealed class MetaData
         {
             [Required(AllowEmptyStrings = false, ErrorMessage = "Trường thông tin mã sách không được để trống")]
@@ -24,9 +26,9 @@ namespace CUAHANGBANSACH.Models
             [Required(AllowEmptyStrings = false, ErrorMessage = "Trường thông tin số lượng hiện có không được để trống")]
             public int soluonghienco { get; set; }
 
-            [Required(AllowEmptyStrings = false, ErrorMessage = "Trường thông tin SLmua không được để trống")]
+            //[Required(AllowEmptyStrings = false, ErrorMessage = "Trường thông tin SLmua không được để trống")]
 
-            public int soluongmua { get; set; }
+            
             public string dacdiem { get; set; }
             public string anhsanpham { get; set; }
 
@@ -41,6 +43,9 @@ namespace CUAHANGBANSACH.Models
 
             [Required(AllowEmptyStrings = false, ErrorMessage = "Trường thông tin mã nhân viên không được để trống")]
             public string manhanvien { get; set; }
+
+            [Required(AllowEmptyStrings = false, ErrorMessage = "Trường thông tin mã nhà xuất bản không được để trống")]
+            public string manxb { get; set; }
         }
     }
 }

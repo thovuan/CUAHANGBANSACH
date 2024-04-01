@@ -16,6 +16,15 @@ namespace CUAHANGBANSACH.Models.DAO
                 return null;
             }
         }
+        public static List<CHITIETDATHANG> GetById(string PMHid)
+        {
+            using (DOANWEB_INITIALEntities db = new DOANWEB_INITIALEntities())
+            {
+                var ttdh = db.CHITIETDATHANGs.Where(n => n.masach == PMHid).ToList();
+                if (ttdh != null) { return ttdh; }
+                return null;
+            }
+        }
 
         public static CHITIETDATHANG Delete(CHITIETDATHANG model)
         {
@@ -36,5 +45,17 @@ namespace CUAHANGBANSACH.Models.DAO
                 return model;
             }
         }
+
+        public static CHITIETDATHANG Update (CHITIETDATHANG model)
+        {
+            using (DOANWEB_INITIALEntities db = new DOANWEB_INITIALEntities())
+            {
+                db.Entry(model).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+                return model;
+            }
+        }
+
+        
     }
 }

@@ -134,6 +134,7 @@
     <Compile Include="Controllers\GUESTLOGINController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Models\Combined_Model\NHANVIEN_DANHSACHCHUCVU_MODEL.cs" />
+    <Compile Include="Models\Combined_Model\SACH_DSSACH.cs" />
     <Compile Include="Models\Combined_Model\SACH_THELOAI_NXB_MODEL.cs" />
     <Compile Include="Views\NeoHomeController.cs" />
     <Compile Include="Controllers\QLGIOHANGController.cs" />
@@ -335,6 +336,8 @@
     <Content Include="Views\QLSACH\UploadImage.cshtml" />
     <Content Include="Views\GUESTLOGIN\UploadImage.cshtml" />
     <Content Include="Views\QLNV\Update.cshtml" />
+    <Content Include="Views\GioHang\EditSLSach.cshtml" />
+    <Content Include="Views\GioHang\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
