@@ -30,15 +30,17 @@ namespace CUAHANGBANSACH.Controllers
                 {
                     ModelState.AddModelError("tendangnhap", "Tên đăng nhập không tìm thấy");
                     return View(model);
+                    //return Json(new { success = false, message = "Đăng nhập thất bại!" });
                 }
                 if (kHACH.matkhau != model.matkhau)
                 {
                     ModelState.AddModelError("matkhau", "Mật Khẩu không đúng");
                     return View(model);
+                    //return Json(new { success = false, message = "Đăng nhập thất bại!" });
                 }
                 Session["KHACH"] = kHACH;
                 Session.Timeout = 240;
-                //var ttdonhang = PHIEUMUAHANG_DAO.GetDHById(model.tendangnhap);
+            //var ttdonhang = PHIEUMUAHANG_DAO.GetDHById(model.tendangnhap);
             /*if (ttdonhang == null)
             {
                 Session["Đơn Hàng"] = null;
@@ -47,8 +49,9 @@ namespace CUAHANGBANSACH.Controllers
                 if (ttdonhang.tinhtrang == "Chưa Xác Nhận") Session["Đơn Hàng"] = ttdonhang;
                 else Session["Đơn Hàng"] = null;
             }*/
-                //Session["Đơn Hàng"] = "DH20240323180959";
-                return RedirectToAction("Index", "Home");
+            //Session["Đơn Hàng"] = "DH20240323180959";
+            return RedirectToAction("Index", "Home");
+            //return Json(new { success = true, message = "Đăng nhập thành công!" });
         }
             //else return View(model);
         

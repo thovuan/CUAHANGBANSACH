@@ -6,90 +6,99 @@
 }
 }
 
-<h2>Quan Ly Sach</h2>
 
 <section id="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>DANH SÁCH SÁCH</h2>
+                <hr class="colorgraph" />
 
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.masach)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.tensach)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.soluonghienco)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.dacdiem)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.anhsanpham)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DVT)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.dongia)
-            </th>
-            <th>
-                Tên Thể Loại
-            </th>
+                <p>
+                    @Html.ActionLink("Create New", "Create")
+                </p>
+                <table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.masach)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.tensach)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.soluonghienco)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.dacdiem)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.anhsanpham)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DVT)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.dongia)
+                        </th>
+                        <th>
+                            Tên Thể Loại
+                        </th>
 
-            <th>
-                Nhà Xuất Bản
-            </th>
-            <th>
-                Tên Nhân Viên
-            </th>
-            <th></th>
-        </tr>
+                        <th>
+                            Nhà Xuất Bản
+                        </th>
+                        <th>
+                            Tên Nhân Viên
+                        </th>
+                        <th></th>
+                    </tr>
 
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.masach)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.tensach)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.soluonghienco)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.dacdiem)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.anhsanpham)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DVT)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.dongia)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.tentheloai)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.tennxb)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.tennhanvien)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", routeValues: new { @Ma_Sach = item.masach }) |
-                    @Html.ActionLink("Details", "Details", routeValues: new { @Ma_Sach = item.masach }) |
-                    @Html.ActionLink("Delete", "Delete", routeValues: new { @Ma_Sach = item.masach })
-                </td>
-            </tr>
-        }
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.masach)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.tensach)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.soluonghienco)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.dacdiem)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.anhsanpham)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DVT)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.dongia)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.tentheloai)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.tennxb)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.tennhanvien)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", routeValues: new { @Ma_Sach = item.masach }) |
+                                @Html.ActionLink("Details", "Details", routeValues: new { @Ma_Sach = item.masach }) |
+                                @Html.ActionLink("Delete", "Delete", routeValues: new { @Ma_Sach = item.masach })
+                            </td>
+                        </tr>
+                    }
 
-    </table>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    
 
 </section>

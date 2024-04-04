@@ -5,50 +5,62 @@
     Layout = "~/Views/Shared/_Layout_Staff.cshtml";
 }
 
-<h2>Details</h2>
+
 <section id="content">
-    <div>
-        <h4>NHANVIEN</h4>
-        <hr />
-        <dl class="dl-horizontal">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h4>CHI TIẾT NHÂN VIÊN @Model.manhanvien</h4>
+                <hr class="colorgraph" />
 
+                <dl class="dl-horizontal">
 
-            <dt>
-                @Html.DisplayNameFor(model => model.tennhanvien)
-            </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.tennhanvien)
+                    </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.tennhanvien)
-            </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.tennhanvien)
+                    </dd>
 
-        </dl>
+                </dl>
+            </div>
+
+            <hr class="colorgraph" />
+            <div class="col-lg-12">
+       
+                <h4>Danh sách chức vụ mà nhân viện @Model.manhanvien hiện đang làm </h4>
+                <hr  class="colorgraph"/>
+
+                <p>@Html.ActionLink("Thêm chức vụ", "AddCV", routeValues: new { @Ma_NV = Model.manhanvien })</p>
+                <table class="table">
+                    <tr>
+                        <th>Tên Chức Vụ</th>
+
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model.chucvu)
+                    {
+                        @Html.HiddenFor(model => item.machucvu)
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.tenchucvu)
+                            </td>
+
+                            <td>
+                                @Html.ActionLink("Xóa chức vụ", "DeleteCV", routeValues: new { @Ma_CV = item.machucvu })
+                            </td>
+                        </tr>
+                    }
+                </table>
+                <p>
+
+                    @Html.ActionLink("Back to List", "Index")
+                </p>
+            </div>
+        </div>
     </div>
-    <h4>Danh sách chức vụ mà nhân viện hiện đang làm </h4>
-    <p>@Html.ActionLink("Thêm chức vụ", "AddCV", routeValues: new {@Ma_NV = Model.manhanvien})</p>
-    <table class="table">
-        <tr>
-            <th>Tên Chức Vụ</th>
 
-            <th></th>
-        </tr>
-
-        @foreach (var item in Model.chucvu)
-        {
-            @Html.HiddenFor(model => item.machucvu)
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.tenchucvu)
-                </td>
-
-                <td>
-                    @Html.ActionLink("Xóa chức vụ","DeleteCV", routeValues: new {@Ma_CV = item.machucvu})
-                </td>
-            </tr>
-        }
-    </table>
-    <p>
-
-        @Html.ActionLink("Back to List", "Index")
-    </p>
 </section>
 

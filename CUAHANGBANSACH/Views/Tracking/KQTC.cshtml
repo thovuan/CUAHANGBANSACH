@@ -5,42 +5,50 @@
 }
 
 <section id="content">
-    <div>
-        <h4>Hiện thị thông tin phiếu mua hàng @Model.maphieumuahang</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.ngaylap)
-            </dt>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>Hiện thị thông tin phiếu mua hàng @Model.maphieumuahang</h2>
+                <hr class="colorgraph" />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ngaylap)
+                    </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.ngaylap)
-            </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.ngaylap)
+                    </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.tinhtrangthanhtoan)
-            </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.tinhtrangthanhtoan)
+                    </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.tinhtrangthanhtoan)
-            </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.tinhtrangthanhtoan)
+                    </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.tinhtrang)
-            </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.tinhtrang)
+                    </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.tinhtrang)
-            </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.tinhtrang)
+                    </dd>
 
-            
 
-        </dl>
+
+                </dl>
+
+                <p>
+                    @Html.ActionLink("Edit", "Edit", new { id = Model.maphieumuahang }) |
+                    @Html.ActionLink("Back to List", "Index")
+                </p>
+            </div>
+        </div>
     </div>
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.maphieumuahang }) |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
+
+   
+   
 </section>
 
 

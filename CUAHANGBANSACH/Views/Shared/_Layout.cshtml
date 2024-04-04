@@ -62,7 +62,7 @@
                             <li class="dropdown active">
                                 <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">Home <i class="fa fa-angle-down"></i></a>
                                 <ul class="dropdown-menu">
-                                    <li>@Html.ActionLink("Home", "Index", "Home", new {area = ""},  new {@class = "nav-link"})</li>
+                                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                                 </ul>
                             </li>
 
@@ -70,7 +70,7 @@
                                 <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">SHOP <i class="fa fa-angle-down"></i></a>
                                 <ul class="dropdown-menu">
                                     <li>@Html.ActionLink("Shop", "Index", "SHOP", new { area = "" }, new { @class = "nav-link" })</li>
-              
+
                                 </ul>
                             </li>
                             <li class="dropdown">
@@ -89,7 +89,7 @@
                                 </ul>
                             </li>
 
-                       
+
 
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">ACCOUNT <i class="fa fa-angle-down"></i></a>
@@ -98,7 +98,8 @@
                                     {
                                         <li>@Html.ActionLink("Thông tin khách hàng", "TTKH", "GUESTLOGIN", new { area = "" }, new { @class = "nav-link" })</li>
                                         <li>@Html.ActionLink("Đăng Xuất", "Logout", "GUESTLOGIN", new { area = "" }, new { @class = "nav-link" })</li>
-                                    } else
+                                    }
+                                    else
                                     {
                                         <li>@Html.ActionLink("Đăng Nhập", "Login", "GUESTLOGIN", new { area = "" }, new { @class = "nav-link" })</li>
                                         <li>@Html.ActionLink("Đổi Mật Khẩu", "UpdateMK", "GUESTLOGIN", new { area = "" }, new { @class = "nav-link" })</li>
@@ -112,12 +113,19 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">GIAO DIỆN <i class="fa fa-angle-down"></i></a>
                                 <ul class="dropdown-menu">
-                                    <li>@Html.ActionLink("Giao diện shop", "Index", "Home", new { area = ""}, new {@class = "nav-link"})</li>
-                                    <li>@Html.ActionLink("Giao diện của nhân viên", "Index", "STAFFLOGIN", new {area = ""}, new {@class = "nav-link"})</li>
+                                    <li>@Html.ActionLink("Giao diện shop", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                                    <li>@Html.ActionLink("Giao diện của nhân viên", "Index", "STAFFLOGIN", new { area = "" }, new { @class = "nav-link" })</li>
                                 </ul>
                             </li>
 
-                            <li>@Html.ActionLink("Giỏ hàng", "Index", "GioHang", new { area = "" }, new { @class = "nav-link" })</li>
+                            
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">Giỏ Hàng<i class="fa fa-angle-down"></i></a>
+                                <ul class="dropdown-menu">
+                                    <li>@Html.ActionLink("Giỏ hàng", "Details", "GioHang", new { area = "" }, new { @class = "nav-link" })</li>
+                                    <li>@Html.ActionLink("Lịch sử mua hàng", "Index", "GioHang", new { area = "" }, new { @class = "nav-link" })</li>
+                                </ul>
+                            </li>
 
                         </ul>
                     </div>
@@ -128,6 +136,8 @@
 
 
         @RenderBody()
+
+        
 
 
         <footer>
@@ -194,11 +204,11 @@
                                 <p>&copy; Sailor Theme - All Right Reserved</p>
                                 <div class="credits">
                                     <!--
-                                        All the links in the footer should remain intact.
-                                        You can delete the links only if you purchased the pro version.
-                                        Licensing information: https://bootstrapmade.com/license/
-                                        Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Sailor
-                                    -->
+                                    All the links in the footer should remain intact.
+                                    You can delete the links only if you purchased the pro version.
+                                    Licensing information: https://bootstrapmade.com/license/
+                                    Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Sailor
+                                -->
                                     <a href="https://bootstrapmade.com/free-business-bootstrap-themes-website-templates/">Business Bootstrap Themes</a> by <a href="https://bootstrapmade.com/">BootstrapMade</a>
                                 </div>
                             </div>
