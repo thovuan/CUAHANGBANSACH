@@ -19,6 +19,14 @@ namespace CUAHANGBANSACH.Controllers
             return View(PHIEUMUAHANG_DAO.GetByGuestID(khach.makhachhang));
         }
 
+        public ActionResult MyCart ()
+        {
+            KHACH khach = (KHACH)Session["KHACH"];
+            PHIEUMUAHANG checkpmh = (PHIEUMUAHANG)Session["Đơn Hàng"];
+            if (khach == null || checkpmh == null) return View();
+            return View(PHIEUMUAHANG_DAO.GetDHByID(khach.makhachhang, checkpmh.maphieumuahang));
+        }
+
         public ActionResult Details(string Ma_DH) { 
             var ttdh = PHIEUMUAHANG_DAO.GetById(Ma_DH);
             if (ttdh == null) return HttpNotFound();
@@ -210,7 +218,8 @@ namespace CUAHANGBANSACH.Controllers
             {
                 return HttpNotFound();
             }
-            
+            string selectedTL = Request.Form["PTTT"];
+            model.PHIEUMUAHANG.tinhtrangthanhtoan = selectedTL;
 
             ttkh.tenkhachhang = model.KHACH.tenkhachhang;
             ttkh.sdt = model.KHACH.sdt;
@@ -218,7 +227,7 @@ namespace CUAHANGBANSACH.Controllers
             ttkh.avatar = model.KHACH.avatar;
             ttkh.email = model.KHACH.email;
             ttdonhang.tinhtrang = "Xác Nhận";
-            ttdonhang.tinhtrangthanhtoan = "Thanh toán bằng tiền mặt";
+            ttdonhang.tinhtrangthanhtoan = model.PHIEUMUAHANG.tinhtrangthanhtoan;
 
             foreach (SACH sach in ttdonhang.dsSach)
             {

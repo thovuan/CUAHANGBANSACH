@@ -71,6 +71,15 @@ namespace CUAHANGBANSACH.Models.DAO
                 return null;
             }
         }
+        public static PHIEUMUAHANG GetDHByID(string mkh, string dh) {
+
+            using (DOANWEB_INITIALEntities db = new DOANWEB_INITIALEntities())
+            {
+                var PMH = db.PHIEUMUAHANGs.Where(n => n.makhachhang == mkh && n.maphieumuahang == dh).FirstOrDefault();
+                if (PMH != null) { return PMH; }
+                return null;
+            }
+        }
 
         public static PHIEUMUAHANG Create(PHIEUMUAHANG model)
         {

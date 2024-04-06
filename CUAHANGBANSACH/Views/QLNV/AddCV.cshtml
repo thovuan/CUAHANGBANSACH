@@ -1,0 +1,59 @@
+﻿@model CUAHANGBANSACH.Models.Combined_Model.NHANVIEN_DANHSACHCHUCVU_MODEL
+
+@{
+    ViewBag.Title = "AddCV";
+    Layout = "~/Views/Shared/_Layout_Staff.cshtml";
+}
+
+<section id="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+                        <h4>THÊM CHỨC VỤ NHÂN VIÊN @Model.NHANVIEN.tennhanvien</h4>
+                        <hr class="colorgraph" />
+                        @Html.HiddenFor(model => model.NHANVIEN.manhanvien)
+                        
+                        <div class="form-group">
+
+                            <div class="col-md-10">
+                                <select name="CHUCVU" class="form-control">
+                                    <option value="0">--Chọn Mã Nhân Viên</option>
+                                    @foreach (var cv in Model.CHUCVU)
+                                    {
+                                        <option value="@cv.machucvu">@cv.tenchucvu</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Create" class="btn btn-default" />
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                <div>
+                    @Html.ActionLink("Back to List", "Index")
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

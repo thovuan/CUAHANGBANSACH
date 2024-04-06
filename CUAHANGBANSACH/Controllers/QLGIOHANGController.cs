@@ -24,6 +24,15 @@ namespace CUAHANGBANSACH.Controllers
             return View(PHIEUMUAHANG_DAO.GetAll());
         }
 
+        public ActionResult Details(string Ma_DH)
+        {
+            if (!KiemTraPhanQuyen("CV03")) return View("Bạn không có quyền");
+            var ttdh = PHIEUMUAHANG_DAO.GetById(Ma_DH);
+            if (ttdh!= null) { return View(ttdh); }
+            return HttpNotFound();
+            
+        }
+
         
     }
 }

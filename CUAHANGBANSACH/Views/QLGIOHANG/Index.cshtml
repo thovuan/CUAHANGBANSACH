@@ -47,9 +47,9 @@
                             </td>
                             <td>
                                 @Html.ActionLink("Xác nhận", "Edit", new { id = item.maphieumuahang }) |
-                                @Html.ActionLink("Details", "Details", new { id = item.maphieumuahang }) |
+                                @Html.ActionLink("Details", "Details", routeValues: new { @Ma_DH = item.maphieumuahang }) |
                                 @Html.ActionLink("Lập phiếu giao", "Edit", new { id = item.maphieumuahang }) |
-                                @Html.ActionLink("Delete", "Delete", new { id = item.maphieumuahang })
+                                @Html.ActionLink("Delete", "Delete", routeValues: new { @Ma_DH = item.maphieumuahang })
                             </td>
                         </tr>
                     }

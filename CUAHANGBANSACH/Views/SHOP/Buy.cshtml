@@ -6,40 +6,48 @@
 
 
 <section id="content">
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
+    
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        <h4>XÁC NHẬN thêm vào giỏ hàng?</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.masach)
+                        <div class="form-horizontal">
+                            <h4>XÁC NHẬN thêm vào giỏ hàng?</h4>
+                            <h5>Sách @Model.tensach</h5>
+                            <hr class="colorgraph"/>
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @Html.HiddenFor(model => model.masach)
 
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.soluongmua, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.soluongmua, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.soluongmua, "", new { @class = "text-danger" })
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.soluongmua, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.soluongmua, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.soluongmua, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Thêm vào giỏ hàng" class="btn btn-default" />
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    <div>
+                        @Html.ActionLink("Back to List", "Index")
+                    </div>
+                </div>
             </div>
         </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Thêm vào giỏ hàng" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-    }
-
-    <div>
-        @Html.ActionLink("Back to List", "Index")
-    </div>
 </section>
 
 
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

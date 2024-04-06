@@ -32,7 +32,7 @@
                 <h4>Danh sách chức vụ mà nhân viện @Model.manhanvien hiện đang làm </h4>
                 <hr  class="colorgraph"/>
 
-                <p>@Html.ActionLink("Thêm chức vụ", "AddCV", routeValues: new { @Ma_NV = Model.manhanvien })</p>
+                <p>@Html.ActionLink("Thêm chức vụ", "AddCV", routeValues: new { @MaNV = Model.manhanvien })</p>
                 <table class="table">
                     <tr>
                         <th>Tên Chức Vụ</th>
@@ -49,7 +49,7 @@
                             </td>
 
                             <td>
-                                @Html.ActionLink("Xóa chức vụ", "DeleteCV", routeValues: new { @Ma_CV = item.machucvu })
+                                @Html.ActionLink("Xóa chức vụ", "DeleteCV", routeValues: new { @MaNV = Model.manhanvien, @Ma_CV = item.machucvu })
                             </td>
                         </tr>
                     }

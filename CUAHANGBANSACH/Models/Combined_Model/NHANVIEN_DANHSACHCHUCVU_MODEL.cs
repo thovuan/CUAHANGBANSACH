@@ -8,6 +8,7 @@ namespace CUAHANGBANSACH.Models.Combined_Model
     public partial class NHANVIEN_DANHSACHCHUCVU_MODEL
     {
         public virtual NHANVIEN NHANVIEN { get; set; }
-        public virtual List<CHUCVU> CHUCVU { get; set;}
+        public virtual List<CHUCVU> CHUCVU { get; set; }
+        public virtual CHUCVU _CHUCVU {get; set; }
     }
 }
