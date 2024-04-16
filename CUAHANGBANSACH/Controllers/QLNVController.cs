@@ -4,6 +4,7 @@ using CUAHANGBANSACH.Models.DAO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Web;
 using System.Web.Mvc;
 
@@ -19,11 +20,12 @@ namespace CUAHANGBANSACH.Controllers
             if (check != null) return true;
             return false;
         }
-        public ActionResult Index()
+        public ActionResult Index(string Find)
         {
             if (!KiemTraPhanQuyen("CV01")) return View("Bạn không có quyền vào đây");
-            ViewData.Model = NHANVIEN_DAO.GetAllList();
-            return View();
+            if (Find != null) return View(NHANVIEN_DAO.GetByName(Find));
+            return View (NHANVIEN_DAO.GetAllList());
+            
         }
 
         public ActionResult Details(string MaNV)

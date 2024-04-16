@@ -1,8 +1,8 @@
-﻿@model IEnumerable<CUAHANGBANSACH.Models.SACH>
+﻿@model CUAHANGBANSACH.Models.Combined_Model.SACH_DSSACH
 
 @{
     ViewBag.Title = "Index";
-    
+
 }
 
 <h2>SHOP PAGE</h2>
@@ -17,10 +17,17 @@
                 <aside class="left-sidebar">
                     <div class="widget">
                         <form role="form">
-                            <div class="form-group">
-                                <input type="text" class="form-control" id="s" placeholder="Search.."/>
-                                <input type="submit" class="form-control" />
-                            </div>
+                            @using (Html.BeginForm("Index", "SHOP", FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
+                                <div class="form-group">
+                                    
+                                    @Html.Editor("Find", "", new { htmlAttributes = new { @class = "form-control input-lg", @placeholder = "Nhập tên sản phẩm cần tìm" } })
+                                    @Html.ValidationMessageFor(model => model.SACH.tensach, "", new { @class = "text-danger" })
+                                    <input type="submit" value="Tìm kiếm" class="btn btn-default" />
+                                </div>
+                            }
+
                         </form>
                     </div>
                     <div class="widget">
@@ -73,7 +80,7 @@
                 <h2 class="title">Book</h2>
                 <hr class="colorgraph" />
                 <div class="row2">
-                    @foreach (SACH sach in Model)
+                    @foreach (SACH sach in Model.SACHes)
                     {
                         <div class="col-4">
                             <img src="@sach.anhsanpham" />
@@ -81,12 +88,63 @@
                             <h4>@sach.tensach</h4>
                             <h5>Đơn Giá: @sach.dongia</h5>
                             <h6>Số lượng hiện có: @sach.soluonghienco</h6>
-                            <p>@Html.ActionLink("Xem thêm", "Detail", "SHOP", routeValues: new { @MaSach = sach.masach }, htmlAttributes: null)</p>
-                            <p>@Html.ActionLink("Thêm vào giỏ hàng", "Buy", "SHOP", routeValues: new { @MaSach = sach.masach }, htmlAttributes: null)</p>
+                            <button onclick="Lay_Thongtin('@sach.masach')" data-toggle="modal" data-target=".bs-modal-lg_1">Chi tiết</button>
+
+                            <input type="button" style="color: white; background-color:darkblue;" value="Thêm vào giỏ hàng" onclick="location.href='@Url.Action("Buy", "SHOP", routeValues: new { @MaSach = sach.masach })'" />
                         </div>
                     }
                 </div>
             </div>
+
+            <div class="modal fade bs-modal-lg_1" tabindex="-1" role="document" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <!-- Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="myModalLabel">Thông tin chi tiết</h4>
+                        </div>
+                        <div class="modal-body">
+                            <!-- Body -->
+                            <div class="row form-group" id="Body_Modal">
+                            </div>
+                            <!-- Footer -->
+                            <hr />
+                            <div class="row form-group">
+                                <button class="btn btn-default col-sm-3 col-mod-2 " data-dismiss="modal">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @section scripts{
+                <script>
+                    function Lay_Thongtin(MaSach) {
+                        //creating an XHLHttpRequest
+                        var xhr = new XMLHttpRequest();
+                        //define a callback function
+                        var url = '@Url.Action("Detail", "SHOP")';
+                        url += '?MaSach=' + MaSach;
+                        xhr.open("GET", url, true);
+                        //onload property
+                        xhr.onreadystatechange = function () {
+                            if (xhr.readyState == 4 && xhr.status == 200) {
+                                document.getElementById('Body_Modal').innerHTML = xhr.responseText;
+
+                            }
+                        }
+                        //send request
+                        xhr.send();
+
+                    }
+
+
+                </script>
+
+                
+                    @Scripts.Render("~/bundles/jqueryval")
+                
+            }
 
 
         </div>

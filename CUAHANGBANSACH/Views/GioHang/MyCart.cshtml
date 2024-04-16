@@ -12,7 +12,7 @@
                 <h4>GIỎ HÀNG CỦA TÔI</h4>
                 <hr class="colorgraph" />
                 <p>
-                    @Html.ActionLink("Tạo Mới Đơn Hàng", "Create")
+                    <input type="button" style="color: white; background-color: yellowgreen;" value="Tạo mới đơn hàng" onclick="location.href='@Url.Action("Create", "GioHang")'" />
                 </p>
                 @if (Model == null)
                 {<h3>Please login to see your cart or create new cart here</h3>}
@@ -47,10 +47,10 @@
                     </dl>
 
                     <p>
-                        @Html.ActionLink("Xác Nhận Mua", "Confirm", routeValues: new { @Ma_DH = Model.maphieumuahang }) |
-                        @Html.ActionLink("Details", "Details", routeValues: new { @Ma_DH = Model.maphieumuahang }) |
-                        @Html.ActionLink("Delete", "Delete", routeValues: new { @Ma_DH = Model.maphieumuahang })
-
+                        
+                        <input type="button" style="color: white; background-color:darkblue;" value="Xác Nhận Mua" onclick="location.href='@Url.Action("Confirm", "GioHang", routeValues: new { @Ma_DH = Model.maphieumuahang })'" />
+                        <input type="button" style="color: white; background-color: red;" value="Details" onclick="location.href='@Url.Action("Details", "GioHang", routeValues: new { @Ma_DH = Model.maphieumuahang })'" />
+                        <input type="button" style="color: white; background-color: grey;" value="Delete" onclick="location.href='@Url.Action("Delete", "GioHang", routeValues: new { @Ma_DH = Model.maphieumuahang })'" />
                     </p>
                 }
                 <p>

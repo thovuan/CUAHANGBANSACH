@@ -133,10 +133,12 @@
     <Compile Include="Controllers\GioHangController.cs" />
     <Compile Include="Controllers\GUESTLOGINController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\QLTLController.cs" />
     <Compile Include="Models\Combined_Model\NHANVIEN_DANHSACHCHUCVU_MODEL.cs" />
     <Compile Include="Models\Combined_Model\SACH_DSSACH.cs" />
     <Compile Include="Models\Combined_Model\SACH_THELOAI_NXB_MODEL.cs" />
     <Compile Include="Models\DAO\CHITIETCHUCVU_DAO.cs" />
+    <Compile Include="Models\DAO\THE_DAO.cs" />
     <Compile Include="Views\NeoHomeController.cs" />
     <Compile Include="Controllers\QLGIOHANGController.cs" />
     <Compile Include="Controllers\QLCHUCVUController.cs" />
@@ -343,6 +345,13 @@
     <Content Include="Views\QLGIOHANG\Details.cshtml" />
     <Content Include="Views\GioHang\MyCart.cshtml" />
     <Content Include="Views\QLNV\AddCV.cshtml" />
+    <Content Include="Views\THE\Index.cshtml" />
+    <Content Include="Views\QLTL\Index.cshtml" />
+    <Content Include="Views\QLTL\Create.cshtml" />
+    <Content Include="Views\THE\Delete.cshtml" />
+    <Content Include="Views\QLTL\Details.cshtml" />
+    <Content Include="Views\QLTL\Update.cshtml" />
+    <Content Include="Views\QLTL\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -351,7 +360,6 @@
     <Folder Include="Content\PIC_INTRO\" />
     <Folder Include="Models\NewFolder1\" />
     <Folder Include="Views\THELOAI_DAO\" />
-    <Folder Include="Views\THE\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

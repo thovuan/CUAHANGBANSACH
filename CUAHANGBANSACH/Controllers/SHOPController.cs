@@ -13,15 +13,41 @@ namespace CUAHANGBANSACH.Controllers
     public class SHOPController : Controller
     {
         // GET: SHOP
-        public ActionResult Index(string Ma_TheLoai, string Ma_NXB)
+        public ActionResult Index(string Find, string Ma_TheLoai, string Ma_NXB)
         {
-
-            if (Ma_TheLoai != null && Ma_NXB == null) ViewData.Model = SACH_DAO.ChuDe_List(Ma_TheLoai);
-            else if (Ma_TheLoai == null && Ma_NXB != null) ViewData.Model = SACH_DAO.NXB_List(Ma_NXB);
-            else ViewData.Model = SACH_DAO.All_List();
-            return View();
+            List<SACH> list;
+            if (Find!=null) 
+                list = SACH_DAO.GetByName(Find);
+            else
+            {
+                if (Ma_TheLoai != null && Ma_NXB == null) list = SACH_DAO.ChuDe_List(Ma_TheLoai);
+                else if (Ma_TheLoai == null && Ma_NXB != null) list = SACH_DAO.NXB_List(Ma_NXB);
+                else list = SACH_DAO.All_List();
+            }
+            
+            SACH_DSSACH m = new SACH_DSSACH()
+            {
+                 SACHes =  list,
+            };
+            
+            return View(m);
         }
-        
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Index(SACH_DSSACH model)
+        {
+            List<SACH> list;
+            list = SACH_DAO.GetByName(model.SACH.tensach);
+
+            SACH_DSSACH m = new SACH_DSSACH()
+            {
+                SACHes = list,
+            };
+           
+            return View(m);
+        }
+
         public ActionResult Index02(string Ma_TheLoai) {
 
             /*DOANWEB_INITIALEntities db = new DOANWEB_INITIALEntities();
@@ -42,8 +68,8 @@ namespace CUAHANGBANSACH.Controllers
 
         //[HttpPost]
         public ActionResult Detail(string MaSach) {
-            ViewData.Model = SACH_DAO.GetById(MaSach);
-            return View();
+            SACH model = SACH_DAO.GetById(MaSach);
+            return PartialView(model);
         }
 
         public ActionResult Buy (string MaSach)
@@ -109,6 +135,14 @@ namespace CUAHANGBANSACH.Controllers
             } return View(model);
         }
 
-        
+        public ActionResult Confirm()
+        {
+            return PartialView();
+        }
+        public ActionResult Failure()
+        {
+            return PartialView();
+        }
+
     }
 }

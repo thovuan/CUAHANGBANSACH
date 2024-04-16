@@ -1,0 +1,49 @@
+﻿@model CUAHANGBANSACH.Models.THE
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<section id="content">
+    <div class="container">
+        <div class="row">
+            @if (Model == null)
+            {
+                <h2>Tạo thẻ đề xem</h2>
+                <input type="button" value="Đăng ký thẻ" onclick="location.href='@Url.Action("Create", "THE")'" />
+            }
+            else
+            {
+                <h2>THÔNG TIN THẺ @Model.mathe</h2>
+                <hr class="colorgraph" />
+
+                <div class="col-lg-8">
+                    <h4>Ảnh thẻ [Update sau]</h4>
+                </div>
+
+                <div class="col-lg-4">
+                    <h4>Điểm Thẻ</h4>
+                    <hr class="colorgraph" />
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.diemthe)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.diemthe)
+                        </dd>
+
+                    </dl>
+                </div>
+                <div class="form-group">
+                    <input type="button" value="Xóa thẻ" onclick="location.href='@Url.Action("Delete", "THE", routeValues: new { @mathe = Model.mathe })'" />
+
+                </div>
+            }
+
+
+        </div>
+    </div>
+</section>
+
+

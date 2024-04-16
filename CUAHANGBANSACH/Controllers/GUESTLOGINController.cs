@@ -222,7 +222,7 @@ namespace CUAHANGBANSACH.Controllers
                 string fileName = Path.GetFileName(image.FileName);
                 string filePath = Path.Combine(Server.MapPath("~/Content/GuestAvatar/"), fileName);
                 image.SaveAs(filePath);
-                //idmakh.makhachhang = model.makhachhang;
+                idmakh.makhachhang = model.makhachhang;
                 idmakh.avatar = "/Content/GuestAvatar/" + fileName;
                 
             }

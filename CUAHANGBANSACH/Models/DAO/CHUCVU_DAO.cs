@@ -49,6 +49,20 @@ namespace CUAHANGBANSACH.Models.DAO
             }
         }
 
+        public static List<CHUCVU> GetByName(string id)
+        {
+            using (DOANWEB_INITIALEntities db = new DOANWEB_INITIALEntities())
+            {
+                var cv = db.CHUCVUs.Where(n => n.tenchucvu.Contains(id)).ToList();
+                if (cv != null)
+                {
+
+                    return cv;
+                }
+                return null;
+            }
+        }
+
         public static CHUCVU Create(CHUCVU model)
         {
             using (DOANWEB_INITIALEntities db = new DOANWEB_INITIALEntities())

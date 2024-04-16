@@ -36,6 +36,16 @@ namespace CUAHANGBANSACH.Models.DAO
             }
         }
 
+        public static List<KHACH> GetByName(string name)
+        {
+            using (DOANWEB_INITIALEntities db = new DOANWEB_INITIALEntities())
+            {
+                var kh = db.KHACHes.Where(n => n.tenkhachhang.Contains(name)).ToList();
+                if (kh != null) { return kh; }
+                return null;
+            }
+        }
+
         public static KHACH GetByEmail(string email)
         {
             using (DOANWEB_INITIALEntities db = new DOANWEB_INITIALEntities())

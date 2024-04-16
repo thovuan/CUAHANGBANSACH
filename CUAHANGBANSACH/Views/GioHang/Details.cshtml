@@ -79,7 +79,7 @@
                                 @Html.DisplayFor(modelItem => item.dacdiem)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.anhsanpham)
+                                <img src="@item.anhsanpham" style="width: 50px" />
                             </td>
                             <td>@Html.DisplayFor(modelItem => item.soluongmua)</td>
                             <td>
@@ -88,9 +88,10 @@
                             <td>@Html.DisplayFor(modelItem => item.thanhtien) VND</td>
 
                             <td>
-                                @Html.ActionLink("Edit", "EditSLSach", routeValues: new { @Ma_Sach = item.masach }) |
-                                @Html.ActionLink("Thông tin sách", "Detail", "SHOP", routeValues: new { @MaSach = item.masach }, htmlAttributes: null) |
-                                @Html.ActionLink("Xóa sản phẩm ra khỏi giỏ hàng", "DeleteSACH", routeValues: new { @Ma_Sach = item.masach })
+                                <input type="button" style="color: white; background-color:darkblue;" value="Edit" onclick="location.href='@Url.Action("EditSLSach", "GioHang", routeValues: new { @Ma_Sach = item.masach })'" />
+                                <input type="button" style="color: white; background-color: red;" value="Thông tin sách" onclick="location.href='@Url.Action("Detail", "SHOP", routeValues: new { @MaSach = item.masach })'" />
+                                <input type="button" style="color: white; background-color: grey;" value="Xóa sản phẩm ra khỏi giỏ hàng" onclick="location.href='@Url.Action("DeleteSACH", "GioHang", routeValues: new { @Ma_Sach = item.masach })'" />
+                               
                             </td>
                         </tr>
                     }

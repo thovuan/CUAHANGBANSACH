@@ -22,10 +22,16 @@ namespace CUAHANGBANSACH.Controllers
         }
         
         // GET: QLSACH
-        public ActionResult Index()
+        public ActionResult Index(string Find)
         {
-            if (KiemTraPhanQuyen("CV02")) 
+            if (KiemTraPhanQuyen("CV02"))
+            {
+                
+                if (Find != null)
+                    return View(SACH_DAO.GetByName(Find));
                 return View(SACH_DAO.All_List());
+            }
+                
             return View("Bạn không có quyền truy cập vào page");
         }
 

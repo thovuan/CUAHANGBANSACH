@@ -218,6 +218,7 @@ namespace CUAHANGBANSACH.Controllers
             {
                 return HttpNotFound();
             }
+            
             string selectedTL = Request.Form["PTTT"];
             model.PHIEUMUAHANG.tinhtrangthanhtoan = selectedTL;
 
@@ -228,6 +229,14 @@ namespace CUAHANGBANSACH.Controllers
             ttkh.email = model.KHACH.email;
             ttdonhang.tinhtrang = "Xác Nhận";
             ttdonhang.tinhtrangthanhtoan = model.PHIEUMUAHANG.tinhtrangthanhtoan;
+
+            var the = THE_DAO.GetByIDG(model.KHACH.makhachhang);
+            if (the != null)
+            {
+                decimal temp = ttdonhang.DHTotal * (1m/100m);
+                the.diemthe += Convert.ToInt32(temp);
+            } 
+                
 
             foreach (SACH sach in ttdonhang.dsSach)
             {
@@ -246,6 +255,7 @@ namespace CUAHANGBANSACH.Controllers
                 KHACH_DAO.Update(ttkh);
                 //khach = update;
                 PHIEUMUAHANG_DAO.Update(ttdonhang);
+                THE_DAO.Update(the);
                 Session.Remove("Đơn Hàng");
                 return RedirectToAction("Index");
             }

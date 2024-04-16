@@ -19,9 +19,10 @@ namespace CUAHANGBANSACH.Controllers
             return false;
         }
         
-        public ActionResult Index()
+        public ActionResult Index(string Find)
         {
             if (!KiemTraPhanQuyen("CV01")) return View("Bạn không có quyền vào đây");
+            if (Find!=null) return View (KHACH_DAO.GetByName(Find));
             return View(KHACH_DAO.GetAllList());
         }
 

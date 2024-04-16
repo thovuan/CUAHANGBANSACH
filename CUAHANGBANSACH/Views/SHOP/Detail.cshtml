@@ -4,8 +4,8 @@
     ViewBag.Title = "Detail";
 }
 
-<section id="content">
-    <div class="container">
+<section id="content" style="margin-left: 10px; margin-right:10px">
+    <div class="col-xs-12">
         <div class="row">
             <h2>Chi tiết thông tin Sách @Model.masach</h2>
             <hr class="colorgraph" />
@@ -14,7 +14,7 @@
                 <div class="form-group">
                     @if (!string.IsNullOrEmpty(Model.anhsanpham))
                     {
-                        <img src=@Model.anhsanpham style="width: 200px; height: auto;" />
+                        <img src=@Model.anhsanpham style="width: 260px; height: auto;" />
                     }
                     else
                     {

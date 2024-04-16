@@ -3,6 +3,7 @@ using CUAHANGBANSACH.Models.DAO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 
@@ -18,9 +19,10 @@ namespace CUAHANGBANSACH.Controllers
             if (check != null) return true;
             return false;
         }
-        public ActionResult Index()
+        public ActionResult Index(string Find)
         {
             if (!KiemTraPhanQuyen("CV03")) return View("Bạn không có quyền");
+            if (Find!= null) return View( PHIEUMUAHANG_DAO.GetById2(Find));
             return View(PHIEUMUAHANG_DAO.GetAll());
         }
 

@@ -113,7 +113,7 @@
           <Key>
             <PropertyRef Name="mathe" />
           </Key>
-          <Property Name="mathe" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="mathe" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="diemthe" Type="int" Nullable="false" />
           <Property Name="makhachhang" Type="varchar" MaxLength="20" />
         </EntityType>
@@ -381,7 +381,7 @@
           <Key>
             <PropertyRef Name="mathe" />
           </Key>
-          <Property Name="mathe" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="mathe" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="diemthe" Type="Int32" Nullable="false" />
           <Property Name="makhachhang" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="KHACH" Relationship="DOANWEB_INITIALModel.FK_THE_KHACH" FromRole="THE" ToRole="KHACH" />

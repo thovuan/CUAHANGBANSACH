@@ -44,6 +44,16 @@ namespace CUAHANGBANSACH.Models.DAO
             }
         }
 
+        public static List<SACH> GetByName(string name)
+        {
+            using (DOANWEB_INITIALEntities db = new DOANWEB_INITIALEntities())
+            {
+                List<SACH> sACH = db.SACHes.Where(n => n.tensach.Contains(name)).ToList();
+                if (sACH.Count > 0) return sACH;
+                return null;
+            }
+        }
+
         public static SACH GetById(string id)
         {
             using (DOANWEB_INITIALEntities db = new DOANWEB_INITIALEntities())

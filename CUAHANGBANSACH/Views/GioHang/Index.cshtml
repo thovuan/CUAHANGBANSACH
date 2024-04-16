@@ -13,7 +13,7 @@
                 <hr class="colorgraph" />
 
                 <p>
-                    @Html.ActionLink("Tạo Mới Đơn Hàng", "Create")
+                    <input type="button" style="color: white; background-color: yellowgreen;" value="Tạo mới đơn hàng" onclick="location.href='@Url.Action("Create", "GioHang")'" />
                 </p>
 
 
@@ -58,9 +58,10 @@
                                     @Html.DisplayFor(modelItem => item.makhachhang)
                                 </td>
                                 <td>
-                                    @Html.ActionLink("Xác Nhận Mua", "Confirm", routeValues: new { @Ma_DH = item.maphieumuahang }) |
-                                    @Html.ActionLink("Details", "Details", routeValues: new { @Ma_DH = item.maphieumuahang }) |
-                                    @Html.ActionLink("Delete", "Delete", routeValues: new { @Ma_DH = item.maphieumuahang })
+                                    
+                                    <input type="button" style="color: white; background-color:darkblue;" value="Xác Nhận Mua" onclick="location.href='@Url.Action("Confirm", "GioHang", routeValues: new { @Ma_DH = item.maphieumuahang })'" />
+                                    <input type="button" style="color: white; background-color: red;" value="Details" onclick="location.href='@Url.Action("Details", "GioHang", routeValues: new { @Ma_DH = item.maphieumuahang })'" />
+                                    <input type="button" style="color: white; background-color: grey;" value="Delete" onclick="location.href='@Url.Action("Delete", "GioHang", routeValues: new { @Ma_DH = item.maphieumuahang })'" />
                                 </td>
                             </tr>
                         }

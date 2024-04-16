@@ -1,0 +1,50 @@
+﻿@model IEnumerable<CUAHANGBANSACH.Models.THELOAISACH>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<section id="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>DANH SÁCH SÁCH</h2>
+                <hr class="colorgraph" />
+
+                <p>
+                    @Html.ActionLink("Create New", "Create")
+                </p>
+                <table class="table">
+                    <tr>
+                        <th>
+                            Mã Thể Loại
+                        </th>
+                        <th>
+                            Tên thể loại
+                        </th>
+                        
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.matheloai) </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.tentheloai)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", routeValues: new { @MaTL = item.matheloai }) |
+                                @Html.ActionLink("Details", "Details", routeValues: new { @MaTL = item.matheloai }) |
+                                @Html.ActionLink("Delete", "Delete", routeValues: new { @MaTL = item.matheloai })
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+

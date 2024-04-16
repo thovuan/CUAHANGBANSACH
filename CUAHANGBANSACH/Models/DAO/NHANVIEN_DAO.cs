@@ -56,6 +56,16 @@ namespace CUAHANGBANSACH.Models.DAO
             }
         }
 
+        public static List<NHANVIEN> GetByName(string id)
+        {
+            using (DOANWEB_INITIALEntities db = new DOANWEB_INITIALEntities())
+            {
+                var nv = db.NHANVIENs.Where(n => n.tennhanvien.Contains(id)).ToList();
+                return nv;
+
+            }
+        }
+
         public static List<NHANVIEN> GetAllList()
         {
             using (DOANWEB_INITIALEntities db = new DOANWEB_INITIALEntities())

@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout_Staff.cshtml";
 }
-}
+
 
 
 <section id="content">
@@ -14,9 +14,25 @@
                 <h2>DANH SÁCH SÁCH</h2>
                 <hr class="colorgraph" />
 
-                <p>
-                    @Html.ActionLink("Create New", "Create")
-                </p>
+                <div class="col-lg-4" style="margin-top:10px; margin-bottom: 10px">
+                    <input type="button" style="color: white; background-color: yellowgreen;" value="Thêm sách" onclick="location.href='@Url.Action("Create", "QLSACH")'" />
+
+                </div>
+
+                <div class="col-lg-8" style="margin-top:10px; margin-bottom: 10px">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="col-lg-6" >
+
+                            @Html.Editor("Find", "", new { htmlAttributes = new { @class = "form-control input-lg", @placeholder = "Nhập tên sản phẩm cần tìm" } })
+
+                        </div>
+                        <div class="col-lg-2" >
+                            <input type="submit" value="Tìm kiếm" class="btn btn-default" />
+                        </div>
+                    }
+                </div>
                 <table class="table">
                     <tr>
                         <th>
@@ -69,7 +85,7 @@
                                 @Html.DisplayFor(modelItem => item.dacdiem)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.anhsanpham)
+                                <img src="@item.anhsanpham" style="width: 50px" />
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.DVT)
@@ -87,9 +103,10 @@
                                 @Html.DisplayFor(modelItem => item.tennhanvien)
                             </td>
                             <td>
-                                @Html.ActionLink("Edit", "Edit", routeValues: new { @Ma_Sach = item.masach }) |
-                                @Html.ActionLink("Details", "Details", routeValues: new { @Ma_Sach = item.masach }) |
-                                @Html.ActionLink("Delete", "Delete", routeValues: new { @Ma_Sach = item.masach })
+                                <input type="button" style="color: white; background-color:darkblue;" value="Edit" onclick="location.href='@Url.Action("Edit", "QLSACH", routeValues: new { @Ma_Sach = item.masach })'" />
+                                <input type="button" style="color: white; background-color: red;" value="Thông tin sách" onclick="location.href='@Url.Action("Details", "QLSACH", routeValues: new { @Ma_Sach = item.masach })'" />
+                                <input type="button" style="color: white; background-color: grey;" value="Xóa sách" onclick="location.href='@Url.Action("Delete", "QLSACH", routeValues: new { @Ma_Sach = item.masach })'" />
+
                             </td>
                         </tr>
                     }

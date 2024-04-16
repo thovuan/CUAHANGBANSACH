@@ -32,7 +32,10 @@
                 <h4>Danh sách chức vụ mà nhân viện @Model.manhanvien hiện đang làm </h4>
                 <hr  class="colorgraph"/>
 
-                <p>@Html.ActionLink("Thêm chức vụ", "AddCV", routeValues: new { @MaNV = Model.manhanvien })</p>
+                <p>
+                    <input type="button" style="color: white; background-color: darkblue;" value="Thêm chức vụ" onclick="location.href='@Url.Action("AddCV", "QLNV", routeValues: new { @MaNV = Model.manhanvien })'" />
+                    
+                </p>
                 <table class="table">
                     <tr>
                         <th>Tên Chức Vụ</th>
@@ -49,7 +52,8 @@
                             </td>
 
                             <td>
-                                @Html.ActionLink("Xóa chức vụ", "DeleteCV", routeValues: new { @MaNV = Model.manhanvien, @Ma_CV = item.machucvu })
+                               
+                                <input type="button" style="color: white; background-color: red;" value="Xóa chức vụ" onclick="location.href='@Url.Action("DeleteCV", "QLNV", routeValues: new { @MaNV = Model.manhanvien, @Ma_CV = item.machucvu })'" />
                             </td>
                         </tr>
                     }
