@@ -133,6 +133,7 @@
     <Compile Include="Controllers\GioHangController.cs" />
     <Compile Include="Controllers\GUESTLOGINController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\QLNXBController.cs" />
     <Compile Include="Controllers\QLTLController.cs" />
     <Compile Include="Models\Combined_Model\NHANVIEN_DANHSACHCHUCVU_MODEL.cs" />
     <Compile Include="Models\Combined_Model\SACH_DSSACH.cs" />
@@ -352,6 +353,11 @@
     <Content Include="Views\QLTL\Details.cshtml" />
     <Content Include="Views\QLTL\Update.cshtml" />
     <Content Include="Views\QLTL\Delete.cshtml" />
+    <Content Include="Views\QLNXB\Index.cshtml" />
+    <Content Include="Views\QLNXB\Detail.cshtml" />
+    <Content Include="Views\QLNXB\Create.cshtml" />
+    <Content Include="Views\QLNXB\Edit.cshtml" />
+    <Content Include="Views\QLNXB\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

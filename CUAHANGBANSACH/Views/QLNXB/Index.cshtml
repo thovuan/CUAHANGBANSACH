@@ -1,17 +1,10 @@
-﻿@model IEnumerable<CUAHANGBANSACH.Models.THELOAISACH>
+﻿@model IEnumerable<CUAHANGBANSACH.Models.NXB>
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout_Staff.cshtml";
 }
 
-@section Scripts {
-    <script>
-        setTimeout(function () {
-            $('msgAlert').fadeOut('slow');
-        }, 2000);
-    </script>
-}
 
 @if (Model == null)
 {
@@ -23,12 +16,12 @@ else
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h2>DANH SÁCH THỂ LOẠI</h2>
+                    <h2>DANH SÁCH NHÀ XUẤT BẢN</h2>
                     <hr class="colorgraph" />
 
 
                     <div class="col-lg-4" style="margin-top:10px; margin-bottom: 10px">
-                        <input type="button" style="color: white; background-color:green;" value="Add new TL" onclick="location.href='@Url.Action("Create", "QLTL")'" />
+                        <input type="button" style="color: white; background-color:green;" value="Add new TL" onclick="location.href='@Url.Action("Create", "QLNXB")'" />
 
                     </div>
 
@@ -38,7 +31,7 @@ else
                             @Html.AntiForgeryToken()
                             <div class="col-lg-6">
 
-                                @Html.Editor("Find", "", new { htmlAttributes = new { @class = "form-control input-lg", @placeholder = "Nhập tên thể loại cần tìm" } })
+                                @Html.Editor("Find", "", new { htmlAttributes = new { @class = "form-control input-lg", @placeholder = "Nhập tên nhà xuất bản cần tìm" } })
 
                             </div>
                             <div class="col-lg-2">
@@ -64,14 +57,13 @@ else
                             }
                         </div>
                     </div>
-
                     <table class="table">
                         <tr>
                             <th>
-                                Mã Thể Loại
+                                Mã NXB
                             </th>
                             <th>
-                                Tên thể loại
+                                Tên NXB
                             </th>
 
                         </tr>
@@ -79,14 +71,14 @@ else
                         @foreach (var item in Model)
                         {
                             <tr>
-                                <td>@Html.DisplayFor(modelItem => item.matheloai) </td>
+                                <td>@Html.DisplayFor(modelItem => item.manxb) </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.tentheloai)
+                                    @Html.DisplayFor(modelItem => item.tennxb)
                                 </td>
                                 <td>
-                                    <input type="button" style="color: white; background-color:darkblue;" value="Edit" onclick="location.href='@Url.Action("Update", "QLTL", routeValues: new { @MaTL = item.matheloai })'" />
-                                    <input type="button" style="color: white; background-color: red;" value="Thông tin thể loại" onclick="location.href='@Url.Action("Details", "QLTL", routeValues: new { @MaTL = item.matheloai })'" />
-                                    <input type="button" style="color: white; background-color: grey;" value="Xóa thể loại" onclick="location.href='@Url.Action("Delete", "QLTL", routeValues: new { @MaTL = item.matheloai })'" />
+                                    <input type="button" style="color: white; background-color:darkblue;" value="Edit" onclick="location.href='@Url.Action("Edit", "QLNXB", routeValues: new { @MaNXB = item.manxb })'" />
+                                    <input type="button" style="color: white; background-color: red;" value="Thông tin nhà xuất bản" onclick="location.href='@Url.Action("Detail", "QLNXB", routeValues: new { @MaNXB = item.manxb })'" />
+                                    <input type="button" style="color: white; background-color: grey;" value="Xóa NXB" onclick="location.href='@Url.Action("Delete", "QLNXB", routeValues: new { @MaNXB = item.manxb })'" />
 
                                 </td>
                             </tr>
@@ -99,6 +91,5 @@ else
 
     </section>
 }
-
 
 

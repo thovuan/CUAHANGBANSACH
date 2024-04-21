@@ -29,24 +29,18 @@ namespace CUAHANGBANSACH.Controllers
             {
                  SACHes =  list,
             };
-            
-            return View(m);
-        }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Index(SACH_DSSACH model)
-        {
-            List<SACH> list;
-            list = SACH_DAO.GetByName(model.SACH.tensach);
-
-            SACH_DSSACH m = new SACH_DSSACH()
+            if (TempData["Result"] != null)
             {
-                SACHes = list,
-            };
-           
+                if (TempData["Result"].ToString().Contains("Successful")) ViewBag.Success = TempData["Result"];
+                else ViewBag.Failure = TempData["Result"];
+            }
+
+
             return View(m);
         }
+
+        
 
         public ActionResult Index02(string Ma_TheLoai) {
 
@@ -122,6 +116,7 @@ namespace CUAHANGBANSACH.Controllers
                     try
                     {
                         CHITIETDATHANG_DAO.Add(ctdh);
+                        TempData["Result"] = "Add Book to Cart Successful";
                         return RedirectToAction("Index");
                     } catch (Exception ex)
                     {

@@ -29,6 +29,13 @@ namespace CUAHANGBANSACH.Controllers
                 
                 if (Find != null)
                     return View(SACH_DAO.GetByName(Find));
+
+                if (TempData["Result"] != null)
+                {
+                    if (TempData["Result"].ToString().Contains("Successful")) ViewBag.Success = TempData["Result"];
+                    else ViewBag.Failure = TempData["Result"];
+                }
+
                 return View(SACH_DAO.All_List());
             }
                 
@@ -92,8 +99,13 @@ namespace CUAHANGBANSACH.Controllers
 
                     fileName = Path.GetFileName(image.FileName);
                     string filePath = Path.Combine(Server.MapPath("~/Content/ANHSANPHAM/"), fileName);
-                    image.SaveAs(filePath);
+                    if (System.IO.File.Exists(filePath)) {
+                        System.IO.File.Delete(filePath);    
+                    } 
                     
+                    image.SaveAs(filePath);
+
+
                 }
                 SACH sach = new SACH()
                 {
@@ -111,11 +123,13 @@ namespace CUAHANGBANSACH.Controllers
                 try
                 {
                     SACH_DAO.Add(sach);
+                    TempData["Result"] = "Add Book Information Successful";
                     return RedirectToAction("Index");
 
                 } catch (Exception ex)
                 {
-                    ModelState.AddModelError("error", "Lỗi thêm sách");
+                    ModelState.AddModelError("masach", "Lỗi thêm sách");
+                    TempData["Result"] = "Add Book Information Failure";
                     return View(model);
                 }
             }
@@ -171,48 +185,18 @@ namespace CUAHANGBANSACH.Controllers
                 idsach.manxb = model.SACH.manxb;
                 try
                 {
-                SACH_DAO.Update(idsach);
+                    SACH_DAO.Update(idsach);
+                    TempData["Result"] = "Update Book Information Successful";
                     return RedirectToAction("Index");
 
                 }
                 catch (Exception ex)
                 {
-                    ModelState.AddModelError("error", "Lỗi thêm sách");
+                    ModelState.AddModelError("tensach", "Lỗi thêm sách");
+                    TempData["Result"] = "Update Book Information Failure";
                     return View(model);
                 }
-            ////DOANWEB_INITIALEntities db = new DOANWEB_INITIALEntities();
-            //var idsach = SACH_DAO.GetById(model.SACH.masach);
-
-            ////lay thong tin the loai
-            //string selectedTL = Request.Form["TheLoai"];
-            //model.SACH.matheloai = selectedTL;
-
-            ////lay thong tin nha xuat ban
-            //string selectedNXB = Request.Form["NXB"];
-            //model.SACH.manxb = selectedNXB;
-
-
-            //if (idsach == null) return View("Lỗi");
-            ////ViewData.Model = idsach;
-            ////idsach.tensach = model.SACH.tensach;
-            ////idsach.soluonghienco = model.SACH.soluonghienco;
-            ////idsach.dacdiem = model.SACH.dacdiem;
-            ////idsach.DVT = model.SACH.DVT;
-            ////idsach.dongia = model.SACH.dongia;
-            ////idsach.matheloai = model.SACH.matheloai;
-            ////idsach.manxb = model.SACH.manxb;
-            ////db.Entry(idsach).State = System.Data.Entity.EntityState.Modified;
-
-            //try
-            //{
-            //    SACH_DAO.Update(model.SACH);
-            //    return RedirectToAction("Index");
-            //} catch (Exception ex)
-            //{
-            //    //ModelState.AddModelError("error", "Lỗi cập nhật thông tin");
-            //    return View("Lỗi cập nhật thông tin" + ex.ToString());
-            //}
-            ////return View();
+            
         }
 
         public ActionResult UploadImage(string Ma_Sach)
@@ -237,18 +221,26 @@ namespace CUAHANGBANSACH.Controllers
 
                 string fileName = Path.GetFileName(image.FileName);
                 string filePath = Path.Combine(Server.MapPath("~/Content/ANHSANPHAM/"), fileName);
+                if (System.IO.File.Exists(filePath))
+                {
+                    System.IO.File.Delete(filePath);
+                }
                 image.SaveAs(filePath);
+                //idsach.masach = model.masach;
+                
                 idsach.anhsanpham = "/Content/ANHSANPHAM/" + fileName;
             }
             try
             {
-                SACH_DAO.Update(model);
+                SACH_DAO.Update(idsach);
+                TempData["Result"] = "Update Book's Picture Successful";
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
             {
                 //ModelState.AddModelError("error", "Lỗi cập nhật thông tin");
-                return View("Lỗi cập nhật thông tin");
+                TempData["Result"] = "Update Book's Picture Successful";
+                return View("Index");
             }
 
         }
@@ -272,11 +264,13 @@ namespace CUAHANGBANSACH.Controllers
             try
             {
                 SACH_DAO.Delete(model);
+                TempData["Result"] = "Delete Book Successful";
                 return RedirectToAction("Index");
 
             } catch (Exception ex) { }
             {
                 ModelState.AddModelError("error", "Lỗi xóa sách");
+                TempData["Result"] = "Delete Book Failure";
                 return View(model);
             }
         }

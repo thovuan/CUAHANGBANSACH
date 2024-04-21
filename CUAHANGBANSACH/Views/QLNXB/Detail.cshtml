@@ -1,0 +1,35 @@
+﻿@model CUAHANGBANSACH.Models.NXB
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout_Staff.cshtml";
+}
+
+<section id="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <h4>Nhà Xuất Bản @Model.tennxb</h4>
+                <hr class="container"/>
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.tennxb)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.tennxb)
+                    </dd>
+
+                </dl>
+            </div>
+            <div class="form-graph">
+                <p>
+                    <input type="button" value="Cập nhật thông tin thể loại" onclick="location.href='@Url.Action("Update", "QLNXB", routeValues: new { @MaNXB = Model.manxb })'" />
+                    <input type="button" value="Trở lại danh sách" onclick="location.href='@Url.Action("Index", "QLNXB")'" />
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+

@@ -25,6 +25,42 @@ namespace CUAHANGBANSACH.Models.DAO
             }
         }
 
+        public static List<SACH> Top8_Seller()
+        {
+            using (DOANWEB_INITIALEntities db = new DOANWEB_INITIALEntities())
+            {
+                List<CHITIETDATHANG> ct = db.CHITIETDATHANGs.ToList();
+                Dictionary<string, int> booksCountMap = new Dictionary<string, int>();
+
+                foreach(CHITIETDATHANG cht in ct)
+                {
+                    string bookId = cht.masach;
+                    int quantity = cht.soluongmua;
+
+                    if (booksCountMap.ContainsKey(bookId))
+                    {
+                        booksCountMap[bookId] += quantity;
+                    }
+                    else
+                    {
+                        booksCountMap.Add(bookId, quantity);
+                    }
+                }
+
+                List<SACH> topSellingBookList = new List<SACH>();
+                var topSellingBook = booksCountMap.OrderByDescending(n => n.Value).Take(8);
+
+                foreach (var item in topSellingBook)
+                {
+                    SACH sach = db.SACHes.Where(n => n.masach == item.Key).FirstOrDefault();
+
+                    if (sach!= null) topSellingBookList.Add(sach);
+                }
+
+                return topSellingBookList;
+            }
+        }
+
         public static List<SACH> ChuDe_List(string chude)
         {
             using (DOANWEB_INITIALEntities db = new DOANWEB_INITIALEntities())
@@ -63,6 +99,17 @@ namespace CUAHANGBANSACH.Models.DAO
                 sach.tentheloai = db.THELOAISACHes.Where(n => n.matheloai == sach.matheloai).Select(n => n.tentheloai).FirstOrDefault();
                 sach.tennxb = db.NXBs.Where(n => n.manxb == sach.manxb).Select(n=> n.tennxb).FirstOrDefault();
                 sach.tennhanvien = db.NHANVIENs.Where(n=> n.manhanvien == sach.manhanvien).Select(n=>n.tennhanvien).FirstOrDefault();
+                return sach;
+            }
+        }
+
+        public static List<SACH> GetByNXBId(string id)
+        {
+            using (DOANWEB_INITIALEntities db = new DOANWEB_INITIALEntities())
+            {
+                var sach = db.SACHes.Where(n => n.manxb == id).ToList();
+                if (sach == null) return null;
+                
                 return sach;
             }
         }

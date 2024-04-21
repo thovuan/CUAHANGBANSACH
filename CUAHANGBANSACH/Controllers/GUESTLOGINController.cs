@@ -122,6 +122,12 @@ namespace CUAHANGBANSACH.Controllers
 
                     fileName = Path.GetFileName(image.FileName);
                     string filePath = Path.Combine(Server.MapPath("~/Content/GuestAvatar/"), fileName);
+
+                    if (System.IO.File.Exists(filePath))
+                    {
+                        System.IO.File.Delete(filePath);
+                    }
+
                     image.SaveAs(filePath);
 
                 }
@@ -221,6 +227,12 @@ namespace CUAHANGBANSACH.Controllers
 
                 string fileName = Path.GetFileName(image.FileName);
                 string filePath = Path.Combine(Server.MapPath("~/Content/GuestAvatar/"), fileName);
+
+                if (System.IO.File.Exists(filePath))
+                {
+                    System.IO.File.Delete(filePath);
+                }
+
                 image.SaveAs(filePath);
                 idmakh.makhachhang = model.makhachhang;
                 idmakh.avatar = "/Content/GuestAvatar/" + fileName;
@@ -228,7 +240,7 @@ namespace CUAHANGBANSACH.Controllers
             }
             try
             {
-                KHACH_DAO.Update(model);
+                KHACH_DAO.Update(idmakh);
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
