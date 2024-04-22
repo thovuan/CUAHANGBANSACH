@@ -23,6 +23,12 @@ namespace CUAHANGBANSACH.Controllers
             if (!KiemTraPhanQuyen("CV02"))
             return View("Bạn không có quyền truy cập vào page");
             //viet code lay danh sach o day (Tạo GetAllList ở THELOAI_DAO)
+            if (TempData["Result"] != null)
+            {
+                if (TempData["Result"].ToString().Contains("Successful")) ViewBag.Success = TempData["Result"];
+                else ViewBag.Failure = TempData["Result"];
+            }
+
             if (Find != null)
             {
                 return View(THELOAI_DAO.GetName(Find));
@@ -54,6 +60,8 @@ namespace CUAHANGBANSACH.Controllers
             {
                 THELOAISACH tls = new THELOAISACH() { matheloai = model.matheloai, tentheloai = model.tentheloai };
                 THELOAI_DAO.create(tls);
+
+                TempData["Result"] = "Add CATEGORY Information Successful";
                 return RedirectToAction("index");
             }
             catch (Exception ex) { return View(); }
@@ -96,10 +104,11 @@ namespace CUAHANGBANSACH.Controllers
             var getbyid = THELOAI_DAO.GetbyId(model.matheloai);
             if (getbyid != null)
             {
-                getbyid.tentheloai = model.matheloai;
+                getbyid.tentheloai = model.tentheloai;
                 try
                 {
                     THELOAI_DAO.update(getbyid);
+                    TempData["Result"] = "Update CATEGORY Information Successful";
                     return RedirectToAction("index");
                 }
                 catch (Exception ex) { return View("Error"); }
@@ -113,7 +122,11 @@ namespace CUAHANGBANSACH.Controllers
         {
             if (!KiemTraPhanQuyen("CV02"))
                 return View("Bạn không có quyền truy cập vào page");
-            return View(); 
+
+            var tttl = THELOAI_DAO.GetbyId(MaTL);
+            if (tttl != null) return View(tttl);
+            return View("Không có tìm thấy");
+            
         
         }
         [HttpPost, ActionName("Delete")]
@@ -122,7 +135,43 @@ namespace CUAHANGBANSACH.Controllers
         {
             if (!KiemTraPhanQuyen("CV02"))
                 return View("Bạn không có quyền truy cập vào page");
-            return View();
+
+            var tttl = THELOAI_DAO.GetbyId(model.matheloai);
+            if (tttl == null) return View("Không tìm thấy");
+            
+            List<SACH> sach = new List<SACH>();
+            sach = SACH_DAO.GetByNXBId(model.matheloai);
+            if (sach != null)
+            {
+                foreach (SACH hon in sach)
+                {
+                    hon.matheloai = "0";
+
+                    try
+                    {
+                        SACH_DAO.Update(hon);
+                    }
+                    catch
+                    {
+                        return View("Error");
+                    }
+                }
+
+            }
+            try
+            {
+                THELOAI_DAO.delete(model);
+                TempData["Result"] = "Delete CATEGORY Successful";
+                return RedirectToAction("Index");
+
+            }
+            catch (Exception ex) { }
+            {
+                ModelState.AddModelError("error", "Lỗi xóa NXB");
+                TempData["Result"] = "Delete NXB Failure";
+                return View(model);
+            }
+            
 
         }
 

@@ -134,7 +134,7 @@ namespace CUAHANGBANSACH.Controllers
             if (!KiemTraPhanQuyen("CV02"))
                 return View("Bạn không có quyền truy cập vào page");
             var ttnxb = NXB_DAO.GetById(model.manxb);
-            if (ttnxb != null) return View(ttnxb);
+            if (ttnxb == null) return View("Không tìm thấy");
 
             List<SACH> sach = new List<SACH>();
             sach = SACH_DAO.GetByNXBId(model.manxb);

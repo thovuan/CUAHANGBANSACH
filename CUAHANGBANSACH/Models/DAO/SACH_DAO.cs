@@ -85,7 +85,16 @@ namespace CUAHANGBANSACH.Models.DAO
             using (DOANWEB_INITIALEntities db = new DOANWEB_INITIALEntities())
             {
                 List<SACH> sACH = db.SACHes.Where(n => n.tensach.Contains(name)).ToList();
-                if (sACH.Count > 0) return sACH;
+                if (sACH.Count > 0)
+                {
+                    foreach (SACH sach in sACH)
+                    {
+                        sach.tentheloai = db.THELOAISACHes.Where(n => n.matheloai == sach.matheloai).Select(n => n.tentheloai).FirstOrDefault();
+                        sach.tennxb = db.NXBs.Where(n => n.manxb == sach.manxb).Select(n => n.tennxb).FirstOrDefault();
+                        sach.tennhanvien = db.NHANVIENs.Where(n => n.manhanvien == sach.manhanvien).Select(n => n.tennhanvien).FirstOrDefault();
+                    }
+                    return sACH;
+                }
                 return null;
             }
         }

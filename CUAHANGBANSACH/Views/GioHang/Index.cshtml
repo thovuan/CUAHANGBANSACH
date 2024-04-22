@@ -23,6 +23,24 @@
                 }
                 else
                 {
+                    <div class="card mb-12">
+                        <div class="card-body">
+                            @if (ViewBag.Success != null)
+                            {
+                                <div id="msgAlert" class="alert alert-success" role="alert">
+                                    @ViewBag.Success
+                                </div>
+                            }
+                            else if (ViewBag.Failure != null)
+                            {
+                                <div id="msgAlert" class="alert alert-danger" role="alert">
+                                    @ViewBag.Failure
+                                </div>
+
+                            }
+                        </div>
+                    </div>
+
                     <table class="table">
                         <tr>
                             <th>Mã Đơn Hàng</th>
@@ -58,7 +76,7 @@
                                     @Html.DisplayFor(modelItem => item.makhachhang)
                                 </td>
                                 <td>
-                                    
+
                                     <input type="button" style="color: white; background-color:darkblue;" value="Xác Nhận Mua" onclick="location.href='@Url.Action("Confirm", "GioHang", routeValues: new { @Ma_DH = item.maphieumuahang })'" />
                                     <input type="button" style="color: white; background-color: red;" value="Details" onclick="location.href='@Url.Action("Details", "GioHang", routeValues: new { @Ma_DH = item.maphieumuahang })'" />
                                     <input type="button" style="color: white; background-color: grey;" value="Delete" onclick="location.href='@Url.Action("Delete", "GioHang", routeValues: new { @Ma_DH = item.maphieumuahang })'" />

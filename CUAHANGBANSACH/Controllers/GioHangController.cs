@@ -14,6 +14,12 @@ namespace CUAHANGBANSACH.Controllers
         // GET: GioHang
         public ActionResult Index()
         {
+            if (TempData["Result"] != null)
+            {
+                if (TempData["Result"].ToString().Contains("Successful")) ViewBag.Success = TempData["Result"];
+                else ViewBag.Failure = TempData["Result"];
+            }
+
             if (Session["KHACH"] == null) return View();
             KHACH khach = (KHACH)Session["KHACH"];
             return View(PHIEUMUAHANG_DAO.GetByGuestID(khach.makhachhang));
@@ -169,21 +175,7 @@ namespace CUAHANGBANSACH.Controllers
                 try
                 {
                     CHITIETDATHANG_DAO.Delete(ttsachtronggiohang);
-                    /*if (TempData.ContainsKey("XKGH"))
-                    {
-                        // Lấy tên của hành động trước đó từ TempData
-                        string previousAction = TempData["XKGH"].ToString();
-
-                        // Xóa thông tin về hành động trước đó từ TempData
-                        TempData.Remove("XKGH");
-
-                        // Kiểm tra xem hành động trước đó có tồn tại không
-                        if (!string.IsNullOrEmpty(previousAction))
-                        {
-                            // Chuyển hướng trở lại hành động trước đó
-                            return RedirectToAction(previousAction);
-                        }
-                    }*/
+                    
                     return View("Index");
                 } catch
                 {
@@ -257,10 +249,12 @@ namespace CUAHANGBANSACH.Controllers
                 PHIEUMUAHANG_DAO.Update(ttdonhang);
                 THE_DAO.Update(the);
                 Session.Remove("Đơn Hàng");
+                TempData["Result"] = "Confirm Cart Successful";
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
             {
+                
                 return View("Có lỗi xảy ra", "Index");
             }
         }
